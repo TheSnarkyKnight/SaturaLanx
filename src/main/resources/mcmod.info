@@ -1,0 +1,16 @@
+[
+{
+  "modid": "saturalanx",
+  "name": "Satura Lanx",
+  "description": "A varied addon",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["TheSnarkyKnight"],
+  "credits": "unforbidable",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["terrafirmacraftplus"]
+}
+]

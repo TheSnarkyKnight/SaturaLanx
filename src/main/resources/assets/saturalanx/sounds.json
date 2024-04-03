@@ -1,0 +1,7 @@
+{
+"handgonne": {"category": "master","sounds": [{"name": "handgonne","stream": false}]},
+"load": {"category": "master","sounds": [{"name": "load","stream": false}]},
+"fuse": {"category": "master","sounds": [{"name": "fuse","stream": false}]},
+"castanet1": {"category": "master","sounds": [{"name": "castanet1","stream": false}]},
+"castanet2": {"category": "master","sounds": [{"name": "castanet2","stream": false}]}
+}
