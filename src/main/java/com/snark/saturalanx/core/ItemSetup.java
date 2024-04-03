@@ -217,7 +217,7 @@ public class ItemSetup {
 
         SaturaLanx.log.info("Registering item renders...");
 
-        if(Config.enableHandgonne&&Config.enableHandgonneModel) {
+        if(Config.enableHandgonne) {
             MinecraftForgeClient.registerItemRenderer(brassHandgonne, new HandgonneRender());
             MinecraftForgeClient.registerItemRenderer(bronzeHandgonne, new HandgonneRender());
             MinecraftForgeClient.registerItemRenderer(bismuthBronzeHandgonne, new HandgonneRender());

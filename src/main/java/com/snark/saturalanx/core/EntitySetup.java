@@ -6,7 +6,6 @@ import com.snark.saturalanx.entities.*;
 import com.snark.saturalanx.renders.entity.RenderBullet;
 import com.snark.saturalanx.renders.entity.RenderGrenade;
 import com.snark.saturalanx.renders.entity.RenderShrapnel;
-import com.snark.saturalanx.renders.entity.RenderSmokeBomb;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -66,8 +65,6 @@ public class EntitySetup {
         }
         if (Config.enableFirecrackers)
             RenderingRegistry.registerEntityRenderingHandler(EntityFireCracker.class, new RenderSnowball(ItemSetup.firecracker));
-        if(Config.enableSmokeBombs)
-            RenderingRegistry.registerEntityRenderingHandler(EntitySmokeBomb.class, new RenderSmokeBomb());
         if(Config.enableHandgonne||Config.enableMBlunderbuss||Config.enableArquebus)
             RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class,new RenderBullet());
 

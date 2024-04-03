@@ -63,8 +63,8 @@ tile.SpikeBlock_1.name=Iron Spikes
 //Items
 item.CeramicBucketEthanol.name=Clay Bucket of Ethanol
 item.WoodenBucketEthanol.name=Wooden Bucket of Ethanol
-item.SpikeItem.SpikeItem0.name=Sharpened Stick
-item.SpikeItem.SpikeItem1.name=Wrought Iron Spike
+item.SpikeItem0.name=Sharpened Stick
+item.SpikeItem1.name=Wrought Iron Spike
 //Pottery
 item.LapisBrick.LapisClayBrick.name=Lapis Clay Brick
 item.HematiteBrick.HematiteClayBrick.name=Hematite Clay Brick

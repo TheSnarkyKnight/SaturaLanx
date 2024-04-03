@@ -11,6 +11,5 @@ public class Palisade extends BlockTerra {
         this.setCreativeTab(tab);
         this.setHardness(5.0F);
         this.setResistance(4.0F);
-        this.
     }
 }

@@ -41,7 +41,7 @@ public class Gabion extends BlockTerra{
         super(Material.wood);
         this.setCreativeTab(tab);
         this.setHardness(4.0F);
-        this.setResistance(6.0F);
+        this.setResistance(9.0F);
     }
 
     public void setNum(int i){
