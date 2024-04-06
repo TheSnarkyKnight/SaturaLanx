@@ -62,7 +62,7 @@ public class MatchlockBlunderbuss extends Arquebus{
             }
         }
         player.inventory.consumeInventoryItem(gunpowder);
-        player.worldObj.playSoundAtEntity(player,MODID+":load",1,1);
+        stack.stackTagCompound.setBoolean("s",true);
         stack.stackTagCompound.setBoolean("load",true);
     }
 

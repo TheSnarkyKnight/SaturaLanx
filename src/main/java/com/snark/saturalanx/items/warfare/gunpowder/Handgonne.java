@@ -138,6 +138,7 @@ public class Handgonne extends SwordSatura {
     @Override
     public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int inUseCount){
 
+        stack.stackTagCompound.setBoolean("s",true);
         boolean state = stack.stackTagCompound.getBoolean("load");
         int elapsedTime = stack.getMaxItemUseDuration()-inUseCount;
 
@@ -162,10 +163,29 @@ public class Handgonne extends SwordSatura {
             }
             player.inventory.consumeInventoryItem(gunpowder);
             stack.stackTagCompound.setBoolean("load",true);
-            world.playSoundAtEntity(player,MODID + ":load",1,1);
+
         }
         else if(state&&(elapsedTime>=aimingTime))
             fireGun(stack,player,world);
+    }
+
+    @Override
+    public void onUsingTick(ItemStack stack, EntityPlayer player, int count) {
+        super.onUsingTick(stack, player, count);
+
+        boolean b;
+        if(stack.stackTagCompound.hasKey("s"))
+            b = stack.stackTagCompound.getBoolean("s");
+        else{
+            b = true;
+            stack.stackTagCompound.setBoolean("s",true);
+        }
+
+        if(stack.getMaxItemUseDuration()-count >= loadingTime && b) {
+            player.worldObj.playSoundAtEntity(player, MODID + ":load", 1, 1);
+            b = false;
+            stack.stackTagCompound.setBoolean("s",false);
+        }
     }
 
     public boolean canLoad(EntityPlayer player){
