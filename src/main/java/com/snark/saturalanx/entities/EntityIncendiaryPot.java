@@ -4,6 +4,7 @@ import com.dunk.tfc.api.TFCBlocks;
 import com.snark.saturalanx.core.BlockSetup;
 import com.snark.saturalanx.core.Config;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
@@ -41,6 +42,10 @@ public class EntityIncendiaryPot extends EntityThrowable {
             worldObj.spawnParticle("flame", posX, posY, posZ, x, y, z);
         }
         explode();
+    }
+
+    public boolean isInWater() {
+        return this.worldObj.handleMaterialAcceleration(this.boundingBox.expand(0.0, -0.0200000238418579, 0.0), Material.water, this);
     }
 
     @Override

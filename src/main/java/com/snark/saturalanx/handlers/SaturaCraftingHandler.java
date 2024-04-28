@@ -107,17 +107,13 @@ public class SaturaCraftingHandler {
                     if (i.getItem() == Items.gunpowder)
                         f[0] += i.stackSize;
                     if (i.getItem() == Item.getItemFromBlock(TFCBlocks.gravel) || i.getItem() == Item.getItemFromBlock(TFCBlocks.gravel2))
-                        f[1] += (i.stackSize * 4);
-                    if (i.getItem() == TFCItems.stoneFlake)
-                        f[1] += i.stackSize;
-                    if (i.getItem() == TFCItems.lime)
-                        f[2] += i.stackSize;
+                        f[1] += (i.stackSize * 10);
+                    if (i.getItem() == ItemSetup.shot)
+                        f[2] += (i.stackSize*10);
                     if (i.getItem() == TFCItems.resin || i.getItem() == TFCItems.coal)
                         f[3] += i.stackSize;
                     if (i.getItem() == TFCItems.powder && i.getItemDamage() == 3)
                         f[3] += i.stackSize;
-                    if (i.getItem() == TFCItems.powder && i.getItemDamage() == 14)
-                        f[2] += i.stackSize;
                 }
             }
         }

@@ -28,7 +28,7 @@ public class EntitySetup {
             EntityRegistry.registerGlobalEntityID(EntityPotGrenade.class, "potGrenadeSL", EntityRegistry.findGlobalUniqueEntityId());
             EntityRegistry.registerModEntity(EntityPotGrenade.class, "potGrenadeSL", 1, SaturaLanx.instance, 64, 10, true);
             EntityRegistry.registerGlobalEntityID(EntityShrapnel.class, "shrapnelSL", EntityRegistry.findGlobalUniqueEntityId());
-            EntityRegistry.registerModEntity(EntityShrapnel.class, "shrapnelSL", 0, SaturaLanx.instance, 64, 10, true);
+            EntityRegistry.registerModEntity(EntityShrapnel.class, "shrapnelSL", 2, SaturaLanx.instance, 64, 10, true);
         }
         if (Config.enableFirecrackers) {
             EntityRegistry.registerGlobalEntityID(EntityFireCracker.class, "firecrackerSL", EntityRegistry.findGlobalUniqueEntityId());

@@ -269,7 +269,7 @@ protected int type;
             if(comp[1]>0)
                 arraylist.add(EnumChatFormatting.YELLOW+"Shrapnel: "+comp[1]);
             if(comp[2]>0)
-                arraylist.add(EnumChatFormatting.YELLOW+"Smoke: "+comp[2]);
+                arraylist.add(EnumChatFormatting.YELLOW+"Pellets: "+comp[2]);
             if(comp[3]>0)
                 arraylist.add(EnumChatFormatting.YELLOW+"Incendiary: "+comp[3]);
             if(comp[0]+comp[1]+comp[2]+comp[3]==0)

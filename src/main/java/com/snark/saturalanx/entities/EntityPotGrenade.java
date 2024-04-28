@@ -1,12 +1,11 @@
 package com.snark.saturalanx.entities;
 
 import com.snark.saturalanx.core.Config;
-import net.minecraft.client.particle.EntitySmokeFX;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
@@ -23,7 +22,7 @@ public class EntityPotGrenade extends Entity implements IProjectile {
     protected int maxFuse;
     protected float explosive;
     protected float shrapnel;
-    protected float smoke;
+    protected float pellet;
     protected float incendiary;
     protected EntityLivingBase thrower;
     protected int type = 1;
@@ -33,7 +32,7 @@ public class EntityPotGrenade extends Entity implements IProjectile {
         this.fuse = Config.potGrenadeFuseLength;
         this.explosive = 0;
         this.shrapnel = 0;
-        this.smoke = 0;
+        this.pellet = 0;
         this.incendiary = 0;
     }
 
@@ -43,7 +42,7 @@ public class EntityPotGrenade extends Entity implements IProjectile {
         this.fuse = Config.potGrenadeFuseLength;
         this.explosive = comp[0];
         this.shrapnel = comp[1];
-        this.smoke = comp[2];
+        this.pellet = comp[2];
         this.incendiary = comp[3];
         this.setType(1);
     }
@@ -121,6 +120,10 @@ public class EntityPotGrenade extends Entity implements IProjectile {
 
     }
 
+    public boolean isInWater() {
+        return this.worldObj.handleMaterialAcceleration(this.boundingBox.expand(0.0, -0.0200000238418579, 0.0), Material.water, this);
+    }
+
     @Override
     protected boolean canTriggerWalking() {
         return false;
@@ -171,6 +174,7 @@ public class EntityPotGrenade extends Entity implements IProjectile {
 
         if(this.isInWater())
             this.setDead();
+
         this.prevPosX = this.posX;
         this.prevPosY = this.posY;
         this.prevPosZ = this.posZ;
@@ -232,7 +236,7 @@ public class EntityPotGrenade extends Entity implements IProjectile {
             }
         }
             if(shrapnel>0){
-                for(int i = 0;i<Math.min(Math.ceil(shrapnel/2),(explosive*2));i++){
+                for(int i = 0;i<Math.min(Math.ceil(shrapnel/2),(power*2));i++){
                     double x = rand.nextDouble();
                     double y = rand.nextDouble();
                     double z = rand.nextDouble();
@@ -245,7 +249,8 @@ public class EntityPotGrenade extends Entity implements IProjectile {
                     shrapnel.motionX = x;
                     shrapnel.motionY = y;
                     shrapnel.motionZ = z;
-                    shrapnel.setThrowableHeading(shrapnel.motionX,shrapnel.motionY,shrapnel.motionZ,(float)(1.5F*power),1.0F);
+                    shrapnel.setThrowableHeading(shrapnel.motionX,shrapnel.motionY,shrapnel.motionZ,(float)(1.5F),1.0F);
+                    shrapnel.setDamage(10+power);
                     if(incendiary>0)
                         shrapnel.setFire((int)(Math.max(Math.ceil(incendiary/4),1)));
                     if(!worldObj.isRemote){
@@ -253,6 +258,30 @@ public class EntityPotGrenade extends Entity implements IProjectile {
                     }
                 }
             }
+        if(pellet>0){
+            for(int i = 0;i<Math.min(Math.ceil(pellet/2),(power*2));i++){
+                double x = rand.nextDouble();
+                double y = rand.nextDouble();
+                double z = rand.nextDouble();
+                if(rand.nextInt(2)==0)
+                    x *= -1;
+                if(rand.nextInt(2)==0)
+                    z *= -1;
+
+                EntityBullet b = new EntityBullet(worldObj, posX, posY, posZ);
+                b.setType(0);
+                b.setDamage(10+power);
+                b.motionX = x;
+                b.motionY = y;
+                b.motionZ = z;
+                b.setThrowableHeading(b.motionX,b.motionY,b.motionZ,(float)(1.5F),1.0F);
+                if(incendiary>0)
+                    b.setFire((int)(Math.max(Math.ceil(incendiary/4),1)));
+                if(!worldObj.isRemote){
+                    worldObj.spawnEntityInWorld(b);
+                }
+            }
+        }
     }
 
 
