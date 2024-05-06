@@ -1,13 +1,18 @@
 package com.snark.saturalanx.core;
 
 import com.dunk.tfc.Render.Item.FoodItemRenderer;
+import com.dunk.tfc.TileEntities.TEFirepit;
 import com.dunk.tfc.api.Enums.EnumFoodGroup;
+import com.dunk.tfc.api.FoodRegistry;
+import com.dunk.tfc.api.HeatIndex;
+import com.dunk.tfc.api.HeatRegistry;
 import com.snark.saturalanx.SaturaLanx;
 import com.snark.saturalanx.items.Food;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 import java.util.ArrayList;
@@ -107,5 +112,36 @@ public class FoodSetup {
             MinecraftForgeClient.registerItemRenderer(f, new FoodItemRenderer());
         }
 
+    }
+
+    public static void registerHeat(){
+        SaturaLanx.log.info("Registering heat data for food items...");
+
+        final HeatRegistry reg = HeatRegistry.getInstance();
+
+        if(Config.enableDandelionFood){
+            reg.addIndex(new HeatIndex(new ItemStack(dandelionTop,1),1,177,null));
+            reg.addIndex(new HeatIndex(new ItemStack(dandelionRoot,1),1,177,null));
+        }
+        if(Config.enableGoldenrodFood){
+            reg.addIndex(new HeatIndex(new ItemStack(goldenrodLeaves,1),1,177,null));
+        }
+        if(Config.enableNasturtiumFood)
+            reg.addIndex(new HeatIndex(new ItemStack(preparedNasturtium,1),1,177,null));
+        if(Config.enableCalendulaFood)
+            reg.addIndex(new HeatIndex(new ItemStack(calendulaPetals,1),1,177,null));
+        if(Config.enableDaisyFood)
+            reg.addIndex(new HeatIndex(new ItemStack(daisyFlower,1),1,177,null));
+        if(Config.enableTulipFood){
+            reg.addIndex(new HeatIndex(new ItemStack(tulipPetalsPink,1),1,177,null));
+            reg.addIndex(new HeatIndex(new ItemStack(tulipPetalsOrange,1),1,177,null));
+            reg.addIndex(new HeatIndex(new ItemStack(tulipPetalsRed,1),1,177,null));
+            reg.addIndex(new HeatIndex(new ItemStack(tulipPetalsWhite,1),1,177,null));
+            reg.addIndex(new HeatIndex(new ItemStack(tulipBulb,1),1,177,null));
+        }
+        if(Config.enablePoppyFood)
+            reg.addIndex(new HeatIndex(new ItemStack(poppyseed,1),1,177,null));
+        if(Config.enableMilkweedFood)
+            reg.addIndex(new HeatIndex(new ItemStack(preparedMilkweedPod,1),1,177,null));
     }
 }
