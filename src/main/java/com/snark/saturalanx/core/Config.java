@@ -81,6 +81,13 @@ public class Config {
     public static int mBlunderbussDamage = 44;
     public static int mBlunderbussPellets = 10;
 
+    public static String MHANDMORTAR = "Matchlock Hand Mortar";
+    public static boolean enableMHandMortar = true;
+    public static int mHandMortarLoadingTime = 400;
+    public static int mHandMortarAimingTime = 40;
+    public static int mHandMortarCannonballDamage = 1070;
+    public static int mHandMortarBombPhysicalDamage = 530;
+    public static int mHandMortarBombExplosionDamage = 16;
 
     //Incendiaries
     public static String INCENDIARYPOT = "Incendiary Pot";

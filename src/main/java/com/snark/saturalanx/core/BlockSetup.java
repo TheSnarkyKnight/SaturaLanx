@@ -40,7 +40,7 @@ public class BlockSetup {
         ((Gabion)gabion2).setNames(new String[]{"Phyllite","Schist","Gneiss","Marble","Chalk"});
         ((Gabion)gabion2).setNum(1);
 
-        flamingBlock = ((Block)new FlamingBlock()).setBlockName("FlamingBlock").setBlockTextureName(MODID+"FlamingBlock");
+        flamingBlock = ((Block)new FlamingBlock()).setBlockName("FlamingBlock");
 
         spikeBlock = new SpikeBlock();
 

@@ -222,7 +222,7 @@ public class Arquebus extends SwordSatura {
 
     public boolean hasAmmo(EntityPlayer player){
 
-        if(player.inventory.hasItem(TFCItems.leadBullet)&&player.inventory.hasItem(gunpowder))
+        if((player.inventory.hasItem(TFCItems.leadBullet)||player.inventory.hasItem(TFCItems.looseRock))&&player.inventory.hasItem(gunpowder))
             return true;
         else
             return false;

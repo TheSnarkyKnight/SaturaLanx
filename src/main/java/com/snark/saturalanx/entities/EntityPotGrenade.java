@@ -210,7 +210,7 @@ public class EntityPotGrenade extends Entity implements IProjectile {
     }
 
     public void explode() {
-            double power = Math.min(explosive / 2,Config.potGrenadePowerCap);
+            double power = Math.min(explosive,Config.potGrenadePowerCap);
             worldObj.createExplosion(this, posX, posY, posZ, (float) 0, false);
             if (!worldObj.isRemote) {
                 double range = Math.max(Math.min(power,Config.potGrenadeMaxRange),Config.potGrenadeMinRange);

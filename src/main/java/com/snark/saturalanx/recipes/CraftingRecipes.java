@@ -49,27 +49,27 @@ public class CraftingRecipes {
         }
 
         if (Config.enableMortaredCobble) {
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 1, 0), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 0), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 1, 1), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 1), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 1, 2), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 2), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 1, 3), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 11), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 1, 4), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 12), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 1, 5), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 13), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 1, 6), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 14), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 1, 7), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 3), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 1, 8), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 4), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 1, 9), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 5), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 1, 10), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 6), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 1, 11), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 7), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 1, 12), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 8), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 1, 13), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 9), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 1, 14), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 15), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 1, 15), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 16), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble2, 1, 0), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 17), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble2, 1, 1), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 18), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble2, 1, 2), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 19), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble2, 1, 3), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 20), 'X', new ItemStack(TFCItems.mortar, 1));
-            GameRegistry.addRecipe(new ItemStack(mortaredCobble2, 1, 4), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 10), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 0), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 0), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 1), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 1), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 2), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 2), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 3), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 11), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 4), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 12), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 5), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 13), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 6), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 14), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 7), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 3), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 8), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 4), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 9), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 5), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 10), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 6), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 11), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 7), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 12), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 8), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 13), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 9), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 14), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 15), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 15), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 16), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble2, 4, 0), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 17), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble2, 4, 1), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 18), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble2, 4, 2), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 19), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble2, 4, 3), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 20), 'X', new ItemStack(TFCItems.mortar, 1));
+            GameRegistry.addRecipe(new ItemStack(mortaredCobble2, 4, 4), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 10), 'X', new ItemStack(TFCItems.mortar, 1));
 
         }
 

@@ -67,13 +67,13 @@ public class BarrelRecipes {
 
         //Tea recipes
         if(Config.enableDandelionFood) {
-            BarrelManager.getInstance().addRecipe(new BarrelFireRecipe(ItemFoodTFC.createTag(new ItemStack(FoodSetup.dandelionTop), 8.0F), new FluidStack(TFCFluids.FRESHWATER, 1000), (ItemStack) null, new FluidStack(FluidSetup.DANDELIONTEA, 1000), 0, 250).setSealedRecipe(false).setSealTime(0).setMinTechLevel(0));
-            BarrelManager.getInstance().addRecipe(new BarrelFireRecipe(ItemFoodTFC.createTag(new ItemStack(FoodSetup.dandelionRoot), 8.0F), new FluidStack(TFCFluids.FRESHWATER, 1000), (ItemStack) null, new FluidStack(FluidSetup.DANDELIONCOFFEE, 1000), 0, 250).setSealedRecipe(false).setSealTime(0).setMinTechLevel(0).setRequiresCooked(true));
+            BarrelManager.getInstance().addRecipe(new BarrelFireRecipe(ItemFoodTFC.createTag(new ItemStack(FoodSetup.dandelionTop), 8.0F), new FluidStack(TFCFluids.FRESHWATER, 1000), (ItemStack) null, new FluidStack(FluidSetup.DANDELIONTEA, 1000), 0, 250).setSealedRecipe(false).setMinTechLevel(0));
+            BarrelManager.getInstance().addRecipe(new BarrelFireRecipe(ItemFoodTFC.createTag(new ItemStack(FoodSetup.dandelionRoot), 8.0F), new FluidStack(TFCFluids.FRESHWATER, 1000), (ItemStack) null, new FluidStack(FluidSetup.DANDELIONCOFFEE, 1000), 0, 250).setSealedRecipe(false).setMinTechLevel(0).setRequiresCooked(true));
         }
         if(Config.enableGoldenrodFood)
-            BarrelManager.getInstance().addRecipe(new BarrelFireRecipe(ItemFoodTFC.createTag(new ItemStack(FoodSetup.goldenrodTop), 8.0F), new FluidStack(TFCFluids.FRESHWATER, 1000), (ItemStack) null, new FluidStack(FluidSetup.GOLDENRODTEA, 1000), 0, 250).setSealedRecipe(false).setSealTime(0).setMinTechLevel(0));
+            BarrelManager.getInstance().addRecipe(new BarrelFireRecipe(ItemFoodTFC.createTag(new ItemStack(FoodSetup.goldenrodTop), 8.0F), new FluidStack(TFCFluids.FRESHWATER, 1000), (ItemStack) null, new FluidStack(FluidSetup.GOLDENRODTEA, 1000), 0, 250).setSealedRecipe(false).setMinTechLevel(0));
         if(Config.enableDaisyFood)
-            BarrelManager.getInstance().addRecipe(new BarrelFireRecipe(ItemFoodTFC.createTag(new ItemStack(FoodSetup.daisyFlower), 8.0F), new FluidStack(TFCFluids.FRESHWATER, 1000), (ItemStack) null, new FluidStack(FluidSetup.DAISYTEA, 1000), 0, 250).setSealedRecipe(false).setSealTime(0).setMinTechLevel(0));
+            BarrelManager.getInstance().addRecipe(new BarrelFireRecipe(ItemFoodTFC.createTag(new ItemStack(FoodSetup.daisyFlower), 8.0F), new FluidStack(TFCFluids.FRESHWATER, 1000), (ItemStack) null, new FluidStack(FluidSetup.DAISYTEA, 1000), 0, 250).setSealedRecipe(false).setMinTechLevel(0));
         if(Config.enableMilkweedFood)
             BarrelManager.getInstance().addRecipe(new BarrelFireRecipe(ItemFoodTFC.createTag(new ItemStack(FoodSetup.milkweedPod), 8.0F), new FluidStack(TFCFluids.FRESHWATER, 500), ItemFoodTFC.createTag(new ItemStack(FoodSetup.preparedMilkweedPod), 8.0F), new FluidStack(TFCFluids.FRESHWATER, 500), 0, 300).setSealedRecipe(false).setSealTime(0).setMinTechLevel(0).setRemovesLiquid(true));
 
