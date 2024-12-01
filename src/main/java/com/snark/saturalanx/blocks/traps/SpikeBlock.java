@@ -41,9 +41,10 @@ public class SpikeBlock extends BlockTerra{
 
     @Override
     public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
-        entity.motionX *= 0.7F;
-        entity.motionZ *= 0.7F;
+
         if(entity instanceof EntityLivingBase && !isSneakingPlayer(entity)){
+            entity.motionX *= 0.7F;
+            entity.motionZ *= 0.7F;
             int damage;
             int metadata = world.getBlockMetadata(x,y,z);
             if(metadata==0)
@@ -65,6 +66,8 @@ public class SpikeBlock extends BlockTerra{
 
             entity.attackEntityFrom(spikeDamageSource,damage);
         }
+
+        super.onEntityCollidedWithBlock(world, x, y, z, entity);
     }
 
     @Override

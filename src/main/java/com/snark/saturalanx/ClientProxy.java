@@ -1,5 +1,6 @@
 package com.snark.saturalanx;
 
+import com.snark.saturalanx.core.BlockSetup;
 import com.snark.saturalanx.core.EntitySetup;
 import com.snark.saturalanx.core.FoodSetup;
 import com.snark.saturalanx.core.ItemSetup;
@@ -35,6 +36,7 @@ public class ClientProxy extends CommonProxy{
         FoodSetup.registerRenders();
         ItemSetup.registerRenders();
         EntitySetup.registerEntityRenders();
+        BlockSetup.registerBlockRenders();
         
     }
 

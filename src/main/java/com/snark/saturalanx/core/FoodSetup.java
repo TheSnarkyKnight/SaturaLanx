@@ -33,63 +33,66 @@ public class FoodSetup {
 
         SaturaLanx.log.info("Initializing food...");
 
-        //Flowers
-        dandelionTop = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("DandelionTop").setTextureName(FOODPATH+"DandelionTop");
-        dandelionRoot = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.0F).setWaterPercentage(0.5F).setUnlocalizedName("DandelionRoot").setTextureName(FOODPATH+"DandelionRoot");
-
-        goldenrodLeaves = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.0F).setWaterPercentage(0.4F).setUnlocalizedName("GoldenrodLeaves").setTextureName(FOODPATH+"GoldenrodLeaves");
-        goldenrodTop = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true,true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("GoldenrodTop").setTextureName(FOODPATH+"GoldenrodTop");
-
-        preparedNasturtium = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("PreparedNasturtium").setTextureName(FOODPATH+"PreparedNasturtium");
-
-        milkweedPod = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, false, true, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("MilkweedPod").setTextureName(FOODPATH+"MilkweedPod");
-        preparedMilkweedPod = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("PreparedMilkweedPod").setTextureName(FOODPATH+"PreparedMilkweedPod");
-
-        calendulaPetals = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("CalendulaPetals").setTextureName(FOODPATH+"CalendulaPetals");
-
-        tulipPetalsRed = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("TulipPetalsRed").setTextureName(FOODPATH+"TulipPetalsRed");
-        tulipPetalsOrange = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("TulipPetalsOrange").setTextureName(FOODPATH+"TulipPetalsOrange");
-        tulipPetalsPink = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("TulipPetalsPink").setTextureName(FOODPATH+"TulipPetalsPink");
-        tulipPetalsWhite = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("TulipPetalsWhite").setTextureName(FOODPATH+"TulipPetalsWhite");
-        tulipBulb = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("TulipBulb").setTextureName(FOODPATH+"TulipBulb");
-
-        daisyFlower = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("DaisyFlower").setTextureName(FOODPATH+"DaisyFlower");
-
-        poppyseed = (new Food(EnumFoodGroup.Grain, 20, 10, 0, 20, 0, true)).setDecayRate(0.8F).setWaterPercentage(0.2F).setUnlocalizedName("Poppyseed").setTextureName(FOODPATH+"PoppySeed");
-
-        //Fruit
-        whiteGrapes = (new Food(EnumFoodGroup.Fruit, 50, 30, 0, 0, 0, true)).setDecayRate(1.8F).setWaterPercentage(0.9F).setUnlocalizedName("WhiteGrapes").setTextureName(FOODPATH+"WhiteGrapes");
-
         food = new ArrayList<Item>();
         if(Config.enableDandelionFood) {
+            dandelionTop = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("DandelionTop").setTextureName(FOODPATH + "DandelionTop");
+            dandelionRoot = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.0F).setWaterPercentage(0.5F).setUnlocalizedName("DandelionRoot").setTextureName(FOODPATH + "DandelionRoot");
+
             food.add((Item) dandelionTop);
             food.add((Item) dandelionRoot);
         }
         if(Config.enableGoldenrodFood) {
+            goldenrodLeaves = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.0F).setWaterPercentage(0.4F).setUnlocalizedName("GoldenrodLeaves").setTextureName(FOODPATH+"GoldenrodLeaves");
+            goldenrodTop = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true,true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("GoldenrodTop").setTextureName(FOODPATH+"GoldenrodTop");
+
             food.add((Item) goldenrodLeaves);
             food.add((Item) goldenrodTop);
         }
-        if(Config.enableNasturtiumFood)
+        if(Config.enableNasturtiumFood) {
+            preparedNasturtium = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("PreparedNasturtium").setTextureName(FOODPATH + "PreparedNasturtium");
+
             food.add(preparedNasturtium);
-        if(Config.enableCalendulaFood)
+        }
+        if(Config.enableCalendulaFood) {
+            calendulaPetals = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("CalendulaPetals").setTextureName(FOODPATH+"CalendulaPetals");
+
             food.add(calendulaPetals);
-        if(Config.enableDaisyFood)
+        }
+        if(Config.enableDaisyFood) {
+            daisyFlower = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("DaisyFlower").setTextureName(FOODPATH+"DaisyFlower");
+
             food.add(daisyFlower);
+        }
         if(Config.enableTulipFood){
+            tulipPetalsRed = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("TulipPetalsRed").setTextureName(FOODPATH+"TulipPetalsRed");
+            tulipPetalsOrange = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("TulipPetalsOrange").setTextureName(FOODPATH+"TulipPetalsOrange");
+            tulipPetalsPink = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("TulipPetalsPink").setTextureName(FOODPATH+"TulipPetalsPink");
+            tulipPetalsWhite = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("TulipPetalsWhite").setTextureName(FOODPATH+"TulipPetalsWhite");
+            tulipBulb = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("TulipBulb").setTextureName(FOODPATH+"TulipBulb");
+
             food.add(tulipBulb);
             food.add(tulipPetalsOrange);
             food.add(tulipPetalsPink);
             food.add(tulipPetalsRed);
             food.add(tulipPetalsWhite);
         }
-        if(Config.enablePoppyFood)
+        if(Config.enablePoppyFood) {
+            poppyseed = (new Food(EnumFoodGroup.Grain, 20, 10, 0, 20, 0, true)).setDecayRate(0.8F).setWaterPercentage(0.2F).setUnlocalizedName("Poppyseed").setTextureName(FOODPATH+"PoppySeed");
+
             food.add(poppyseed);
+        }
         if (Config.enableMilkweedFood) {
+            milkweedPod = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, false, true, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("MilkweedPod").setTextureName(FOODPATH+"MilkweedPod");
+            preparedMilkweedPod = (new Food(EnumFoodGroup.Vegetable, 20, 10, 0, 20, 0, true)).setDecayRate(1.2F).setWaterPercentage(0.4F).setUnlocalizedName("PreparedMilkweedPod").setTextureName(FOODPATH+"PreparedMilkweedPod");
+
             food.add(milkweedPod);
             food.add(preparedMilkweedPod);
         }
-        if(Config.enableWhiteGrapes)
+        if(Config.enableWhiteGrapes) {
+            whiteGrapes = (new Food(EnumFoodGroup.Fruit, 50, 30, 0, 0, 0, true)).setDecayRate(1.8F).setWaterPercentage(0.9F).setUnlocalizedName("WhiteGrapes").setTextureName(FOODPATH + "WhiteGrapes");
+
             food.add((Item) whiteGrapes);
+        }
 
     }
 

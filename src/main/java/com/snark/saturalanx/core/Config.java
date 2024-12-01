@@ -29,8 +29,12 @@ public class Config {
     //Blocks
     public static String BUILDINGBLOCKS = "General Building Blocks";
     public static boolean enableColouredBricks = true;
+    public static boolean enableFloorTiles = true;
     public static boolean enableMortaredCobble = true;
     public static boolean enableMortaredCobbleTextures = true;
+    public static boolean enableTallCandlestick = true;
+    public static float tallCandlestickBurnModifier = 1.2F;
+    public static float tallCandlestickLightModifier = 1.2F;
     public static String GABION = "Gabion";
     public static boolean enableGabion = true;
     public static boolean enableGabionMultistage = true;
@@ -152,7 +156,15 @@ public class Config {
 
         //Blocks
         enableColouredBricks = config.getBoolean("Enable Coloured Bricks",BUILDINGBLOCKS,true,"Enables coloured bricks.");
+
+        enableFloorTiles = config.getBoolean("Enable Floor Tiles",BUILDINGBLOCKS,true,"Enables ceramic floor tiles.");
+
+        enableTallCandlestick = config.getBoolean("Enable Tall Candlesticks",BUILDINGBLOCKS,true,"Enables tall candlesticks.");
+        tallCandlestickBurnModifier = config.getFloat("Tall Candlestick Burn Modifier",BUILDINGBLOCKS,1.2F,0,Float.MAX_VALUE,"Burn time modifier for tall candlesticks.");
+        tallCandlestickLightModifier = config.getFloat("Tall Candlestick Light Modifier",BUILDINGBLOCKS,1.2F,0,Float.MAX_VALUE,"Light intensity modifier for tall candlesticks.");
+
         enableMortaredCobble = config.getBoolean("Enable Mortared Cobble",BUILDINGBLOCKS,true,"Enables mortared cobblestone.");
+
         enableMortaredCobbleTextures = config.getBoolean("Enable Custom Mortared Cobble Textures",BUILDINGBLOCKS,true,"Enables custom textures for mortared cobble. If disabled, it will use the same textures as normal cobble");
 
         enableGabion = config.getBoolean("Enable Gabion",GABION,true,"Enables gabion blocks.");

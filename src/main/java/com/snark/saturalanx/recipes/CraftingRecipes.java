@@ -48,6 +48,30 @@ public class CraftingRecipes {
             GameRegistry.addRecipe(new ItemStack(colouredBricks, 8, 3), "PXP", "XPX", "PXP", 'P', new ItemStack(malachiteBrick, 1, 1), 'X', new ItemStack(TFCItems.mortar, 1));
         }
 
+        if(Config.enableFloorTiles){
+            GameRegistry.addRecipe(new ItemStack(floorTileLapis, 8, 0), "XXX", "XYX", "XXX", 'X', new ItemStack(floorTile, 1, 0), 'Y', new ItemStack(TFCItems.powder, 1, 6));
+            GameRegistry.addRecipe(new ItemStack(floorTileHematite, 8, 0), "XXX", "XYX", "XXX", 'X', new ItemStack(floorTile, 1, 0), 'Y', new ItemStack(TFCItems.powder, 1, 5));
+            GameRegistry.addRecipe(new ItemStack(floorTileLimonite, 8, 0), "XXX", "XYX", "XXX", 'X', new ItemStack(floorTile, 1, 0), 'Y', new ItemStack(TFCItems.powder, 1, 7));
+            GameRegistry.addRecipe(new ItemStack(floorTileMalachite, 8, 0), "XXX", "XYX", "XXX", 'X', new ItemStack(floorTile, 1, 0), 'Y', new ItemStack(TFCItems.powder, 1, 8));
+
+        }
+
+        if(Config.enableTallCandlestick){
+            GameRegistry.addShapelessRecipe(new ItemStack(brassTallCandlestickOff,1,0),new ItemStack(tallCandleholder,1,0),new ItemStack(Item.getItemFromBlock(TFCBlocks.candleOff)));
+            GameRegistry.addShapelessRecipe(new ItemStack(pewterTallCandlestickOff,1,0),new ItemStack(tallCandleholder,1,1),new ItemStack(Item.getItemFromBlock(TFCBlocks.candleOff)));
+            GameRegistry.addShapelessRecipe(new ItemStack(silverTallCandlestickOff,1,0),new ItemStack(tallCandleholder,1,2),new ItemStack(Item.getItemFromBlock(TFCBlocks.candleOff)),new ItemStack(Item.getItemFromBlock(TFCBlocks.candleOff)));
+            GameRegistry.addShapelessRecipe(new ItemStack(sterlingSilverTallCandlestickOff,1,0),new ItemStack(tallCandleholder,1,3),new ItemStack(Item.getItemFromBlock(TFCBlocks.candleOff)),new ItemStack(Item.getItemFromBlock(TFCBlocks.candleOff)));
+            GameRegistry.addShapelessRecipe(new ItemStack(goldTallCandlestickOff,1,0),new ItemStack(tallCandleholder,1,4),new ItemStack(Item.getItemFromBlock(TFCBlocks.candleOff)),new ItemStack(Item.getItemFromBlock(TFCBlocks.candleOff)),new ItemStack(Item.getItemFromBlock(TFCBlocks.candleOff)));
+            GameRegistry.addShapelessRecipe(new ItemStack(roseGoldTallCandlestickOff,1,0),new ItemStack(tallCandleholder,1,5),new ItemStack(Item.getItemFromBlock(TFCBlocks.candleOff)),new ItemStack(Item.getItemFromBlock(TFCBlocks.candleOff)),new ItemStack(Item.getItemFromBlock(TFCBlocks.candleOff)));
+
+            GameRegistry.addShapelessRecipe(new ItemStack(brassTallCandlestick,1,0),new ItemStack(tallCandleholder,1,0),new ItemStack(Item.getItemFromBlock(TFCBlocks.candle)));
+            GameRegistry.addShapelessRecipe(new ItemStack(pewterTallCandlestick,1,0),new ItemStack(tallCandleholder,1,1),new ItemStack(Item.getItemFromBlock(TFCBlocks.candle)));
+            GameRegistry.addShapelessRecipe(new ItemStack(silverTallCandlestick,1,0),new ItemStack(tallCandleholder,1,2),new ItemStack(Item.getItemFromBlock(TFCBlocks.candle)),new ItemStack(Item.getItemFromBlock(TFCBlocks.candle)));
+            GameRegistry.addShapelessRecipe(new ItemStack(sterlingSilverTallCandlestick,1,0),new ItemStack(tallCandleholder,1,3),new ItemStack(Item.getItemFromBlock(TFCBlocks.candle)),new ItemStack(Item.getItemFromBlock(TFCBlocks.candle)));
+            GameRegistry.addShapelessRecipe(new ItemStack(goldTallCandlestick,1,0),new ItemStack(tallCandleholder,1,4),new ItemStack(Item.getItemFromBlock(TFCBlocks.candle)),new ItemStack(Item.getItemFromBlock(TFCBlocks.candle)),new ItemStack(Item.getItemFromBlock(TFCBlocks.candle)));
+            GameRegistry.addShapelessRecipe(new ItemStack(roseGoldTallCandlestick,1,0),new ItemStack(tallCandleholder,1,5),new ItemStack(Item.getItemFromBlock(TFCBlocks.candle)),new ItemStack(Item.getItemFromBlock(TFCBlocks.candle)),new ItemStack(Item.getItemFromBlock(TFCBlocks.candle)));
+        }
+
         if (Config.enableMortaredCobble) {
             GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 0), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 0), 'X', new ItemStack(TFCItems.mortar, 1));
             GameRegistry.addRecipe(new ItemStack(mortaredCobble1, 4, 1), "RXR", "X X", "RXR", 'R', new ItemStack(TFCItems.looseRock, 1, 1), 'X', new ItemStack(TFCItems.mortar, 1));

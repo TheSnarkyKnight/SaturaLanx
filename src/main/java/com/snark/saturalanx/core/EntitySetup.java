@@ -2,6 +2,7 @@ package com.snark.saturalanx.core;
 
 import com.snark.saturalanx.SaturaLanx;
 import com.snark.saturalanx.TE.FlamingBlockTE;
+import com.snark.saturalanx.TE.TileTE;
 import com.snark.saturalanx.entities.*;
 import com.snark.saturalanx.renders.entity.RenderBullet;
 import com.snark.saturalanx.renders.entity.RenderGrenade;
@@ -50,6 +51,8 @@ public class EntitySetup {
 
         if(Config.enableIncendiaryPot)
             GameRegistry.registerTileEntity(FlamingBlockTE.class,"SLFlamingBlockTE");
+        if(Config.enableFloorTiles)
+            GameRegistry.registerTileEntity(TileTE.class,"SLFloorTilesTE");
     }
 
     @SideOnly(Side.CLIENT)

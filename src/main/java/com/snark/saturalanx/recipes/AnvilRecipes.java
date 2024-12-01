@@ -51,5 +51,16 @@ public class AnvilRecipes {
             manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.wroughtIronSheet2x),null,"flaredBarrel",false,AnvilReq.WROUGHTIRON,new ItemStack(ItemSetup.flaredBarrel,1,1)).addRecipeSkill("skill.weaponsmith"));
             manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.steelSheet2x),null,"flaredBarrel",false,AnvilReq.STEEL,new ItemStack(ItemSetup.flaredBarrel,1,2)).addRecipeSkill("skill.weaponsmith"));
         }
+        if(Config.enableTallCandlestick){
+            manager.addPlan("tallCandleholder",new PlanRecipe(new RuleEnum[]{RuleEnum.DRAWTHIRDFROMLAST,RuleEnum.DRAWSECONDFROMLAST,RuleEnum.BENDLAST}));
+
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.brassIngot2x),null,"tallCandleholder",false,AnvilReq.COPPER,new ItemStack(ItemSetup.tallCandleholder,1,0)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.pewterIngot2x),null,"tallCandleholder",false,AnvilReq.COPPER,new ItemStack(ItemSetup.tallCandleholder,1,1)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.silverIngot2x),null,"tallCandleholder",false,AnvilReq.COPPER,new ItemStack(ItemSetup.tallCandleholder,1,2)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.sterlingSilverIngot2x),null,"tallCandleholder",false,AnvilReq.COPPER,new ItemStack(ItemSetup.tallCandleholder,1,3)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.goldIngot2x),null,"tallCandleholder",false,AnvilReq.COPPER,new ItemStack(ItemSetup.tallCandleholder,1,4)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.roseGoldIngot2x),null,"tallCandleholder",false,AnvilReq.COPPER,new ItemStack(ItemSetup.tallCandleholder,1,5)).addRecipeSkill("skill.gensmith"));
+
+        }
     }
 }

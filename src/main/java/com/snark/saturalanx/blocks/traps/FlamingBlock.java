@@ -33,7 +33,7 @@ public static IIcon icon;
         this.setBlockUnbreakable();
         this.opaque = false;
         this.setTickRandomly(true);
-        this.setBlockTextureName(MODID+":/FlamingBlock");
+        //this.setBlockTextureName("FlamingBlock");
         //this.setLightLevel(8);
     }
 
@@ -57,7 +57,7 @@ public static IIcon icon;
 
 
     public void registerBlockIcons(IIconRegister register) {
-        icon = register.registerIcon(MODID +":/FlamingBlock");
+        icon = register.registerIcon(MODID +":misc/FlamingBlock");
     }
 
     @Override
@@ -72,12 +72,14 @@ public static IIcon icon;
 
     @Override
     public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity){
-        entity.motionX *= 0.7;
-        entity.motionZ *= 0.7;
-        if(entity instanceof EntityLivingBase){
-            entity.setFire(Config.incendiaryPotDamageTimes);
 
+        if(entity instanceof EntityLivingBase && !world.isRemote){
+            entity.motionX *= 0.7;
+            entity.motionZ *= 0.7;
+            entity.setFire(Config.incendiaryPotDamageTimes);
         }
+
+        super.onEntityCollidedWithBlock(world, x, y, z, entity);
     }
 
     public Item getItemDropped(int i, Random r, int j) {

@@ -26,6 +26,13 @@ public class KilnRecipes {
             km.addRecipe((new KilnRecipe(new ItemStack(limoniteBrick, 1, 0), 0, new ItemStack(limoniteBrick, 1, 1))));
             km.addRecipe((new KilnRecipe(new ItemStack(malachiteBrick, 1, 0), 0, new ItemStack(malachiteBrick, 1, 1))));
         }
+        if(Config.enableFloorTiles){
+            km.addRecipe((new KilnRecipe(new ItemStack(floorTile, 1, 0), 0, new ItemStack(floorTile, 1, 1))));
+            km.addRecipe((new KilnRecipe(new ItemStack(floorTileLapis, 1, 0), 0, new ItemStack(floorTileLapis, 1, 1))));
+            km.addRecipe((new KilnRecipe(new ItemStack(floorTileHematite, 1, 0), 0, new ItemStack(floorTileHematite, 1, 1))));
+            km.addRecipe((new KilnRecipe(new ItemStack(floorTileLimonite, 1, 0), 0, new ItemStack(floorTileLimonite, 1, 1))));
+            km.addRecipe((new KilnRecipe(new ItemStack(floorTileMalachite, 1, 0), 0, new ItemStack(floorTileMalachite, 1, 1))));
+        }
 
     }
 }

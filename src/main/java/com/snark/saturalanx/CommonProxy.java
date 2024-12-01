@@ -39,6 +39,7 @@ public class CommonProxy {
         FoodRecipes.registerFoodRecipes();
         KilnRecipes.registerRecipes();
         CraftingRecipes.registerRecipes();
+        KnappingRecipes.registerKnapping();
 
 
     }

@@ -3,6 +3,7 @@ package com.snark.saturalanx.compat.nei;
 import codechicken.nei.api.API;
 import codechicken.nei.api.IConfigureNEI;
 import com.snark.saturalanx.SaturaLanx;
+import com.snark.saturalanx.blocks.building.TilesBlock;
 import com.snark.saturalanx.core.BlockSetup;
 import com.snark.saturalanx.core.Config;
 import com.snark.saturalanx.core.ItemSetup;
@@ -41,6 +42,10 @@ public class NEISaturaLanxConfig implements IConfigureNEI {
         }
         if(Config.enableExtraMaces){
             API.hideItem(new ItemStack(ItemSetup.saturaMaceMold,1,0));
+        }
+        if(Config.enableFloorTiles){
+            for(int i = 0;i < ((TilesBlock)BlockSetup.floorTiles).getNames().length;i++)
+             API.hideItem(new ItemStack(BlockSetup.floorTiles,1,i));
         }
     }
 }
