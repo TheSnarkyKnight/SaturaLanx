@@ -1,4 +1,4 @@
-package com.snark.saturalanx.blocks.traps;
+package com.snark.saturalanx.blocks.functional;
 
 import com.dunk.tfc.Blocks.BlockTerra;
 import com.dunk.tfc.Core.TFC_Core;

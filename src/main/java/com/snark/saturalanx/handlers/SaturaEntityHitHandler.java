@@ -1,29 +1,16 @@
 package com.snark.saturalanx.handlers;
 
-import com.dunk.tfc.Core.Player.InventoryPlayerTFC;
-import com.dunk.tfc.Core.TFC_Core;
-import com.dunk.tfc.Handlers.EntityArmorHandler;
 import com.dunk.tfc.Handlers.EntityDamageHandler;
-import com.dunk.tfc.api.Entities.IAnimal;
-import com.dunk.tfc.api.Enums.EnumArmorBodyPart;
-import com.dunk.tfc.api.Events.EntityArmorCalcEvent;
-import com.dunk.tfc.api.TFCBlocks;
 import com.dunk.tfc.api.TFCItems;
-import com.snark.saturalanx.blocks.traps.SpikeBlock;
 import com.snark.saturalanx.core.Config;
 import com.snark.saturalanx.entities.EntityBolas;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-
-import java.util.Random;
 
 public class SaturaEntityHitHandler extends EntityDamageHandler {
 

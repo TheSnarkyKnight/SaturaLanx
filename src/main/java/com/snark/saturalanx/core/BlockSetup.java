@@ -5,9 +5,10 @@ import com.snark.saturalanx.SaturaLanx;
 import com.snark.saturalanx.blocks.building.*;
 import com.snark.saturalanx.blocks.decoration.TallCandlestickBlock;
 import com.snark.saturalanx.blocks.decoration.TallCandlestickOffBlock;
-import com.snark.saturalanx.blocks.traps.FlamingBlock;
-import com.snark.saturalanx.blocks.traps.LeafCover;
-import com.snark.saturalanx.blocks.traps.SpikeBlock;
+import com.snark.saturalanx.blocks.functional.FlamingBlock;
+import com.snark.saturalanx.blocks.functional.LeafCover;
+import com.snark.saturalanx.blocks.functional.SpikeBlock;
+import com.snark.saturalanx.renders.blocks.StockadeRender;
 import com.snark.saturalanx.renders.blocks.TallCandlestickRender;
 import com.snark.saturalanx.renders.blocks.TileBlockRender;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -21,11 +22,13 @@ import java.util.ArrayList;
 public class BlockSetup {
 
     public static String BLOCKPATH = "saturalanx:blocks/";
-    public static int tileRenderId,tallCandlestickRenderId;
+    public static int tileRenderId,tallCandlestickRenderId, stockadeRenderId;
     public static ArrayList<Block> blockList;
     public static Block colouredBricks, floorTiles, mortaredCobble1, mortaredCobble2;
     public static Block brassTallCandlestickOff,brassTallCandlestick,pewterTallCandlestick,pewterTallCandlestickOff,silverTallCandlestick,silverTallCandlestickOff,sterlingSilverTallCandlestick,sterlingSilverTallCandlestickOff,goldTallCandlestick,goldTallCandlestickOff,roseGoldTallCandlestick,roseGoldTallCandlestickOff;
-    public static Block flamingBlock, spikeBlock, leafCover, gabion1, gabion2;
+    public static Block flamingBlock;
+    public static Block spikeBlock, leafCover;
+    public static Block gabion1, gabion2, stockadeBlock;
 
     public BlockSetup() {
 
@@ -109,6 +112,12 @@ public class BlockSetup {
             blockList.add(gabion2);
         }
 
+        if(Config.enableStockade){
+            stockadeBlock = new StockadeBlock();
+
+            blockList.add(stockadeBlock);
+        }
+
         if(Config.enableIncendiaryPot)
         {
             flamingBlock = ((Block) new FlamingBlock()).setBlockName("FlamingBlock");
@@ -144,6 +153,7 @@ public class BlockSetup {
     public static void registerBlockRenders(){
         RenderingRegistry.registerBlockHandler(tileRenderId = RenderingRegistry.getNextAvailableRenderId(), new TileBlockRender());
         RenderingRegistry.registerBlockHandler(tallCandlestickRenderId = RenderingRegistry.getNextAvailableRenderId(), new TallCandlestickRender());
+        RenderingRegistry.registerBlockHandler(stockadeRenderId = RenderingRegistry.getNextAvailableRenderId(), new StockadeRender());
     }
 
 

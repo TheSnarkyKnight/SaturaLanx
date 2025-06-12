@@ -1,9 +1,6 @@
 package com.snark.saturalanx.blocks.building;
 
-import com.dunk.tfc.Blocks.BlockTerra;
 import com.dunk.tfc.Blocks.BlockTerraContainer;
-import com.dunk.tfc.Core.TFC_Core;
-import com.dunk.tfc.TileEntities.TERoad;
 import com.dunk.tfc.api.TFCBlocks;
 import com.snark.saturalanx.TE.TileTE;
 import com.snark.saturalanx.core.BlockSetup;
@@ -25,12 +22,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
 import static com.snark.saturalanx.SaturaLanx.MODID;
-import static com.snark.saturalanx.SaturaLanx.tab;
 
 public class TilesBlock extends BlockTerraContainer {
     private String[] names;

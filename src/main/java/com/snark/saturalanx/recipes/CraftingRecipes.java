@@ -9,10 +9,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static com.snark.saturalanx.core.BlockSetup.*;
@@ -119,6 +121,10 @@ public class CraftingRecipes {
             GameRegistry.addRecipe(new ItemStack(gabion2,1,2),"WSW",'W', new ItemStack(TFCBlocks.wattle,1),'S', new ItemStack(TFCBlocks.stoneMMCobble,1,4));
             GameRegistry.addRecipe(new ItemStack(gabion2,1,3),"WSW",'W', new ItemStack(TFCBlocks.wattle,1),'S', new ItemStack(TFCBlocks.stoneMMCobble,1,5));
             GameRegistry.addRecipe(new ItemStack(gabion2,1,4),"WSW",'W', new ItemStack(TFCBlocks.wattle,1),'S', new ItemStack(TFCBlocks.stoneSedCobble,1,7));
+        }
+
+        if(Config.enableStockade){
+            GameRegistry.addShapelessRecipe(new ItemStack(stockadeBlock,1,0),new ItemStack(TFCItems.woodenSpear,1,0),new ItemStack(TFCItems.woodenSpear,1,0),new ItemStack(TFCItems.woodenSpear,1,0),new ItemStack(TFCItems.woodenSpear,1,0));
         }
 
         if (Config.enableHandgonne) {

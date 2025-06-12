@@ -1,4 +1,4 @@
-package com.snark.saturalanx.blocks.traps;
+package com.snark.saturalanx.blocks.functional;
 
 import com.dunk.tfc.Blocks.BlockTerraContainer;
 import com.snark.saturalanx.TE.FlamingBlockTE;
@@ -22,7 +22,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 import java.util.Random;
 
 import static com.snark.saturalanx.SaturaLanx.MODID;
-import static com.snark.saturalanx.core.BlockSetup.BLOCKPATH;
 
 public class FlamingBlock extends BlockTerraContainer {
 public static IIcon icon;

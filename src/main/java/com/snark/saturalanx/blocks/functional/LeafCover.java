@@ -1,16 +1,13 @@
-package com.snark.saturalanx.blocks.traps;
+package com.snark.saturalanx.blocks.functional;
 
 import com.dunk.tfc.Blocks.Flora.BlockLeafLitter;
 import com.dunk.tfc.api.TFCBlocks;
 import com.dunk.tfc.api.TFCItems;
 import com.snark.saturalanx.core.BlockSetup;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
