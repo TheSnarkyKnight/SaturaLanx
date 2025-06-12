@@ -1,7 +1,6 @@
 package com.snark.saturalanx;
 
 import com.snark.saturalanx.core.Config;
-import com.snark.saturalanx.core.FoodSetup;
 import com.snark.saturalanx.core.ItemSetup;
 import com.snark.saturalanx.handlers.SaturaCraftingHandler;
 import com.snark.saturalanx.handlers.SaturaEntityHitHandler;

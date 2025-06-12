@@ -1,5 +1,6 @@
 package com.snark.saturalanx.core;
 
+import com.dunk.tfc.api.TFCOptions;
 import com.snark.saturalanx.SaturaLanx;
 import net.minecraftforge.common.config.Configuration;
 
@@ -32,16 +33,25 @@ public class Config {
     public static boolean enableFloorTiles = true;
     public static boolean enableMortaredCobble = true;
     public static boolean enableMortaredCobbleTextures = true;
-    public static boolean enableTallCandlestick = true;
-    public static float tallCandlestickBurnModifier = 1.2F;
-    public static float tallCandlestickLightModifier = 1.2F;
-    public static String GABION = "Gabion";
+    public static boolean enableStockade = true;
+    public static boolean doesStockadeBlockSpiders = true;
     public static boolean enableGabion = true;
     public static boolean enableGabionMultistage = true;
     public static boolean enableGabionOpenBottom = true;
+    public static boolean enableHypocaust = true;
+    public static int hypocaustSizeCap = 16;
+    public static int hypocaustFuelCheckFrequency = 240;
+    public static int hypocaustIntegrityCheckFrequency = 1200;
+    public static String DECORATION = "Decorative Blocks";
+    public static boolean enableTallCandlestick = true;
+    public static float tallCandlestickBurnModifier = 1.2F;
+    public static float tallCandlestickLightModifier = 1.2F;
+    public static boolean enableAnimalTrophies = true;
+    public static boolean enableChalices = true;
+
 
     //Traps
-    public static String SPIKES = "Spikes";
+    public static String TRAPS = "Traps";
     public static boolean enableSpikes = true;
     public static int woodenSpikesBreakChance = 50;
     public static int woodenSpikesDamage = 20;
@@ -59,6 +69,11 @@ public class Config {
     public static int bolasDurationModifier = 300;
     public static int bolasAmplifier = 4;
     public static boolean bolasShouldAffectPlayers = true;
+    public static String POISONAPROJECTILES = "Poison Projectiles";
+    public static boolean enablePoisonArrows = true;
+    public static int poisonProjectileEffectDurationModifier = 50;
+    public static int poisonProjectileExpirationTime = TFCOptions.yearLength;
+
 
     //Melee weapons
     public static String EXTRAMACES = "Extra Maces";
@@ -101,6 +116,11 @@ public class Config {
     public static int incendiaryPotDamageTimes = 6;
     public static int incendiaryPotBlockLife = 20;
 
+    public static String FLAMEARROWS = "Flame Arrows";
+    public static boolean enableFlameArrows = true;
+    public static int flameArrowBurnDuration = 10;
+    public static int flameArrowEntityIgniteChance = 50;
+    public static int flameArrowSalvageChance = 30;
 
     //Explosives
     public static String POTGRENADE = "Pot Grenades";
@@ -154,40 +174,59 @@ public class Config {
         //Drink
         enableLiqueurs = config.getBoolean("Enable Liqueurs",DRINK_CATEGORY,true,"Enables liqueurs.");
 
-        //Blocks
+        //Building Blocks
         enableColouredBricks = config.getBoolean("Enable Coloured Bricks",BUILDINGBLOCKS,true,"Enables coloured bricks.");
 
         enableFloorTiles = config.getBoolean("Enable Floor Tiles",BUILDINGBLOCKS,true,"Enables ceramic floor tiles.");
-
-        enableTallCandlestick = config.getBoolean("Enable Tall Candlesticks",BUILDINGBLOCKS,true,"Enables tall candlesticks.");
-        tallCandlestickBurnModifier = config.getFloat("Tall Candlestick Burn Modifier",BUILDINGBLOCKS,1.2F,0,Float.MAX_VALUE,"Burn time modifier for tall candlesticks.");
-        tallCandlestickLightModifier = config.getFloat("Tall Candlestick Light Modifier",BUILDINGBLOCKS,1.2F,0,Float.MAX_VALUE,"Light intensity modifier for tall candlesticks.");
 
         enableMortaredCobble = config.getBoolean("Enable Mortared Cobble",BUILDINGBLOCKS,true,"Enables mortared cobblestone.");
 
         enableMortaredCobbleTextures = config.getBoolean("Enable Custom Mortared Cobble Textures",BUILDINGBLOCKS,true,"Enables custom textures for mortared cobble. If disabled, it will use the same textures as normal cobble");
 
-        enableGabion = config.getBoolean("Enable Gabion",GABION,true,"Enables gabion blocks.");
-        enableGabionMultistage = config.getBoolean("Enable Gabion Multistage Destruction",GABION,true,"If true, gabion blocks turn into cobblestone when broken or exploded. If set to false, they are simply destroyed.");
-        enableGabionOpenBottom = config.getBoolean("Enable Gabion Open Bottom",GABION,true,"Enables gabions having an open bottom, and spawning a falling cobble block if not placed on a solid block.");
+        enableHypocaust = config.getBoolean("Enable Hypocaust",BUILDINGBLOCKS,true,"Enables hypocaust blocks");
+        hypocaustSizeCap = config.getInt("Hypocaust Size Cap",BUILDINGBLOCKS,16,0,Integer.MAX_VALUE,"Max size (to one side) that hypocausts can be built to. Warning: setting this too high will likely cause lag when running integrity/fuel/fluid update checks");
+        hypocaustIntegrityCheckFrequency = config.getInt("Hypocaust Integrity Check Frequency",BUILDINGBLOCKS,1200,0,Integer.MAX_VALUE,"The time between each integrity check run by hypocaust structures, expressed in seconds");
+        hypocaustFuelCheckFrequency = config.getInt("Hypocaust Fuel Check Frequency",BUILDINGBLOCKS,240,0,Integer.MAX_VALUE,"The time between each fuel check run by hypocaust structures, expressed in seconds.");
+
+        //Decorative blocks
+
+        enableTallCandlestick = config.getBoolean("Enable Tall Candlesticks",DECORATION,true,"Enables tall candlesticks.");
+        tallCandlestickBurnModifier = config.getFloat("Tall Candlestick Burn Modifier",DECORATION,1.2F,0,Float.MAX_VALUE,"Burn time modifier for tall candlesticks.");
+        tallCandlestickLightModifier = config.getFloat("Tall Candlestick Light Modifier",DECORATION,1.2F,0,Float.MAX_VALUE,"Light intensity modifier for tall candlesticks.");
+
+        enableAnimalTrophies = config.getBoolean("Enable Animal Trophies",DECORATION, true, "Enables animal trophies");
+
+        //Fortifications
+
+        enableGabion = config.getBoolean("Enable Gabion",BUILDINGBLOCKS,true,"Enables gabion blocks.");
+        enableGabionMultistage = config.getBoolean("Enable Gabion Multistage Destruction",BUILDINGBLOCKS,true,"If true, gabion blocks turn into cobblestone when broken or exploded. If set to false, they are simply destroyed.");
+        enableGabionOpenBottom = config.getBoolean("Enable Gabion Open Bottom",BUILDINGBLOCKS,true,"Enables gabions having an open bottom, and spawning a falling cobble block if not placed on a solid block.");
+
+        enableStockade = config.getBoolean("Enable Stockade",BUILDINGBLOCKS,true,"Enables stockade blocks.");
+        doesStockadeBlockSpiders = config.getBoolean("Does Blockade Block Spiders",BUILDINGBLOCKS,true,"If true, spiders will be prevented from climbing over stockade walls.");
 
         //Traps
-        enableSpikes = config.getBoolean("Enable Spikes",SPIKES,true,"Enable spike blocks");
-        woodenSpikesBreakChance = config.getInt("Wooden Spikes Break Chance",SPIKES,50,0,100,"0-100 chance for wooden spikes to break when an entity falls on them");
-        woodenSpikesDamage = config.getInt("Wooden Spikes Damage",SPIKES,20,0,Integer.MAX_VALUE,"The damage dealt by wooden spikes");
-        metalSpikesDamage = config.getInt("Metal Spikes Damage",SPIKES,40,0,Integer.MAX_VALUE,"The damage dealt by metal spikes");
-        enableLeafCover = config.getBoolean("Enable Leaf Cover",SPIKES,true,"Enable leaf cover blocks");
+        enableSpikes = config.getBoolean("Enable Spikes",TRAPS,true,"Enable spike blocks");
+        woodenSpikesBreakChance = config.getInt("Wooden Spikes Break Chance",TRAPS,50,0,100,"0-100 chance for wooden spikes to break when an entity falls on them");
+        woodenSpikesDamage = config.getInt("Wooden Spikes Damage",TRAPS,20,0,Integer.MAX_VALUE,"The damage dealt by wooden spikes");
+        metalSpikesDamage = config.getInt("Metal Spikes Damage",TRAPS,40,0,Integer.MAX_VALUE,"The damage dealt by metal spikes");
+
+        enableLeafCover = config.getBoolean("Enable Leaf Cover",TRAPS,true,"Enable leaf cover blocks");
 
         //Ranged weapons
         enableBolas = config.getBoolean("Enable Bolas",BOLAS,true,"Enables bolas.");
         bolasDamage = config.getInt("Bolas Damage",BOLAS,120,0,Integer.MAX_VALUE,"The amount of damage done by a bolas. Keep in mind that the actual damage equals this * 1.5");
         bolasMinSwing = config.getInt("Bolas Min Swing",BOLAS,20,0,72000,"The amount of time (in game ticks) that the player has to swing a bolas in order to launch it");
         bolasMaxSwing = config.getInt("Bolas Max Swing",BOLAS,60,0,72000,"The amount of time (in game ticks) that the player has to swing a bolas for it to reach max force.");
-        bolasChance = config.getInt("Bolas Slowness Chance",BOLAS,40,0,100,"The chance the bolas has to apply the slowness effect. Actual chance is calculated as this value *");
+        bolasChance = config.getInt("Bolas Slowness Chance",BOLAS,40,0,100,"The chance the bolas has to apply the slowness effect.");
         bolasDuration = config.getInt("Bolas Slowness Duration",BOLAS,600,0,Integer.MAX_VALUE,"The duration of the slowness effect applied by the bolas.");
         bolasDurationModifier = config.getInt("Bolas Slowness Duration Modifier",BOLAS,300,0,Integer.MAX_VALUE,"How much the duration of the slowness effect can vary.");
         bolasAmplifier = config.getInt("Bolas Slowness Amplifier",BOLAS,4,0,5,"The amplifier of the slowness effect applied by the bolas");
         bolasShouldAffectPlayers = config.getBoolean("Bolas Effects Players",BOLAS,true,"If false, players won't be subjected to the bolas' slowing effects");
+
+        enablePoisonArrows = config.getBoolean("Enable Poison Arrows", POISONAPROJECTILES,true,"Enables poison arrows");
+        poisonProjectileExpirationTime = config.getInt("Poison Projectile Expiration Time", POISONAPROJECTILES,TFCOptions.yearLength,-1,Integer.MAX_VALUE,"How many days do poison projectiles keep their effects for. If set to -1, poison projectiles will keep their effect indefinitely");
+        poisonProjectileEffectDurationModifier = config.getInt("Poison Arrow Effect Duration Modifier", POISONAPROJECTILES,50,0,100,"How much the duration of the poison projectile's effect can vary, expressed as a percentage of its base duration.");
 
         //Melee weapons
         enableExtraMaces = config.getBoolean("Enable Extra Maces",EXTRAMACES,true,"Enables stone clubs, lead and brass maces");
@@ -217,6 +256,11 @@ public class Config {
         incendiaryPotDiameter = config.getInt("Incendiary Pot Diameter",INCENDIARYPOT,3,0,10,"The diameter in blocks of the incediary pot's oil. If set to 0, it will spawn a cross shape with 1-long arms.");
         incendiaryPotDamageTimes = config.getInt("Incendiary Pot Damage Times",INCENDIARYPOT,6,1,Integer.MAX_VALUE,"How many times the fire inflicted by the flaming oil should damage entities.");
         incendiaryPotBlockLife = config.getInt("Incendiary Pot Block Life",INCENDIARYPOT,20,1,(Integer.MAX_VALUE)/20,"How long the flaming block spawned by incendiary pots stays in the world, expressed in seconds.");
+
+        enableFlameArrows = config.getBoolean("Enable Flame Arrows",FLAMEARROWS,true,"Enables flame arrows.");
+        flameArrowBurnDuration = config.getInt("Flame Arrow Burn Duration",FLAMEARROWS,10,0, Integer.MAX_VALUE/20,"What is the burn duration of flame arrows, expressed in seconds.");
+        flameArrowSalvageChance = config.getInt("Flame Arrow Salvage Chance",FLAMEARROWS,30,0,100,"The chance that a flame arrow burning out in the player's inventory will return an intact arrow.");
+        flameArrowEntityIgniteChance = config.getInt("Flame Arrow Entity Ignition Chance",FLAMEARROWS,50,0,100,"The chance for the arrow entity to set fire to surrounding blocks.");
 
         /*enableFiresticks = config.getBoolean("Enable Firesticks",FIRESTICK,true,"Enables firesticks.");
         firestickMeleeDamage = config.getInt("Firestick Melee Damage",FIRESTICK,50,0,Integer.MAX_VALUE,"Damage dealt by firesticks in melee");

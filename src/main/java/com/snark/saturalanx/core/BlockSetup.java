@@ -1,9 +1,10 @@
 package com.snark.saturalanx.core;
 
 
-import com.dunk.tfc.api.TFCBlocks;
 import com.snark.saturalanx.SaturaLanx;
 import com.snark.saturalanx.blocks.building.*;
+import com.snark.saturalanx.blocks.decoration.TallCandlestickBlock;
+import com.snark.saturalanx.blocks.decoration.TallCandlestickOffBlock;
 import com.snark.saturalanx.blocks.traps.FlamingBlock;
 import com.snark.saturalanx.blocks.traps.LeafCover;
 import com.snark.saturalanx.blocks.traps.SpikeBlock;
@@ -14,11 +15,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.world.World;
 
 import java.util.ArrayList;
-
-import static com.snark.saturalanx.SaturaLanx.MODID;
 
 public class BlockSetup {
 
@@ -65,25 +63,25 @@ public class BlockSetup {
             float b = Config.tallCandlestickBurnModifier;
             float l = Config.tallCandlestickLightModifier;
 
-            brassTallCandlestick = (new TallCandlestick(brassTallCandlestickOff)).setBurnModifier(1.25F*b).setLightLevel(0.8F*l).setBlockName("BrassTallCandlestick");
-            brassTallCandlestickOff = new TallCandlestickOff(brassTallCandlestick).setBlockName("BrassTallCandlestickOff");
-            pewterTallCandlestick = (new TallCandlestick(pewterTallCandlestickOff)).setBurnModifier(1.125F*b).setLightLevel(0.8F*l).setBlockName("PewterTallCandlestick");
-            pewterTallCandlestickOff = new TallCandlestickOff(pewterTallCandlestick).setBlockName("PewterTallCandlestickOff");
-            silverTallCandlestick = (new TallCandlestick(silverTallCandlestickOff)).setBurnModifier(1.75F*b).setLightLevel(Math.min(0.9333F*l,1)).setBlockName("SilverTallCandlestick");
-            silverTallCandlestickOff = new TallCandlestickOff(silverTallCandlestick).setBlockName("SilverTallCandlestickOff");
-            sterlingSilverTallCandlestick = (new TallCandlestick(sterlingSilverTallCandlestickOff)).setBurnModifier(1.5F*b).setLightLevel(Math.min(0.86667F*l,1)).setBlockName("SterlingSilverTallCandlestick");
-            sterlingSilverTallCandlestickOff = new TallCandlestickOff(sterlingSilverTallCandlestick).setBlockName("SterlingSilverTallCandlestickOff");
-            goldTallCandlestick = (new TallCandlestick(goldTallCandlestickOff)).setBurnModifier(3.0F*b).setLightLevel(1).setBlockName("GoldTallCandlestick");
-            goldTallCandlestickOff = new TallCandlestickOff(goldTallCandlestick).setBlockName("GoldTallCandlestickOff");
-            roseGoldTallCandlestick = (new TallCandlestick(roseGoldTallCandlestickOff)).setBurnModifier(2.0F*b).setLightLevel(Math.min(0.9333F*l,1)).setBlockName("RoseGoldTallCandlestick");
-            roseGoldTallCandlestickOff = new TallCandlestickOff(roseGoldTallCandlestick).setBlockName("RoseGoldTallCandlestickOff");
+            brassTallCandlestick = (new TallCandlestickBlock(brassTallCandlestickOff)).setBurnModifier(1.25F*b).setLightLevel(0.8F*l).setBlockName("BrassTallCandlestick");
+            brassTallCandlestickOff = new TallCandlestickOffBlock(brassTallCandlestick).setBlockName("BrassTallCandlestickOff");
+            pewterTallCandlestick = (new TallCandlestickBlock(pewterTallCandlestickOff)).setBurnModifier(1.125F*b).setLightLevel(0.8F*l).setBlockName("PewterTallCandlestick");
+            pewterTallCandlestickOff = new TallCandlestickOffBlock(pewterTallCandlestick).setBlockName("PewterTallCandlestickOff");
+            silverTallCandlestick = (new TallCandlestickBlock(silverTallCandlestickOff)).setBurnModifier(1.75F*b).setLightLevel(Math.min(0.9333F*l,1)).setBlockName("SilverTallCandlestick");
+            silverTallCandlestickOff = new TallCandlestickOffBlock(silverTallCandlestick).setBlockName("SilverTallCandlestickOff");
+            sterlingSilverTallCandlestick = (new TallCandlestickBlock(sterlingSilverTallCandlestickOff)).setBurnModifier(1.5F*b).setLightLevel(Math.min(0.86667F*l,1)).setBlockName("SterlingSilverTallCandlestick");
+            sterlingSilverTallCandlestickOff = new TallCandlestickOffBlock(sterlingSilverTallCandlestick).setBlockName("SterlingSilverTallCandlestickOff");
+            goldTallCandlestick = (new TallCandlestickBlock(goldTallCandlestickOff)).setBurnModifier(3.0F*b).setLightLevel(1).setBlockName("GoldTallCandlestick");
+            goldTallCandlestickOff = new TallCandlestickOffBlock(goldTallCandlestick).setBlockName("GoldTallCandlestickOff");
+            roseGoldTallCandlestick = (new TallCandlestickBlock(roseGoldTallCandlestickOff)).setBurnModifier(2.0F*b).setLightLevel(Math.min(0.9333F*l,1)).setBlockName("RoseGoldTallCandlestick");
+            roseGoldTallCandlestickOff = new TallCandlestickOffBlock(roseGoldTallCandlestick).setBlockName("RoseGoldTallCandlestickOff");
 
-            ((TallCandlestick)brassTallCandlestick).setAlternate(brassTallCandlestickOff);
-            ((TallCandlestick)pewterTallCandlestick).setAlternate(pewterTallCandlestickOff);
-            ((TallCandlestick)silverTallCandlestick).setAlternate(silverTallCandlestickOff);
-            ((TallCandlestick)sterlingSilverTallCandlestick).setAlternate(sterlingSilverTallCandlestickOff);
-            ((TallCandlestick)goldTallCandlestick).setAlternate(goldTallCandlestickOff);
-            ((TallCandlestick)roseGoldTallCandlestick).setAlternate(roseGoldTallCandlestickOff);
+            ((TallCandlestickBlock)brassTallCandlestick).setAlternate(brassTallCandlestickOff);
+            ((TallCandlestickBlock)pewterTallCandlestick).setAlternate(pewterTallCandlestickOff);
+            ((TallCandlestickBlock)silverTallCandlestick).setAlternate(silverTallCandlestickOff);
+            ((TallCandlestickBlock)sterlingSilverTallCandlestick).setAlternate(sterlingSilverTallCandlestickOff);
+            ((TallCandlestickBlock)goldTallCandlestick).setAlternate(goldTallCandlestickOff);
+            ((TallCandlestickBlock)roseGoldTallCandlestick).setAlternate(roseGoldTallCandlestickOff);
 
             blockList.add(brassTallCandlestick);
             blockList.add(brassTallCandlestickOff);
