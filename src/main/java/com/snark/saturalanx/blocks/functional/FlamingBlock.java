@@ -3,6 +3,7 @@ package com.snark.saturalanx.blocks.functional;
 import com.dunk.tfc.Blocks.BlockTerraContainer;
 import com.snark.saturalanx.TE.FlamingBlockTE;
 import com.snark.saturalanx.core.Config;
+import com.snark.saturalanx.core.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -10,7 +11,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
@@ -32,8 +32,12 @@ public static IIcon icon;
         this.setBlockUnbreakable();
         this.opaque = false;
         this.setTickRandomly(true);
-        //this.setBlockTextureName("FlamingBlock");
-        //this.setLightLevel(8);
+        this.setLightLevel(0.65F);
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(World var1, int var2) {
+        return new FlamingBlockTE();
     }
 
     public int getBlockColor() {
@@ -57,11 +61,6 @@ public static IIcon icon;
 
     public void registerBlockIcons(IIconRegister register) {
         icon = register.registerIcon(MODID +":misc/FlamingBlock");
-    }
-
-    @Override
-    public TileEntity createNewTileEntity(World world, int meta){
-        return new FlamingBlockTE();
     }
 
     @Override
@@ -95,12 +94,6 @@ public static IIcon icon;
 
     public void onNeighborBlockChange(World world, int x, int y, int z, Block b) {
         if (!world.isRemote) {
-            burn(world, x + 1, y, z);
-            burn(world, x - 1, y, z);
-            burn(world, x, y + 1, z);
-            burn(world, x, y - 1, z);
-            burn(world, x, y, z + 1);
-            burn(world, x, y, z - 1);
             world.getBlock(x, y, z);
             if (!this.canBlockStay(world, x, y, z)) {
                 world.setBlockToAir(x, y, z);
@@ -136,6 +129,15 @@ public static IIcon icon;
             if(rand.nextInt(200) == 0) {
                 world.playSound((double) x, (double) y, (double) z, "liquid.lava", 0.2F + rand.nextFloat() * 0.2F, 0.9F + rand.nextFloat() * 0.15F, false);
             }
+
+        }
+
+        dy = (double) (y + 0.125F);
+        for(int i = 0; i< rand.nextInt(5+1);i++){
+            dx = (double) ((float) x + rand.nextFloat());
+            dz = (double) ((float) z + rand.nextFloat());
+
+            world.spawnParticle("flame",dx,dy,dz,0,0,0);
         }
     }
 
@@ -145,22 +147,7 @@ public static IIcon icon;
 
         super.updateTick(world, x, y, z, rand);
 
-        if(!world.isRemote) {
-            burn(world, x + 1, y, z);
-            burn(world, x - 1, y, z);
-            burn(world, x, y + 1, z);
-            burn(world, x, y - 1, z);
-            burn(world, x, y, z + 1);
-            burn(world, x, y, z - 1);
-        }
-    }
-
-    public void burn(World w, int x, int y, int z){
-        Block b = w.getBlock(x,y,z);
-        if(b!=null&&Blocks.fire.getFlammability(b)>0){
-            w.setBlock(x,y,z,Blocks.fire);
-
-        }
+        Util.burnSurroundings(world, x, y, z);
     }
 
 
