@@ -1,0 +1,174 @@
+package com.snark.saturalanx.items.warfare.incendiary;
+
+import com.dunk.tfc.Blocks.BlockCandle;
+import com.dunk.tfc.Core.TFC_Core;
+import com.dunk.tfc.TileEntities.TEFirepit;
+import com.dunk.tfc.TileEntities.TEForge;
+import com.dunk.tfc.api.TFCBlocks;
+import com.dunk.tfc.api.TFCItems;
+import com.snark.saturalanx.core.Config;
+import com.snark.saturalanx.core.Util;
+import com.snark.saturalanx.items.ItemSatura;
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.player.ArrowNockEvent;
+
+import static com.snark.saturalanx.core.ItemSetup.WEAPONPATH;
+
+public class FlameArrowItem extends ItemSatura {
+    private IIcon litIcon;
+    private int salvageChance, igniteChance;
+    public FlameArrowItem(int dMod, int sMod, int iMod){
+        super();
+        this.maxStackSize = 1;
+        this.setMaxDamage(Config.flameArrowBurnDuration * dMod * 20);
+        salvageChance = Config.flameArrowSalvageChance + sMod;
+        igniteChance = Config.flameArrowEntityIgniteChance + iMod;
+    }
+
+    public int getSalvageChance() {
+        return salvageChance;
+    }
+
+    public int getIgniteChance() {
+        return igniteChance;
+    }
+
+    @Override
+    public void registerIcons(IIconRegister registerer) {
+        this.itemIcon = registerer.registerIcon(WEAPONPATH+"arrows/"+this.getUnlocalizedName().substring(5));
+        this.litIcon = registerer.registerIcon(WEAPONPATH+"arrows/"+this.getUnlocalizedName().substring(5)+"Lit");
+    }
+
+    @Override
+    public IIcon getIcon(ItemStack stack, int pass) {
+        return this.getIconIndex(stack);
+    }
+
+    @Override
+    public IIcon getIconIndex(ItemStack stack) {
+        NBTTagCompound tag = stack.getTagCompound();
+
+        if(tag==null){
+            tag = new NBTTagCompound();
+            tag.setBoolean("lit",false);
+        }
+
+        if(tag.getBoolean("lit"))
+            return litIcon;
+        else
+            return itemIcon;
+    }
+
+    @Override
+    public EnumAction getItemUseAction(ItemStack stack) {
+        return EnumAction.bow;
+    }
+
+    @Override
+    public int getMaxItemUseDuration(ItemStack stack) {
+        return 72000;
+    }
+
+    @Override
+    public boolean canStack() {
+        return false;
+    }
+
+    @Override
+    public void onCreated(ItemStack stack, World world, EntityPlayer player) {
+        stack.stackTagCompound = new NBTTagCompound();
+        stack.stackTagCompound.setBoolean("lit",false);
+    }
+
+    @Override
+    public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player){
+
+        if(stack.stackTagCompound == null){
+            stack.stackTagCompound = new NBTTagCompound();
+            stack.stackTagCompound.setBoolean("lit",false);
+        }
+
+        boolean lit = stack.stackTagCompound.getBoolean("lit");
+
+        if(!lit&&canLight(player)){
+            ArrowNockEvent event = new ArrowNockEvent(player, stack);
+            MinecraftForge.EVENT_BUS.post(event);
+            if (event.isCanceled()) {
+                return event.result;
+            }
+
+            player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
+        } else if (lit&&!player.isSneaking()) {
+            stack.stackTagCompound.setBoolean("lit",false);
+        }
+        return stack;
+    }
+
+    public boolean canLight(EntityPlayer player){
+        if(player.capabilities.isCreativeMode)
+            return true;
+
+        for(int i=0;i<9;i++){
+            if(player.inventory.mainInventory[i]!=null&&player.inventory.mainInventory[i].getItem().equals(Item.getItemFromBlock(TFCBlocks.torch)))
+                return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int inUseCount){
+
+        boolean lit = stack.stackTagCompound.getBoolean("lit");
+
+        if(!lit){
+            stack.stackTagCompound.setBoolean("lit",true);
+            world.playSoundAtEntity(player,"fire.ignite",1,1);
+        }
+
+    }
+
+    @Override
+    public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean isHeld){
+        if(stack.stackTagCompound!=null&&stack.stackTagCompound.getBoolean("lit")){
+            stack.damageItem(1, (EntityLivingBase) entity);
+            if(stack.getItemDamage()<=0) {
+                if (!(entity instanceof EntityPlayer && ((EntityPlayer) entity).capabilities.isCreativeMode)) {
+                    stack.stackTagCompound.setBoolean("lit", false);
+                    if(entity instanceof EntityPlayer) {
+                        ((EntityPlayer) entity).inventory.setInventorySlotContents(slot,null);
+                        if(world.rand.nextInt(100) <= this.salvageChance)
+                            TFC_Core.giveItemToPlayer(new ItemStack(TFCItems.arrow,1), (EntityPlayer) entity);
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+
+        if(stack.stackTagCompound == null) {
+            stack.stackTagCompound = new NBTTagCompound();
+            stack.stackTagCompound.setBoolean("lit",false);
+        }
+
+        if(!stack.stackTagCompound.getBoolean("lit")&& Util.canBlockLight(x,y,z,world)){
+            stack.stackTagCompound.setBoolean("lit",true);
+        }
+
+        return false;
+    }
+
+}
