@@ -7,6 +7,7 @@ import com.dunk.tfc.api.Enums.EnumSize;
 import com.dunk.tfc.api.Enums.EnumWeight;
 import com.dunk.tfc.api.TFCBlocks;
 import com.snark.saturalanx.core.Config;
+import com.snark.saturalanx.core.Util;
 import com.snark.saturalanx.entities.EntityIncendiaryPot;
 import com.snark.saturalanx.items.ItemSatura;
 import net.minecraft.block.Block;
@@ -84,40 +85,11 @@ public class IncendiaryPot extends ItemSatura {
             stack.stackTagCompound.setBoolean("lit",false);
         }
 
-        if(!stack.stackTagCompound.getBoolean("lit")&&canBlockLight(x,y,z,world)){
+        if(!stack.stackTagCompound.getBoolean("lit")&& Util.canBlockLight(x,y,z,world)){
             stack.stackTagCompound.setBoolean("lit",true);
         }
 
         return false;
-    }
-
-    public boolean canBlockLight(int x, int y, int z, World w){
-        Block b = w.getBlock(x,y,z);
-        if(b == TFCBlocks.torch)
-            return true;
-        if(b == TFCBlocks.candle)
-            return true;
-        if(b == TFCBlocks.candleBrass)
-            return true;
-        if(b == TFCBlocks.candleGold)
-            return true;
-        if(b == TFCBlocks.candlePewter)
-            return true;
-        if(b == TFCBlocks.candleSilver)
-            return true;
-        if(b == TFCBlocks.firepit) {
-            TEFirepit f = (TEFirepit) w.getTileEntity(x, y, z);
-            if (f != null && f.fireTemp > 1)
-                return true;
-        }
-        if(b == TFCBlocks.forge){
-            TEForge f = (TEForge) w.getTileEntity(x,y,z);
-            if(f != null && f.fireTemp > 1)
-                return true;
-        }
-
-        return false;
-
     }
 
     @Override
@@ -161,7 +133,7 @@ public class IncendiaryPot extends ItemSatura {
 
         boolean lit = stack.stackTagCompound.getBoolean("lit");
 
-        if(!lit&&canLight(player)){
+        if(!lit&&Util.canPlayerLight(player)){
             ArrowNockEvent event = new ArrowNockEvent(player, stack);
             MinecraftForge.EVENT_BUS.post(event);
             if (event.isCanceled()) {
@@ -191,17 +163,5 @@ public class IncendiaryPot extends ItemSatura {
             world.playSoundAtEntity(player,"fire.ignite",1,1);
         }
 
-    }
-
-    public boolean canLight(EntityPlayer player){
-        if(player.capabilities.isCreativeMode)
-            return true;
-
-        for(int i=0;i<9;i++){
-            if(player.inventory.mainInventory[i]!=null&&player.inventory.mainInventory[i].getItem().equals(Item.getItemFromBlock(TFCBlocks.torch)))
-                return true;
-        }
-
-        return false;
     }
 }

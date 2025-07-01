@@ -7,6 +7,7 @@ import com.dunk.tfc.api.Crafting.PlanRecipe;
 import com.dunk.tfc.api.Enums.RuleEnum;
 import com.dunk.tfc.api.TFCItems;
 import com.snark.saturalanx.SaturaLanx;
+import com.snark.saturalanx.core.BlockSetup;
 import com.snark.saturalanx.core.Config;
 import com.snark.saturalanx.core.ItemSetup;
 import net.minecraft.item.ItemStack;
@@ -60,6 +61,25 @@ public class AnvilRecipes {
             manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.sterlingSilverIngot2x),null,"tallCandleholder",false,AnvilReq.COPPER,new ItemStack(ItemSetup.tallCandleholder,1,3)).addRecipeSkill("skill.gensmith"));
             manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.goldIngot2x),null,"tallCandleholder",false,AnvilReq.COPPER,new ItemStack(ItemSetup.tallCandleholder,1,4)).addRecipeSkill("skill.gensmith"));
             manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.roseGoldIngot2x),null,"tallCandleholder",false,AnvilReq.COPPER,new ItemStack(ItemSetup.tallCandleholder,1,5)).addRecipeSkill("skill.gensmith"));
+
+        }
+        if(Config.enableChalices){
+            manager.addPlan("chalice",new PlanRecipe(new RuleEnum[]{RuleEnum.DRAWTHIRDFROMLAST,RuleEnum.BENDSECONDFROMLAST,RuleEnum.UPSETLAST}));
+
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.copperIngot),null,"chalice",false,AnvilReq.COPPER, new ItemStack(BlockSetup.chaliceBlock,1,0)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.bronzeIngot),null,"chalice",false,AnvilReq.COPPER, new ItemStack(BlockSetup.chaliceBlock,1,1)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.bismuthBronzeIngot),null,"chalice",false,AnvilReq.COPPER, new ItemStack(BlockSetup.chaliceBlock,1,2)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.blackBronzeIngot),null,"chalice",false,AnvilReq.COPPER, new ItemStack(BlockSetup.chaliceBlock,1,3)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.brassIngot),null,"chalice",false,AnvilReq.COPPER, new ItemStack(BlockSetup.chaliceBlock,1,4)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.pewterIngot),null,"chalice",false,AnvilReq.COPPER, new ItemStack(BlockSetup.chaliceBlock,1,5)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.silverIngot),null,"chalice",false,AnvilReq.COPPER, new ItemStack(BlockSetup.chaliceBlock,1,6)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.sterlingSilverIngot),null,"chalice",false,AnvilReq.COPPER, new ItemStack(BlockSetup.chaliceBlock,1,7)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.goldIngot),null,"chalice",false,AnvilReq.COPPER, new ItemStack(BlockSetup.chaliceBlock2,1,0)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.roseGoldIngot),null,"chalice",false,AnvilReq.COPPER, new ItemStack(BlockSetup.chaliceBlock2,1,1)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.platinumIngot),null,"chalice",false,AnvilReq.STEEL, new ItemStack(BlockSetup.chaliceBlock2,1,2)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.blackSteelIngot),null,"chalice",false,AnvilReq.STEEL, new ItemStack(BlockSetup.chaliceBlock2,1,3)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.redSteelIngot),null,"chalice",false,AnvilReq.STEEL, new ItemStack(BlockSetup.chaliceBlock2,1,4)).addRecipeSkill("skill.gensmith"));
+            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.blueSteelIngot),null,"chalice",false,AnvilReq.STEEL, new ItemStack(BlockSetup.chaliceBlock2,1,5)).addRecipeSkill("skill.gensmith"));
 
         }
     }

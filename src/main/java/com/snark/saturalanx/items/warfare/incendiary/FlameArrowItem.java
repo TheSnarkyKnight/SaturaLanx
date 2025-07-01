@@ -1,15 +1,11 @@
 package com.snark.saturalanx.items.warfare.incendiary;
 
-import com.dunk.tfc.Blocks.BlockCandle;
 import com.dunk.tfc.Core.TFC_Core;
-import com.dunk.tfc.TileEntities.TEFirepit;
-import com.dunk.tfc.TileEntities.TEForge;
 import com.dunk.tfc.api.TFCBlocks;
 import com.dunk.tfc.api.TFCItems;
 import com.snark.saturalanx.core.Config;
 import com.snark.saturalanx.core.Util;
 import com.snark.saturalanx.items.ItemSatura;
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -24,16 +20,18 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
 import static com.snark.saturalanx.core.ItemSetup.WEAPONPATH;
+import static com.snark.saturalanx.core.ItemSetup.fireArrow;
 
 public class FlameArrowItem extends ItemSatura {
     private IIcon litIcon;
     private int salvageChance, igniteChance;
+
     public FlameArrowItem(int dMod, int sMod, int iMod){
         super();
         this.maxStackSize = 1;
         this.setMaxDamage(Config.flameArrowBurnDuration * dMod * 20);
         salvageChance = Config.flameArrowSalvageChance + sMod;
-        igniteChance = Config.flameArrowEntityIgniteChance + iMod;
+        igniteChance = Config.flameArrowIgniteChance + iMod;
     }
 
     public int getSalvageChance() {
@@ -46,8 +44,8 @@ public class FlameArrowItem extends ItemSatura {
 
     @Override
     public void registerIcons(IIconRegister registerer) {
-        this.itemIcon = registerer.registerIcon(WEAPONPATH+"arrows/"+this.getUnlocalizedName().substring(5));
-        this.litIcon = registerer.registerIcon(WEAPONPATH+"arrows/"+this.getUnlocalizedName().substring(5)+"Lit");
+        this.itemIcon = registerer.registerIcon(WEAPONPATH+"projectiles/"+this.getUnlocalizedName().substring(5));
+        this.litIcon = registerer.registerIcon(WEAPONPATH+"projectiles/"+this.getUnlocalizedName().substring(5)+"Lit");
     }
 
     @Override
@@ -89,6 +87,8 @@ public class FlameArrowItem extends ItemSatura {
     public void onCreated(ItemStack stack, World world, EntityPlayer player) {
         stack.stackTagCompound = new NBTTagCompound();
         stack.stackTagCompound.setBoolean("lit",false);
+        if(stack.getItem() == fireArrow)
+            stack.stackTagCompound.setInteger("counter",0);
     }
 
     @Override
@@ -97,11 +97,13 @@ public class FlameArrowItem extends ItemSatura {
         if(stack.stackTagCompound == null){
             stack.stackTagCompound = new NBTTagCompound();
             stack.stackTagCompound.setBoolean("lit",false);
+            if(stack.getItem() == fireArrow)
+                stack.stackTagCompound.setInteger("counter",0);
         }
 
         boolean lit = stack.stackTagCompound.getBoolean("lit");
 
-        if(!lit&&canLight(player)){
+        if(!lit&&Util.canPlayerLight(player)){
             ArrowNockEvent event = new ArrowNockEvent(player, stack);
             MinecraftForge.EVENT_BUS.post(event);
             if (event.isCanceled()) {
@@ -115,18 +117,6 @@ public class FlameArrowItem extends ItemSatura {
         return stack;
     }
 
-    public boolean canLight(EntityPlayer player){
-        if(player.capabilities.isCreativeMode)
-            return true;
-
-        for(int i=0;i<9;i++){
-            if(player.inventory.mainInventory[i]!=null&&player.inventory.mainInventory[i].getItem().equals(Item.getItemFromBlock(TFCBlocks.torch)))
-                return true;
-        }
-
-        return false;
-    }
-
     @Override
     public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int inUseCount){
 
@@ -135,6 +125,10 @@ public class FlameArrowItem extends ItemSatura {
         if(!lit){
             stack.stackTagCompound.setBoolean("lit",true);
             world.playSoundAtEntity(player,"fire.ignite",1,1);
+            if(stack.getItem() == fireArrow) {
+                stack.stackTagCompound.setInteger("counter",0);
+                world.playSoundAtEntity(player, "saturalanx:fuse", 0.8F, 1);
+            }
         }
 
     }
@@ -143,6 +137,15 @@ public class FlameArrowItem extends ItemSatura {
     public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean isHeld){
         if(stack.stackTagCompound!=null&&stack.stackTagCompound.getBoolean("lit")){
             stack.damageItem(1, (EntityLivingBase) entity);
+            if(stack.getItem()==fireArrow){
+                int i = stack.stackTagCompound.getInteger("counter");
+                if (i == 100) {
+                    world.playSoundAtEntity(entity, "saturalanx:fuse", 0.8F, 1);
+                    i = 0;
+                } else
+                    i++;
+                stack.stackTagCompound.setInteger("counter", i);
+            }
             if(stack.getItemDamage()<=0) {
                 if (!(entity instanceof EntityPlayer && ((EntityPlayer) entity).capabilities.isCreativeMode)) {
                     stack.stackTagCompound.setBoolean("lit", false);
@@ -166,6 +169,10 @@ public class FlameArrowItem extends ItemSatura {
 
         if(!stack.stackTagCompound.getBoolean("lit")&& Util.canBlockLight(x,y,z,world)){
             stack.stackTagCompound.setBoolean("lit",true);
+            if(stack.getItem() == fireArrow) {
+                stack.stackTagCompound.setInteger("counter",0);
+                world.playSoundAtEntity(player, "saturalanx:fuse", 0.8F, 1);
+            }
         }
 
         return false;

@@ -48,7 +48,7 @@ public class ItemSatura extends ItemTerra {
             }
             this.itemIcon = metaIcons[0];
         } else {
-            this.itemIcon = registerer.registerIcon(MODID + ":" + this.getUnlocalizedName().replace("item.", ""));
+            this.itemIcon = registerer.registerIcon(MODID + ":" + this.textureFolder + "/" + this.getUnlocalizedName().replace("item.", ""));
         }
     }
 

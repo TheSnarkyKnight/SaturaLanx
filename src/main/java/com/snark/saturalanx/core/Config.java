@@ -39,9 +39,9 @@ public class Config {
     public static boolean enableGabionMultistage = true;
     public static boolean enableGabionOpenBottom = true;
     public static boolean enableHypocaust = true;
-    public static int hypocaustSizeCap = 16;
-    public static int hypocaustFuelCheckFrequency = 240;
-    public static int hypocaustIntegrityCheckFrequency = 1200;
+    public static int hypocaustSizeCap = 8;
+    public static int hypocaustFuelCheckFrequency = 3600;
+    public static int hypocaustIntegrityCheckFrequency = 6000;
     public static String DECORATION = "Decorative Blocks";
     public static boolean enableTallCandlestick = true;
     public static float tallCandlestickBurnModifier = 1.2F;
@@ -119,9 +119,16 @@ public class Config {
     public static String FLAMEARROWS = "Flame Arrows";
     public static boolean enableFlameArrows = true;
     public static int flameArrowBurnDuration = 10;
-    public static int flameArrowEntityIgniteChance = 50;
+    public static int flameArrowIgniteChance = 50;
     public static int flameArrowSalvageChance = 30;
-
+    public static boolean fireArrowIgnitesEntities = true;
+    public static int fireArrowIgniteEntityChance = 30;
+    public static int fireArrowIgniteEntityInterval = 2;
+    public static int fireArrowGasEffects = 4;
+    public static int fireArrowGasEffectsInterval = 10;
+    public static int fireArrowIgniteAreaOfEffect = 1;
+    public static int fireArrowGasAreaOfEffect = 1;
+    public static int fireArrowGasEffectsChance = 70;
     //Explosives
     public static String POTGRENADE = "Pot Grenades";
     public static boolean enablePotGrenades = true;
@@ -185,8 +192,8 @@ public class Config {
 
         enableHypocaust = config.getBoolean("Enable Hypocaust",BUILDINGBLOCKS,true,"Enables hypocaust blocks");
         hypocaustSizeCap = config.getInt("Hypocaust Size Cap",BUILDINGBLOCKS,16,0,Integer.MAX_VALUE,"Max size (to one side) that hypocausts can be built to. Warning: setting this too high will likely cause lag when running integrity/fuel/fluid update checks");
-        hypocaustIntegrityCheckFrequency = config.getInt("Hypocaust Integrity Check Frequency",BUILDINGBLOCKS,1200,0,Integer.MAX_VALUE,"The time between each integrity check run by hypocaust structures, expressed in seconds");
-        hypocaustFuelCheckFrequency = config.getInt("Hypocaust Fuel Check Frequency",BUILDINGBLOCKS,240,0,Integer.MAX_VALUE,"The time between each fuel check run by hypocaust structures, expressed in seconds.");
+        hypocaustIntegrityCheckFrequency = config.getInt("Hypocaust Integrity Check Frequency",BUILDINGBLOCKS,6000,0,Integer.MAX_VALUE,"The time between each integrity check run by hypocaust structures, expressed in seconds");
+        hypocaustFuelCheckFrequency = config.getInt("Hypocaust Fuel Check Frequency",BUILDINGBLOCKS,3600,0,Integer.MAX_VALUE,"The time between each fuel check run by hypocaust structures, expressed in seconds.");
 
         //Decorative blocks
 
@@ -259,8 +266,17 @@ public class Config {
 
         enableFlameArrows = config.getBoolean("Enable Flame Arrows",FLAMEARROWS,true,"Enables flame arrows.");
         flameArrowBurnDuration = config.getInt("Flame Arrow Burn Duration",FLAMEARROWS,10,0, Integer.MAX_VALUE/20,"What is the burn duration of flame arrows, expressed in seconds.");
+        flameArrowIgniteChance = config.getInt("Flame Arrow Block Ignition Chance",FLAMEARROWS,50,0,100,"The chance for the arrow entity to set fire to surrounding blocks.");
         flameArrowSalvageChance = config.getInt("Flame Arrow Salvage Chance",FLAMEARROWS,30,0,100,"The chance that a flame arrow burning out in the player's inventory will return an intact arrow.");
-        flameArrowEntityIgniteChance = config.getInt("Flame Arrow Entity Ignition Chance",FLAMEARROWS,50,0,100,"The chance for the arrow entity to set fire to surrounding blocks.");
+        fireArrowIgnitesEntities = config.getBoolean("Fire Arrow Ignites Entities",FLAMEARROWS,true,"Whetever burning fire arrows have a chance to set nearby entities on fire");
+        fireArrowIgniteEntityChance = config.getInt("Fire Arrow Entity Ignition Chance",FLAMEARROWS,30,0,100,"The chance that a fire arrow will set fire to nearby entities");
+        fireArrowIgniteEntityInterval = config.getInt("Fire Arrow Entity Ignition Interval",FLAMEARROWS,2,0,Integer.MAX_VALUE/20,"How many seconds should the fire arrow try to set fire to entities");
+        fireArrowGasEffects = config.getInt("Fire Arrow Gas Effects",FLAMEARROWS,4,0,4,"Whetever entities close to a fire arrow should suffer effects from gas. 0-No, 1-Nausea, 2-Blindness, 3-Poison, 4-Random");
+        fireArrowGasEffectsInterval = config.getInt("Fire Arrow Gas Effects Interval",FLAMEARROWS,10,0,Integer.MAX_VALUE/20,"How many seconds should a fire arrow try to apply gas effects tp entities");
+        fireArrowIgniteAreaOfEffect = config.getInt("Fire Arrow Entity Ignition AOE",FLAMEARROWS,1,1,Integer.MAX_VALUE,"Radius in blocks that a fire arrow will check for entities to set on fire.");
+        fireArrowGasAreaOfEffect = config.getInt("Fire Arrow Gas Effects AOE",FLAMEARROWS,2,1,Integer.MAX_VALUE,"Radius in blocks that a fire arrow will check for entities to subject to gas effects.");
+
+
 
         /*enableFiresticks = config.getBoolean("Enable Firesticks",FIRESTICK,true,"Enables firesticks.");
         firestickMeleeDamage = config.getInt("Firestick Melee Damage",FIRESTICK,50,0,Integer.MAX_VALUE,"Damage dealt by firesticks in melee");

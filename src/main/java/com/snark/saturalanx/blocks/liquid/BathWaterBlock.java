@@ -3,11 +3,19 @@ package com.snark.saturalanx.blocks.liquid;
 import com.dunk.tfc.Blocks.Liquids.BlockHotWater;
 import com.dunk.tfc.Core.Player.BodyTempStats;
 import com.dunk.tfc.Core.TFC_Core;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
+
+import static com.snark.saturalanx.core.BlockSetup.bathWater;
 
 public class BathWaterBlock extends BlockHotWater {
     public BathWaterBlock(Fluid fluid) {
@@ -31,13 +39,13 @@ public class BathWaterBlock extends BlockHotWater {
                 temp.temporaryHeatProtection--;
             if(temp.tempHeatTimeRemaining<10L)
                 temp.tempHeatTimeRemaining = 10L;
-            if(temp.temporaryColdProtection<2)
+            if(temp.temporaryColdProtection<4)
                 temp.temporaryColdProtection++;
             if(temp.tempColdTimeRemaining<10L)
                 temp.tempColdTimeRemaining=10L;
 
             TFC_Core.setBodyTempStats((EntityPlayer)entity,temp);
         }
-
     }
+
 }

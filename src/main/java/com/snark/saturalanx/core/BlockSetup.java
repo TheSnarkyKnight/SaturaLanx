@@ -3,32 +3,37 @@ package com.snark.saturalanx.core;
 
 import com.snark.saturalanx.SaturaLanx;
 import com.snark.saturalanx.blocks.building.*;
+import com.snark.saturalanx.blocks.decoration.ChaliceBlock;
 import com.snark.saturalanx.blocks.decoration.TallCandlestickBlock;
 import com.snark.saturalanx.blocks.decoration.TallCandlestickOffBlock;
-import com.snark.saturalanx.blocks.functional.FlamingBlock;
-import com.snark.saturalanx.blocks.functional.LeafCover;
-import com.snark.saturalanx.blocks.functional.SpikeBlock;
-import com.snark.saturalanx.renders.blocks.StockadeRender;
-import com.snark.saturalanx.renders.blocks.TallCandlestickRender;
-import com.snark.saturalanx.renders.blocks.TileBlockRender;
+import com.snark.saturalanx.blocks.functional.*;
+import com.snark.saturalanx.blocks.liquid.BathWaterBlock;
+import com.snark.saturalanx.blocks.liquid.BathWaterBlockStatic;
+import com.snark.saturalanx.renders.blocks.*;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialLiquid;
 
 import java.util.ArrayList;
 
 public class BlockSetup {
 
     public static String BLOCKPATH = "saturalanx:blocks/";
-    public static int tileRenderId,tallCandlestickRenderId, stockadeRenderId;
+    public static Material bathWaterMaterial;
+    public static int tileRenderId,tallCandlestickRenderId, stockadeRenderId, chaliceRenderId, hypocaustRenderId;
     public static ArrayList<Block> blockList;
     public static Block colouredBricks, floorTiles, mortaredCobble1, mortaredCobble2;
     public static Block brassTallCandlestickOff,brassTallCandlestick,pewterTallCandlestick,pewterTallCandlestickOff,silverTallCandlestick,silverTallCandlestickOff,sterlingSilverTallCandlestick,sterlingSilverTallCandlestickOff,goldTallCandlestick,goldTallCandlestickOff,roseGoldTallCandlestick,roseGoldTallCandlestickOff;
     public static Block flamingBlock;
     public static Block spikeBlock, leafCover;
     public static Block gabion1, gabion2, stockadeBlock;
+    public static Block chaliceBlock,chaliceBlock2;
+    public static Block hypocaustBlock, hypocaustControlBlock, bathWater, bathWaterStatic;
 
     public BlockSetup() {
 
@@ -100,6 +105,27 @@ public class BlockSetup {
             blockList.add(roseGoldTallCandlestickOff);
         }
 
+        if(Config.enableChalices){
+            chaliceBlock = new ChaliceBlock(new String[]{"Copper","Bronze","BismuthBronze","BlackBronze","Brass","Pewter","Silver","SterlingSilver"}).setBlockName("ChaliceBlock");
+            chaliceBlock2 = new ChaliceBlock(new String[]{"Gold", "RoseGold", "Platinum", "BlackSteel", "RedSteel", "BlueSteel"}).setBlockName("ChaliceBlock2");
+
+            blockList.add(chaliceBlock);
+            blockList.add(chaliceBlock2);
+        }
+
+        if(Config.enableHypocaust){
+            hypocaustBlock = new HypocaustBlock();
+            hypocaustControlBlock = new HypocaustControlBlock();
+
+            bathWater = new BathWaterBlock(FluidSetup.BATHWATER);
+            bathWaterStatic = new BathWaterBlockStatic(FluidSetup.BATHWATER, Material.water, bathWater);
+
+            blockList.add(hypocaustBlock);
+            blockList.add(hypocaustControlBlock);
+            blockList.add(bathWater);
+            blockList.add(bathWaterStatic);
+        }
+
         if(Config.enableGabion) {
             gabion1 = new Gabion().setBlockName("Gabion1");
             ((Gabion) gabion1).setNames(new String[]{"Granite", "Diorite", "Gabbro", "Rhyolite", "Basalt", "Andesite", "Dacite", "Shale", "Claystone", "Rock Salt", "Limestone", "Sandstone", "Dolomite", "Chert", "Quartzite", "Slate"});
@@ -120,7 +146,7 @@ public class BlockSetup {
 
         if(Config.enableIncendiaryPot)
         {
-            flamingBlock = ((Block) new FlamingBlock()).setBlockName("FlamingBlock");
+            flamingBlock = new FlamingBlock().setBlockName("FlamingBlock");
 
             blockList.add(flamingBlock);
         }
@@ -154,6 +180,8 @@ public class BlockSetup {
         RenderingRegistry.registerBlockHandler(tileRenderId = RenderingRegistry.getNextAvailableRenderId(), new TileBlockRender());
         RenderingRegistry.registerBlockHandler(tallCandlestickRenderId = RenderingRegistry.getNextAvailableRenderId(), new TallCandlestickRender());
         RenderingRegistry.registerBlockHandler(stockadeRenderId = RenderingRegistry.getNextAvailableRenderId(), new StockadeRender());
+        RenderingRegistry.registerBlockHandler(chaliceRenderId = RenderingRegistry.getNextAvailableRenderId(), new ChaliceRender());
+        RenderingRegistry.registerBlockHandler(hypocaustRenderId = RenderingRegistry.getNextAvailableRenderId(), new HypocaustRender());
     }
 
 

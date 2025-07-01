@@ -58,6 +58,11 @@ public class CraftingRecipes {
 
         }
 
+        if(Config.enableHypocaust){
+            GameRegistry.addRecipe(new ItemStack(hypocaustBlock,2,0),"XXX","Y Y","XXX",'X', new ItemStack(TFCItems.brick,1,1),'Y',new ItemStack(TFCItems.mortar,1,0));
+            GameRegistry.addRecipe(new ItemStack(hypocaustControlBlock,1,0),"XXX","YZY","XXX",'X', new ItemStack(TFCItems.brick,1,1),'Y',new ItemStack(TFCItems.mortar,1,0),'Z',new ItemStack(TFCItems.brassSheet,1,0));
+        }
+
         if(Config.enableTallCandlestick){
             GameRegistry.addShapelessRecipe(new ItemStack(brassTallCandlestickOff,1,0),new ItemStack(tallCandleholder,1,0),new ItemStack(Item.getItemFromBlock(TFCBlocks.candleOff)));
             GameRegistry.addShapelessRecipe(new ItemStack(pewterTallCandlestickOff,1,0),new ItemStack(tallCandleholder,1,1),new ItemStack(Item.getItemFromBlock(TFCBlocks.candleOff)));
@@ -162,6 +167,21 @@ public class CraftingRecipes {
             GameRegistry.addShapelessRecipe(new ItemStack(incendiaryPot, 1), new ItemStack(pitchPot, 1), new ItemStack(wick));
         }
 
+        if(Config.enableFlameArrows){
+            GameRegistry.addShapelessRecipe(new ItemStack(crudeFlameArrow,1),new ItemStack(TFCItems.arrow,1), new ItemStack(TFCItems.primitiveBandage,1), new ItemStack(TFCItems.grassCordage,1));
+
+            List<ItemStack> cloth = new ArrayList<>();
+            cloth.add(new ItemStack(TFCItems.repairPatch,1,3));
+            cloth.add(new ItemStack(TFCItems.repairPatch,1,6));
+            cloth.add(new ItemStack(TFCItems.sackPiece));
+
+            for(ItemStack c : cloth) {
+                for(Item s : string)
+                        GameRegistry.addShapelessRecipe(new ItemStack(unfinishedFireArrow, 1, 0), new ItemStack(TFCItems.arrow, 1, 0), new ItemStack(Items.gunpowder, 1, 0), new ItemStack(TFCItems.powder, 1, 3), new ItemStack(TFCItems.powder, 1, 3), new ItemStack(TFCItems.powder, 1, 4), new ItemStack(TFCItems.powder, 1, 4), c,new ItemStack(s,1,0));
+            }
+
+        }
+
         if (Config.enableSpikes) {
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(spikeItem, 1, 0), "stickWood", "itemKnife"));
         }
@@ -173,20 +193,10 @@ public class CraftingRecipes {
         }
         if (Config.enablePotGrenades) {
 
-            List<Item> sheets = new ArrayList<Item>();
-            sheets.add(TFCItems.linenCloth);
-            sheets.add(TFCItems.cottonCloth);
-            sheets.add(TFCItems.woolCloth);
-            sheets.add(TFCItems.silkCloth);
-            sheets.add(TFCItems.burlapCloth);
-
-            for (Item i : sheets) {
-                GameRegistry.addShapelessRecipe(new ItemStack(potGrenade, 1), new ItemStack(TFCItems.potterySmallVessel, 1, 1), new ItemStack(match, 1, 1), new ItemStack(TFCItems.rope, 1), new ItemStack(i, 1));
-                GameRegistry.addShapelessRecipe(new ItemStack(potGrenadeQuick, 1), new ItemStack(TFCItems.potterySmallVessel, 1, 1), new ItemStack(match, 1, 2), new ItemStack(TFCItems.rope, 1), new ItemStack(i, 1));
-                GameRegistry.addShapelessRecipe(new ItemStack(potGrenadeLong, 1), new ItemStack(TFCItems.potterySmallVessel, 1, 1), new ItemStack(match, 1, 3), new ItemStack(TFCItems.rope, 1), new ItemStack(i, 1));
-
-
-            }
+            GameRegistry.addRecipe(new BombRecipe(new ItemStack(potGrenade,1,0),new ItemStack(match,1,1)));
+            GameRegistry.addRecipe(new BombRecipe(new ItemStack(potGrenadeQuick,1,0),new ItemStack(match,1,2)));
+            GameRegistry.addRecipe(new BombRecipe(new ItemStack(potGrenadeLong,1,0),new ItemStack(match,1,3)));
+            
         }
         if (Config.enableFirecrackers)
             GameRegistry.addShapelessRecipe(new ItemStack(firecracker,4),new ItemStack(match,1,1),new ItemStack(Items.paper,1),new ItemStack(Items.paper,1),new ItemStack(Items.gunpowder,1));

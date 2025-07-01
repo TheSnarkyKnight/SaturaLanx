@@ -33,6 +33,7 @@ public static IIcon icon;
         this.opaque = false;
         this.setTickRandomly(true);
         this.setLightLevel(0.65F);
+        this.setBlockName("FlamingBlock");
     }
 
     @Override

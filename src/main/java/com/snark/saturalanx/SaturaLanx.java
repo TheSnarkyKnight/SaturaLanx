@@ -2,10 +2,7 @@ package com.snark.saturalanx;
 
 import com.snark.saturalanx.core.Config;
 import com.snark.saturalanx.core.ItemSetup;
-import com.snark.saturalanx.handlers.SaturaCraftingHandler;
-import com.snark.saturalanx.handlers.SaturaEntityHitHandler;
-import com.snark.saturalanx.handlers.SaturaFoodCraftingHandler;
-import com.snark.saturalanx.handlers.SaturaWorldEventHandler;
+import com.snark.saturalanx.handlers.*;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -24,7 +21,7 @@ public class SaturaLanx
 {
     public static final String MODID = "saturalanx";
     public static final String MODNAME = "Satura Lanx";
-    public static final String VERSION = "0.2.3.1";
+    public static final String VERSION = "0.3.0";
     public static boolean bidLoaded, kvassLoaded;
     public static CreativeTabs tab = new CreativeTabs("Satura Lanx") {
         @Override
@@ -57,6 +54,8 @@ public class SaturaLanx
         FMLCommonHandler.instance().bus().register(new SaturaFoodCraftingHandler());
         FMLCommonHandler.instance().bus().register(new SaturaCraftingHandler());
         MinecraftForge.EVENT_BUS.register(new SaturaEntityHitHandler());
+        MinecraftForge.EVENT_BUS.register(new SaturaArrowLooseHandler());
+        MinecraftForge.EVENT_BUS.register(new SaturaEntityInteractHandler());
         proxy.init(event);
 
     }

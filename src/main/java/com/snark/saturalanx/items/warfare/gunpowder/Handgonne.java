@@ -14,6 +14,7 @@ import com.dunk.tfc.api.TFCBlocks;
 import com.dunk.tfc.api.TFCItems;
 import com.snark.saturalanx.SaturaLanx;
 import com.snark.saturalanx.core.Config;
+import com.snark.saturalanx.core.Util;
 import com.snark.saturalanx.entities.EntityBullet;
 import com.snark.saturalanx.items.warfare.SwordSatura;
 import net.minecraft.block.Block;
@@ -120,7 +121,7 @@ public class Handgonne extends SwordSatura {
 
         boolean state = stack.stackTagCompound.getBoolean("load");
 
-            if((!state&&canLoad(player))||(state&&canFire(player))){
+            if((!state&&canLoad(player))||(state&&Util.canPlayerLight(player))){
 
                 ArrowNockEvent event = new ArrowNockEvent(player, stack);
                 MinecraftForge.EVENT_BUS.post(event);
@@ -216,21 +217,6 @@ public class Handgonne extends SwordSatura {
         else
             return false;
 
-    }
-
-    public boolean canFire(EntityPlayer player){
-
-        if(player.capabilities.isCreativeMode)
-            return true;
-
-        for(int i = 0;i < 9;i++){
-
-            if(player.inventory.mainInventory[i]!=null&&player.inventory.mainInventory[i].getItem().equals(Item.getItemFromBlock(TFCBlocks.torch)))
-                return true;
-
-        }
-
-        return false;
     }
 
     public void fireGun(ItemStack stack, EntityPlayer player, World world){

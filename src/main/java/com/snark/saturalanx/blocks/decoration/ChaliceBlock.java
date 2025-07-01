@@ -4,7 +4,6 @@ import com.dunk.tfc.Blocks.BlockTerraContainer;
 import com.dunk.tfc.Core.TFC_Core;
 import com.dunk.tfc.Core.TFC_Textures;
 import com.dunk.tfc.Items.ItemDrink;
-import com.dunk.tfc.TileEntities.TELightEmitter;
 import com.dunk.tfc.api.TFCItems;
 import com.snark.saturalanx.SaturaLanx;
 import com.snark.saturalanx.TE.ChaliceTE;
@@ -25,8 +24,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import java.util.List;
-
-import static com.snark.saturalanx.SaturaLanx.MODID;
 
 public class ChaliceBlock extends BlockTerraContainer {
     protected String[] names;

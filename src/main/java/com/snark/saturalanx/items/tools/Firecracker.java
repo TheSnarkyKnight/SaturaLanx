@@ -4,6 +4,7 @@ import com.dunk.tfc.api.Enums.EnumItemReach;
 import com.dunk.tfc.api.Enums.EnumSize;
 import com.dunk.tfc.api.Enums.EnumWeight;
 import com.dunk.tfc.api.TFCBlocks;
+import com.snark.saturalanx.core.Util;
 import com.snark.saturalanx.entities.EntityFireCracker;
 import com.snark.saturalanx.items.ItemSatura;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -61,7 +62,7 @@ public class Firecracker extends ItemSatura {
     @Override
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player){
 
-        if(canLight(player)){
+        if(Util.canPlayerLight(player)){
             ArrowNockEvent event = new ArrowNockEvent(player, stack);
             MinecraftForge.EVENT_BUS.post(event);
             if (event.isCanceled()) {
@@ -90,18 +91,6 @@ public class Firecracker extends ItemSatura {
                 player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
         }
 
-    }
-
-    public boolean canLight(EntityPlayer player){
-        if(player.capabilities.isCreativeMode)
-            return true;
-
-        for(int i=0;i<9;i++){
-            if(player.inventory.mainInventory[i]!=null&&player.inventory.mainInventory[i].getItem().equals(Item.getItemFromBlock(TFCBlocks.torch)))
-                return true;
-        }
-
-        return false;
     }
 
     @Override

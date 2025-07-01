@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.dunk.tfc.TileEntities.TEBarrel.getYeastFoods;
+import static com.snark.saturalanx.core.ItemSetup.*;
 import static net.minecraft.init.Items.gunpowder;
 //import static com.muurr.tfcpluskvass.ItemSetup.KISSEL;
 
@@ -51,6 +52,12 @@ public class BarrelRecipes {
             }
             BarrelManager.getInstance().addRecipe((new BarrelRecipe(new ItemStack(TFCItems.potterySmallVessel,1,1),new FluidStack(TFCFluids.PITCH,1000),new ItemStack(ItemSetup.pitchPot,1),new FluidStack(TFCFluids.PITCH,1000)).setSealedRecipe(false).setMinTechLevel(0).setSealTime(0).setRemovesLiquid(true)));
             BarrelManager.getInstance().addRecipe((new BarrelRecipe(new ItemStack(ItemSetup.pitchPot,1),new FluidStack(TFCFluids.PITCH,1000),new ItemStack(TFCItems.potterySmallVessel,1,1), new FluidStack(TFCFluids.PITCH,1000))).setSealTime(0).setSealedRecipe(true).setMinTechLevel(0).setRemovesLiquid(false));
+        }
+
+        //Flame Arrows
+        if(Config.enableFlameArrows){
+            BarrelManager.getInstance().addRecipe((new BarrelRecipe(new ItemStack(crudeFlameArrow,1),new FluidStack(TFCFluids.PITCH,100),new ItemStack(flameArrow,1), new FluidStack(TFCFluids.PITCH,100)).setSealedRecipe(false).setSealTime(0).setRemovesLiquid(true).setMinTechLevel(0)));
+            BarrelManager.getInstance().addRecipe((new BarrelRecipe(new ItemStack(unfinishedFireArrow,1),new FluidStack(TFCFluids.PITCH,100),new ItemStack(fireArrow,1), new FluidStack(TFCFluids.PITCH,100)).setSealedRecipe(false).setSealTime(0).setRemovesLiquid(true).setMinTechLevel(0)));
         }
 
         //Pot Grenades

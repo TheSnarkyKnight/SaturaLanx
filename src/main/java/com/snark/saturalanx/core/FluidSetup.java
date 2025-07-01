@@ -1,6 +1,7 @@
 package com.snark.saturalanx.core;
 
 import com.dunk.tfc.Core.FluidBaseTFC;
+import com.dunk.tfc.api.TFCFluids;
 import com.snark.saturalanx.SaturaLanx;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -26,6 +27,7 @@ public class FluidSetup {
     public static Fluid BLUEBERRYLIQUOR, RASPBERRYLIQUOR, STRAWBERRYLIQUOR, BLACKBERRYLIQUOR, CRANBERRYLIQUOR;
     public static Fluid WINTERGREENLIQUOR, BUNCHBERRYLIQUOR, CLOUDBERRYLIQUOR, GOOSEBERRYLIQUOR, SNOWBERRYLIQUOR, ELDERBERRYLIQUOR;
     public static Fluid SALTPETERFLUID, GUNPOWDERFLUID;
+    public static Fluid BATHWATER;
 
     public FluidSetup(){
 
@@ -93,6 +95,7 @@ public class FluidSetup {
         SALTPETERFLUID = (new FluidBaseTFC("saltpeterfluid")).setBaseColor(14209218);
         GUNPOWDERFLUID = (new FluidBaseTFC("gunpowderfluid")).setBaseColor(4802889);
 
+        BATHWATER = (new FluidBaseTFC("bathwater")).setBaseColor(TFCFluids.HOTWATER.getColor());
     }
 
     public static void registerFluids(){
@@ -150,9 +153,7 @@ public class FluidSetup {
 
         FluidRegistry.registerFluid(GUNPOWDERFLUID);
         FluidRegistry.registerFluid(SALTPETERFLUID);
-    }
 
-    public static int getRGB(int r, int g, int b){
-        return (65536 * r) + (256 * g) + b;
+        FluidRegistry.registerFluid(BATHWATER);
     }
 }

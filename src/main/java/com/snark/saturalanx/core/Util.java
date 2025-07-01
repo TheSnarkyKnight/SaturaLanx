@@ -18,6 +18,7 @@ public class Util {
     public static int rgbToInt(int r, int g, int b){
         return 65536 * r + 256 * g + b;
     }
+
     public static boolean canPlayerLight(EntityPlayer player){
         if(player.capabilities.isCreativeMode)
             return true;

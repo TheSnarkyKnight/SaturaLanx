@@ -1,19 +1,22 @@
 package com.snark.saturalanx.blocks.functional;
 
 import com.dunk.tfc.Blocks.BlockTerraContainer;
+import com.dunk.tfc.Core.TFC_Core;
 import com.dunk.tfc.api.TFCBlocks;
 import com.snark.saturalanx.SaturaLanx;
 import com.snark.saturalanx.TE.HypocaustTE;
 import com.snark.saturalanx.core.BlockSetup;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 
 public class HypocaustControlBlock extends BlockTerraContainer {
     public HypocaustControlBlock(){
@@ -21,7 +24,6 @@ public class HypocaustControlBlock extends BlockTerraContainer {
         this.setHardness(5.0F);
         this.setStepSound(soundTypeStone);
         this.setCreativeTab(SaturaLanx.tab);
-        this.setTickRandomly(true);
         this.setBlockName("HypocaustControlBlock");
     }
 
@@ -60,10 +62,18 @@ public class HypocaustControlBlock extends BlockTerraContainer {
                 h.getActiveHeatSource();
                 h.updateFluids();
 
-                //System.out.println(h.isActive());
-                //System.out.println(h.isFormed());
-                //System.out.println(h.getMinX() + " - " + h.getMaxX());
-                //System.out.println(h.getMinZ() + " - " + h.getMaxZ());
+                if(TFC_Core.isPlayerInDebugMode(player))
+                    h.printSize();
+
+                if(h.isFormed()) {
+                    if(h.isActive())
+                        TFC_Core.sendInfoMessage(player, new ChatComponentText("The hypocaust is active."));
+                    else
+                        TFC_Core.sendInfoMessage(player, new ChatComponentText("The hypocaust is inactive."));
+                }
+                else
+                    TFC_Core.sendInfoMessage(player, new ChatComponentText("The structure is incomplete."));
+
                 return true;
             }
         }
@@ -71,7 +81,18 @@ public class HypocaustControlBlock extends BlockTerraContainer {
     }
 
     @Override
-    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-        world.setBlockMetadataWithNotify(x,y,z, MathHelper.floor_double((double)(entity.rotationYaw*4.0/360+0.5)) & 3,3);
+    public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side) {
+        return side == ForgeDirection.UP || side == ForgeDirection.DOWN;
+    }
+
+    @Override
+    public void onBlockAdded(World world, int x, int y, int z) {
+        if (!world.isRemote) {
+            TileEntity te = world.getTileEntity(x, y, z);
+            if (te instanceof HypocaustTE) {
+                HypocaustTE h = (HypocaustTE) te;
+                h.init();
+            }
+        }
     }
 }

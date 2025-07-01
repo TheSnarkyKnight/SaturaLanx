@@ -72,7 +72,7 @@ public class BombRecipe implements IRecipe {
             }
             if (vessel != null) {
                 float[] comp = getComponents(vessel);
-                ((PotGrenade) stack.getItem()).setComponents(stack, comp[0], comp[1], comp[2], comp[3]);
+                ((PotGrenade) stack.getItem()).setComponents(stack, comp[0], comp[1], comp[2], comp[3],false);
             }
 
             return stack;

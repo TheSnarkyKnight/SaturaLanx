@@ -1,16 +1,13 @@
 package com.snark.saturalanx.renders.blocks;
 
 import com.dunk.tfc.Items.ItemDrink;
-import com.dunk.tfc.Render.RenderBlocksWithRotation;
 import com.dunk.tfc.api.TFCBlocks;
 import com.dunk.tfc.api.TFCFluids;
 import com.snark.saturalanx.TE.ChaliceTE;
-import com.snark.saturalanx.core.BlockSetup;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;

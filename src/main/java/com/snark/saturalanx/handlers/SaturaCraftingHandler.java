@@ -43,20 +43,6 @@ public class SaturaCraftingHandler {
                 tools = OreDictionary.getOres("itemKnife", false);
                 handleItem(e.player, iinventory, tools);
             }
-            //Pot grenade crafting
-            if(makePotGrenade(itemstack, iinventory)||makePotGrenadeL(itemstack, iinventory)||makePotGrenadeQ(itemstack,iinventory)){
-                ItemStack vessel = null;
-                for(int i = 0;i < iinventory.getSizeInventory();i++) {
-                    if (iinventory.getStackInSlot(i) != null) {
-                        if (iinventory.getStackInSlot(i).getItem() == TFCItems.potterySmallVessel)
-                            vessel = iinventory.getStackInSlot(i);
-                    }
-                }
-                if(vessel != null) {
-                    float[] comp = getComponents(vessel);
-                    ((PotGrenade) itemstack.getItem()).setComponents(itemstack, comp[0],comp[1],comp[2],comp[3]);
-                }
-            }
             //Shot crafting
             if(makeShot(itemstack, iinventory)){
                 tools = OreDictionary.getOres("itemHammer",false);
@@ -72,53 +58,10 @@ public class SaturaCraftingHandler {
         return false;
     }
 
-    private boolean makePotGrenade(ItemStack result, IInventory grid){
-        if(Config.enablePotGrenades)
-            return (result.getItem().equals(ItemSetup.potGrenade) && gridHasItem(grid, TFCItems.rope));
-        return false;
-    }
-
-    private boolean makePotGrenadeL(ItemStack result, IInventory grid){
-        if(Config.enablePotGrenades)
-            return (result.getItem().equals(ItemSetup.potGrenadeLong) && gridHasItem(grid, TFCItems.rope));
-        return false;
-    }
-
-    private boolean makePotGrenadeQ(ItemStack result, IInventory grid){
-        if(Config.enablePotGrenades)
-            return (result.getItem().equals(ItemSetup.potGrenadeQuick) && gridHasItem(grid, TFCItems.rope));
-        return false;
-    }
-
     private boolean makeShot(ItemStack result, IInventory grid){
         if(Config.enableMBlunderbuss)
             return (result.getItem().equals(ItemSetup.shot) && (gridHasItem(grid, TFCItems.looseRock)||gridHasItem(grid, TFCBlocks.gravel2)||gridHasItem(grid, TFCItems.leadBullet)));
         return false;
     }
-
-    private float[] getComponents(ItemStack stack) {
-        float[] f = new float[]{0, 0, 0, 0};
-
-        ItemPotterySmallVessel container = (ItemPotterySmallVessel) stack.getItem();
-        ItemStack[] inv = container.loadBagInventory(stack);
-        if (inv != null) {
-            for (ItemStack i : inv) {
-                if (i != null) {
-                    if (i.getItem() == Items.gunpowder)
-                        f[0] += i.stackSize;
-                    if (i.getItem() == Item.getItemFromBlock(TFCBlocks.gravel) || i.getItem() == Item.getItemFromBlock(TFCBlocks.gravel2))
-                        f[1] += (i.stackSize * 10);
-                    if (i.getItem() == ItemSetup.shot)
-                        f[2] += (i.stackSize*10);
-                    if (i.getItem() == TFCItems.resin || i.getItem() == TFCItems.coal)
-                        f[3] += i.stackSize;
-                    if (i.getItem() == TFCItems.powder && i.getItemDamage() == 3)
-                        f[3] += i.stackSize;
-                }
-            }
-        }
-
-            return f;
-        }
 
 }

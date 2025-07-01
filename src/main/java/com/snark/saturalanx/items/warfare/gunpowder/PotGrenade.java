@@ -6,6 +6,7 @@ import com.dunk.tfc.api.Enums.EnumItemReach;
 import com.dunk.tfc.api.Enums.EnumSize;
 import com.dunk.tfc.api.Enums.EnumWeight;
 import com.dunk.tfc.api.TFCBlocks;
+import com.snark.saturalanx.core.Util;
 import com.snark.saturalanx.entities.EntityPotGrenade;
 import com.snark.saturalanx.items.ItemSatura;
 import net.minecraft.block.Block;
@@ -71,7 +72,7 @@ protected int type;
         return icon2;
     }
 
-    public void setComponents(ItemStack stack, float e, float sh, float sm, float i){
+    public void setComponents(ItemStack stack, float e, float sh, float pe, float i,boolean lit){
 
         NBTTagCompound tag = stack.getTagCompound();
 
@@ -80,9 +81,9 @@ protected int type;
 
         tag.setFloat("explosive",e);
         tag.setFloat("shrapnel",sh);
-        tag.setFloat("smoke",sm);
+        tag.setFloat("pellet",pe);
         tag.setFloat("incendiary",i);
-        tag.setBoolean("lit",false);
+        tag.setBoolean("lit",lit);
 
         stack.setTagCompound(tag);
 
@@ -98,7 +99,7 @@ protected int type;
         else {
             comp[0] = tag.getFloat("explosive");
             comp[1] = tag.getFloat("shrapnel");
-            comp[2] = tag.getFloat("smoke");
+            comp[2] = tag.getFloat("pellet");
             comp[3] = tag.getFloat("incendiary");
         }
 
@@ -124,41 +125,12 @@ protected int type;
             stack.stackTagCompound.setBoolean("lit",false);
         }
 
-        if(!stack.stackTagCompound.getBoolean("lit")&&canBlockLight(x,y,z,world)){
+        if(!stack.stackTagCompound.getBoolean("lit")&&Util.canBlockLight(x,y,z,world)){
             stack.stackTagCompound.setBoolean("lit",true);
             stack.stackTagCompound.setInteger("counter",100);
         }
 
         return false;
-    }
-
-    public boolean canBlockLight(int x, int y, int z, World w){
-        Block b = w.getBlock(x,y,z);
-        if(b == TFCBlocks.torch)
-            return true;
-        if(b == TFCBlocks.candle)
-            return true;
-        if(b == TFCBlocks.candleBrass)
-            return true;
-        if(b == TFCBlocks.candleGold)
-            return true;
-        if(b == TFCBlocks.candlePewter)
-            return true;
-        if(b == TFCBlocks.candleSilver)
-            return true;
-        if(b == TFCBlocks.firepit) {
-            TEFirepit f = (TEFirepit) w.getTileEntity(x, y, z);
-            if (f != null && f.fireTemp > 1)
-                return true;
-        }
-        if(b == TFCBlocks.forge){
-            TEForge f = (TEForge) w.getTileEntity(x,y,z);
-            if(f != null && f.fireTemp > 1)
-                return true;
-        }
-
-        return false;
-
     }
 
     @Override
@@ -171,7 +143,7 @@ protected int type;
 
         boolean lit = stack.stackTagCompound.getBoolean("lit");
 
-        if(!lit&&canLight(player)){
+        if(!lit&&Util.canPlayerLight(player)){
             ArrowNockEvent event = new ArrowNockEvent(player, stack);
             MinecraftForge.EVENT_BUS.post(event);
             if (event.isCanceled()) {
@@ -179,7 +151,8 @@ protected int type;
             }
 
             player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
-        } else if (lit&&!player.isSneaking()) {
+        }
+        else if (lit&&!player.isSneaking()) {
             world.playSoundAtEntity(player,"saturalanx:fuse",0.8F,1);
             EntityPotGrenade grenade = new EntityPotGrenade(world,player,getComponents(stack),stack.getItemDamage(),stack.getMaxDamage(),this.getType());
             if(!world.isRemote){
@@ -190,12 +163,10 @@ protected int type;
                 stack.stackTagCompound.setBoolean("delete",true);
             }
         }
+        else if(lit&&player.isSneaking()){
+            stack.stackTagCompound.setBoolean("lit",false);
+        }
         return stack;
-    }
-
-    @Override
-    public void onCreated(ItemStack stack, World world, EntityPlayer player) {
-
     }
 
     @Override
@@ -245,18 +216,6 @@ protected int type;
                         ((EntityPlayer) entity).inventory.setInventorySlotContents(slot, null);
             }
         }
-    }
-
-    public boolean canLight(EntityPlayer player){
-        if(player.capabilities.isCreativeMode)
-            return true;
-
-        for(int i=0;i<9;i++){
-            if(player.inventory.mainInventory[i]!=null&&player.inventory.mainInventory[i].getItem().equals(Item.getItemFromBlock(TFCBlocks.torch)))
-                return true;
-        }
-
-        return false;
     }
 
     public void addItemInformation(ItemStack is, EntityPlayer player, List<String> arraylist){

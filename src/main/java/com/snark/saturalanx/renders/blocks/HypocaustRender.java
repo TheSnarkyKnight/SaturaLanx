@@ -3,7 +3,6 @@ package com.snark.saturalanx.renders.blocks;
 import com.dunk.tfc.Core.TFC_Textures;
 import com.dunk.tfc.api.TFCBlocks;
 import com.snark.saturalanx.core.BlockSetup;
-import com.snark.saturalanx.core.Config;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;

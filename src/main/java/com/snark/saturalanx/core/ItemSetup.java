@@ -11,6 +11,7 @@ import com.snark.saturalanx.items.instruments.SaturaInstrumentSimple;
 import com.snark.saturalanx.items.tools.Firecracker;
 import com.snark.saturalanx.items.warfare.*;
 import com.snark.saturalanx.items.warfare.gunpowder.*;
+import com.snark.saturalanx.items.warfare.incendiary.FlameArrowItem;
 import com.snark.saturalanx.items.warfare.incendiary.IncendiaryPot;
 import com.snark.saturalanx.renders.item.ArquebusRender;
 import com.snark.saturalanx.renders.item.HandgonneRender;
@@ -32,6 +33,7 @@ public class ItemSetup {
 
     public static Item castanets;
     public static Item pitchPot, wick, incendiaryPot;
+    public static Item crudeFlameArrow, flameArrow, unfinishedFireArrow, fireArrow;
     public static Item slowmatch,match,potGrenade,potGrenadeQuick,potGrenadeLong;
     public static Item firecracker;
     public static Item bolas;
@@ -135,6 +137,17 @@ public class ItemSetup {
             itemList.add(pitchPot);
             itemList.add(wick);
             itemList.add(incendiaryPot);
+        }
+        if (Config.enableFlameArrows){
+            crudeFlameArrow = new FlameArrowItem(1,0,0).setUnlocalizedName("CrudeFlameArrow");
+            flameArrow = new FlameArrowItem(2, -10,20).setUnlocalizedName("FlameArrow");
+            unfinishedFireArrow = new ItemSatura().setFolder("weapons/projectiles").setUnlocalizedName("UnfinishedFireArrow");
+            fireArrow = new FlameArrowItem(3,-20,30).setUnlocalizedName("FireArrow");
+
+            itemList.add(crudeFlameArrow);
+            itemList.add(flameArrow);
+            itemList.add(unfinishedFireArrow);
+            itemList.add(fireArrow);
         }
         if (Config.enableSpikes) {
             spikeItem = new SpikeItem();

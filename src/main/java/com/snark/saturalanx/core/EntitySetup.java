@@ -1,12 +1,14 @@
 package com.snark.saturalanx.core;
 
 import com.snark.saturalanx.SaturaLanx;
+import com.snark.saturalanx.TE.ChaliceTE;
 import com.snark.saturalanx.TE.FlamingBlockTE;
+import com.snark.saturalanx.TE.HypocaustTE;
 import com.snark.saturalanx.TE.TileTE;
 import com.snark.saturalanx.entities.*;
 import com.snark.saturalanx.renders.entity.RenderBullet;
+import com.snark.saturalanx.renders.entity.RenderCustomArrow;
 import com.snark.saturalanx.renders.entity.RenderGrenade;
-import com.snark.saturalanx.renders.entity.RenderShrapnel;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -24,6 +26,14 @@ public class EntitySetup {
         if(Config.enableIncendiaryPot) {
             EntityRegistry.registerGlobalEntityID(EntityIncendiaryPot.class, "incendiaryPotSL", EntityRegistry.findGlobalUniqueEntityId());
             EntityRegistry.registerModEntity(EntityIncendiaryPot.class, "incendiaryPotSL", 0, SaturaLanx.instance, 64, 10, true);
+        }
+        if(Config.enableFlameArrows){
+            EntityRegistry.registerGlobalEntityID(EntityFlameArrow.class,"flamearrowSL",EntityRegistry.findGlobalUniqueEntityId());
+            EntityRegistry.registerModEntity(EntityFlameArrow.class,"flamearrowSL",6,SaturaLanx.instance,64,10,true);
+        }
+        if(Config.enablePoisonArrows){
+            EntityRegistry.registerGlobalEntityID(EntityPoisonArrow.class,"poisonarrowSL",EntityRegistry.findGlobalUniqueEntityId());
+            EntityRegistry.registerModEntity(EntityPoisonArrow.class,"poisonarrowSL",7,SaturaLanx.instance,64,10,true);
         }
         if(Config.enablePotGrenades) {
             EntityRegistry.registerGlobalEntityID(EntityPotGrenade.class, "potGrenadeSL", EntityRegistry.findGlobalUniqueEntityId());
@@ -53,6 +63,10 @@ public class EntitySetup {
             GameRegistry.registerTileEntity(FlamingBlockTE.class,"SLFlamingBlockTE");
         if(Config.enableFloorTiles)
             GameRegistry.registerTileEntity(TileTE.class,"SLFloorTilesTE");
+        if(Config.enableChalices)
+            GameRegistry.registerTileEntity(ChaliceTE.class,"SLChaliceBlockTE");
+        if(Config.enableHypocaust)
+            GameRegistry.registerTileEntity(HypocaustTE.class,"SLHypocaustTE");
     }
 
     @SideOnly(Side.CLIENT)
@@ -64,13 +78,16 @@ public class EntitySetup {
             RenderingRegistry.registerEntityRenderingHandler(EntityIncendiaryPot.class, new RenderSnowball(ItemSetup.incendiaryPot));
         if (Config.enablePotGrenades) {
             RenderingRegistry.registerEntityRenderingHandler(EntityPotGrenade.class, new RenderGrenade());
-            RenderingRegistry.registerEntityRenderingHandler(EntityShrapnel.class, new RenderShrapnel());
+            RenderingRegistry.registerEntityRenderingHandler(EntityShrapnel.class, new RenderCustomArrow("Shrapnel"));
         }
         if (Config.enableFirecrackers)
             RenderingRegistry.registerEntityRenderingHandler(EntityFireCracker.class, new RenderSnowball(ItemSetup.firecracker));
         if(Config.enableHandgonne||Config.enableMBlunderbuss||Config.enableArquebus)
             RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class,new RenderBullet());
-
+        if(Config.enableFlameArrows)
+            RenderingRegistry.registerEntityRenderingHandler(EntityFlameArrow.class,new RenderCustomArrow(new String[]{"CrudeFlameArrow","FlameArrow","FireArrow"}));
+        if(Config.enablePoisonArrows)
+            RenderingRegistry.registerEntityRenderingHandler(EntityPoisonArrow.class, new RenderCustomArrow("PoisonArrow"));
 
     }
 }

@@ -4,8 +4,6 @@ import com.dunk.tfc.TileEntities.NetworkTileEntity;
 import com.snark.saturalanx.core.Config;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
-import net.minecraft.tileentity.TileEntity;
 
 public class FlamingBlockTE extends NetworkTileEntity {
     int count;

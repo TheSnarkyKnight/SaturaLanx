@@ -47,6 +47,18 @@ public class NEISaturaLanxConfig implements IConfigureNEI {
             for(int i = 0;i < ((TilesBlock)BlockSetup.floorTiles).getNames().length;i++)
              API.hideItem(new ItemStack(BlockSetup.floorTiles,1,i));
         }
+        if(Config.enableChalices){
+            for(int i = 8;i <= 15;i++){
+                API.hideItem(new ItemStack(BlockSetup.chaliceBlock,1,i));
+            }
+            for(int i = 6;i <= 11;i++){
+                API.hideItem(new ItemStack(BlockSetup.chaliceBlock2,1,i));
+            }
+        }
+        if(Config.enableHypocaust){
+            API.hideItem(new ItemStack(BlockSetup.bathWater));
+            API.hideItem(new ItemStack(BlockSetup.bathWaterStatic));
+        }
     }
 }
 

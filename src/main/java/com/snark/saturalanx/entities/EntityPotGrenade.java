@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
@@ -14,10 +15,10 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-//Code for the grenade's movement and explosion damage adapted from Minefantasy Reforged, made by ThatPolishKid. All credit goes to him.
+//Code for the grenade's movement and explosion damage based on Minefantasy Reforged, made by ThatPolishKid.
 //https://github.com/TeamMFR/MineFantasyReforged/blob/1.12.2/src/main/java/minefantasy/mfr/entity/EntityBomb.java
 
-public class EntityPotGrenade extends Entity implements IProjectile {
+public class EntityPotGrenade extends Entity implements IProjectile{
     protected int fuse;
     protected int maxFuse;
     protected float explosive;
@@ -82,6 +83,10 @@ public class EntityPotGrenade extends Entity implements IProjectile {
             this.fuse = 0;
             this.motionZ = this.motionX = this.motionY = 0;
         }
+    }
+
+    public float[] getComponents(){
+        return new float[]{explosive,shrapnel,pellet,incendiary};
     }
 
     @Override
@@ -209,6 +214,8 @@ public class EntityPotGrenade extends Entity implements IProjectile {
 
     }
 
+
+
     public void explode() {
             double power = Math.min(explosive,Config.potGrenadePowerCap);
             worldObj.createExplosion(this, posX, posY, posZ, (float) 0, false);
@@ -220,10 +227,9 @@ public class EntityPotGrenade extends Entity implements IProjectile {
                 for (Entity entity : entities) {
                     double distance = this.getDistanceToEntity(entity);
                     if(distance<range){
-                        int damage = (int)(4 * power);
+                        int damage = (int)(6 * power);
                         DamageSource source = getDamageSource(this, thrower != null ? thrower : this);
                         source.setExplosion();
-                        System.out.println(damage);
                         if(!(entity instanceof EntityItem)){
                             entity.attackEntityFrom(source,damage);
                             if(incendiary>0){
@@ -284,6 +290,9 @@ public class EntityPotGrenade extends Entity implements IProjectile {
         }
     }
 
+    public int getFuse(){
+        return this.fuse;
+    }
 
 
 }

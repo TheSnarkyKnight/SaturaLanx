@@ -1,11 +1,9 @@
 package com.snark.saturalanx.handlers;
 
-import com.dunk.tfc.Core.TFC_Core;
 import com.dunk.tfc.Entities.EntityProjectileTFC;
 import com.dunk.tfc.Items.Tools.ItemCustomBow;
-import com.dunk.tfc.api.Interfaces.ISize;
-import com.dunk.tfc.api.TFCItems;
 import com.snark.saturalanx.core.Config;
+import com.snark.saturalanx.core.ItemSetup;
 import com.snark.saturalanx.entities.EntityFlameArrow;
 import com.snark.saturalanx.entities.EntityPoisonArrow;
 import com.snark.saturalanx.items.warfare.PoisonedArrow;
@@ -13,7 +11,6 @@ import com.snark.saturalanx.items.warfare.incendiary.FlameArrowItem;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
@@ -70,6 +67,14 @@ public class SaturaArrowLooseHandler{
                     forceMult = Math.min(((ItemCustomBow) bow.getItem()).getDamageMultiplier()*60/100,forceMult);
 
                     eArrow = new EntityFlameArrow(player.worldObj,player,forceMult*2,arrow.getMaxDamage()-arrow.getItemDamage(),((FlameArrowItem) arrow.getItem()).getIgniteChance());
+
+                    if(arrow.getItem() == ItemSetup.fireArrow)
+                        ((EntityFlameArrow)eArrow).setType(3);
+                    else if(arrow.getItem() == ItemSetup.flameArrow)
+                        ((EntityFlameArrow)eArrow).setType(2);
+                    else
+                        ((EntityFlameArrow)eArrow).setType(1);
+
 
                     if(!player.capabilities.isCreativeMode)
                         player.inventory.setInventorySlotContents(index,null);

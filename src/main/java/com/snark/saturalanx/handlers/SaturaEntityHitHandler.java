@@ -1,14 +1,12 @@
 package com.snark.saturalanx.handlers;
 
 import com.dunk.tfc.Handlers.EntityDamageHandler;
-import com.dunk.tfc.api.TFCItems;
 import com.snark.saturalanx.core.Config;
 import com.snark.saturalanx.entities.EntityBolas;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
@@ -46,21 +44,5 @@ public class SaturaEntityHitHandler extends EntityDamageHandler {
         }
 
     }
-
-    private int getEquipmentFlammability(EntityPlayer player) {
-        int i = 0;
-        for (ItemStack is : player.inventory.armorInventory) {
-            if (is.getItem() == TFCItems.strawHat || is.getItem() == TFCItems.strawHat2)
-                i += 5;
-            if (is.getItem() == TFCItems.strawSocks || is.getItem() == TFCItems.grassSandals)
-                i += 5;
-            if (is.getItem() == TFCItems.grassShirt || is.getItem() == TFCItems.grassSkirt)
-                i += 5;
-            if (is.getItem() == TFCItems.grassCloak)
-                i += 10;
-        }
-        return i;
-    }
-
 
 }

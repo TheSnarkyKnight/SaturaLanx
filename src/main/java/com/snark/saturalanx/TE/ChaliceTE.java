@@ -2,10 +2,8 @@ package com.snark.saturalanx.TE;
 
 import com.dunk.tfc.Items.ItemDrink;
 import com.dunk.tfc.TileEntities.NetworkTileEntity;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 
 public class ChaliceTE extends NetworkTileEntity {
     private ItemDrink drink;

@@ -34,7 +34,7 @@ public class BathWaterBlockStatic extends BlockHotWaterStatic {
                 temp.temporaryHeatProtection--;
             if(temp.tempHeatTimeRemaining<10L)
                 temp.tempHeatTimeRemaining = 10L;
-            if(temp.temporaryColdProtection<2)
+            if(temp.temporaryColdProtection<4)
                 temp.temporaryColdProtection++;
             if(temp.tempColdTimeRemaining<10L)
                 temp.tempColdTimeRemaining=10L;

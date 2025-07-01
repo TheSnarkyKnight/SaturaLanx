@@ -10,6 +10,7 @@ gui.plans.spike=Spike
 gui.plans.tallcandleholder=Tall Candle Holder
 gui.plans.matchlockmechanism=Matchlock Mechanism
 gui.plans.flaredbarrel=Flared Barrel
+gui.plans.chalice=Chalice
 //Potion Effects
 saturalanx.potion.aconitePoison=Aconite Poisoning
 saturalanx.potion.helleborePoison=Hellebore Poisoning
@@ -216,6 +217,8 @@ item.IncendiaryPot.name=Incendiary Pot
 item.Firestick.name=Firestick
 item.CrudeFlameArrow.name=Crude Flame Arrow
 item.FlameArrow.name=Flame Arrow
+item.UnfinishedFireArrow.name=Unfinished Fire Arrow
+item.FireArrow.name=Fire Arrow
 //Pyrotechnics
 item.Firecracker.name=Firecracker
 item.Smokebomb0.name=Black Smoke Bomb
