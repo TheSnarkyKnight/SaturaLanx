@@ -69,11 +69,15 @@ public class Config {
     public static int bolasDurationModifier = 300;
     public static int bolasAmplifier = 4;
     public static boolean bolasShouldAffectPlayers = true;
-    public static String POISONAPROJECTILES = "Poison Projectiles";
+    public static String POISONPROJECTILES = "Poison Projectiles";
     public static boolean enablePoisonArrows = true;
     public static int poisonProjectileEffectDurationModifier = 50;
     public static int poisonProjectileExpirationTime = TFCOptions.yearLength;
 
+    public static String ROPEARROWS = "Rope Arrows";
+    public static boolean enableRopeArrows = true;
+    public static int ropeArrowRopeLenght = 9;
+    public static int ropeArrowWeightAllowance = 2;
 
     //Melee weapons
     public static String EXTRAMACES = "Extra Maces";
@@ -231,9 +235,13 @@ public class Config {
         bolasAmplifier = config.getInt("Bolas Slowness Amplifier",BOLAS,4,0,5,"The amplifier of the slowness effect applied by the bolas");
         bolasShouldAffectPlayers = config.getBoolean("Bolas Effects Players",BOLAS,true,"If false, players won't be subjected to the bolas' slowing effects");
 
-        enablePoisonArrows = config.getBoolean("Enable Poison Arrows", POISONAPROJECTILES,true,"Enables poison arrows");
-        poisonProjectileExpirationTime = config.getInt("Poison Projectile Expiration Time", POISONAPROJECTILES,TFCOptions.yearLength,-1,Integer.MAX_VALUE,"How many days do poison projectiles keep their effects for. If set to -1, poison projectiles will keep their effect indefinitely");
-        poisonProjectileEffectDurationModifier = config.getInt("Poison Arrow Effect Duration Modifier", POISONAPROJECTILES,50,0,100,"How much the duration of the poison projectile's effect can vary, expressed as a percentage of its base duration.");
+        enableRopeArrows = config.getBoolean("Enable Rope Arrows",ROPEARROWS,true,"Enables rope arrows");
+        ropeArrowRopeLenght = config.getInt("Rope Arrow Rope Lenght",ROPEARROWS,9,0,128,"How many blocks long should the rope below a rope arrow be");
+        ropeArrowWeightAllowance = config.getInt("Rope Arrow Weight Allowance",ROPEARROWS,2,1,4,"How heavy can the player's equipment be without breaking the rope arrow: 1-Very Light, 2-Light, 3-Medium, 3-Heavy");
+
+        enablePoisonArrows = config.getBoolean("Enable Poison Arrows", POISONPROJECTILES,true,"Enables poison arrows");
+        poisonProjectileExpirationTime = config.getInt("Poison Projectile Expiration Time", POISONPROJECTILES,TFCOptions.yearLength,-1,Integer.MAX_VALUE,"How many days do poison projectiles keep their effects for. If set to -1, poison projectiles will keep their effect indefinitely");
+        poisonProjectileEffectDurationModifier = config.getInt("Poison Arrow Effect Duration Modifier", POISONPROJECTILES,50,0,100,"How much the duration of the poison projectile's effect can vary, expressed as a percentage of its base duration.");
 
         //Melee weapons
         enableExtraMaces = config.getBoolean("Enable Extra Maces",EXTRAMACES,true,"Enables stone clubs, lead and brass maces");

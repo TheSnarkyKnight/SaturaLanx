@@ -37,6 +37,7 @@ public class ItemSetup {
     public static Item slowmatch,match,potGrenade,potGrenadeQuick,potGrenadeLong;
     public static Item firecracker;
     public static Item bolas;
+    public static Item ropeArrow;
     public static Item saturaMaceMold, leadMaceHead, brassMaceHead;
     public static Item stoneClub, leadMace, brassMace;
     public static Item mechanism, flaredBarrel, shot, dummyBullet;
@@ -128,6 +129,11 @@ public class ItemSetup {
             bolas = (new Bolas()).setUnlocalizedName("Bolas").setTextureName(WEAPONPATH + "Bolas").setMaxDamage(1).setMaxStackSize(1);
 
             itemList.add(bolas);
+        }
+        if(Config.enableRopeArrows){
+            ropeArrow = new ItemSatura().setFolder("weapons/projectiles").setUnlocalizedName("RopeArrow").setMaxStackSize(16);
+
+            itemList.add(ropeArrow);
         }
         if (Config.enableIncendiaryPot) {
             pitchPot = (new ItemSatura().setUnlocalizedName("CeramicPotPitch").setCreativeTab(tab).setTextureName(MODID + ":" + "CeramicPotPitch"));

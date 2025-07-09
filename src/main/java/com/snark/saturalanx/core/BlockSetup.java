@@ -15,21 +15,18 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialLiquid;
 
 import java.util.ArrayList;
 
 public class BlockSetup {
 
     public static String BLOCKPATH = "saturalanx:blocks/";
-    public static Material bathWaterMaterial;
-    public static int tileRenderId,tallCandlestickRenderId, stockadeRenderId, chaliceRenderId, hypocaustRenderId;
+    public static int tileRenderId,tallCandlestickRenderId, stockadeRenderId, chaliceRenderId, hypocaustRenderId, arrowRopeRenderId;
     public static ArrayList<Block> blockList;
     public static Block colouredBricks, floorTiles, mortaredCobble1, mortaredCobble2;
     public static Block brassTallCandlestickOff,brassTallCandlestick,pewterTallCandlestick,pewterTallCandlestickOff,silverTallCandlestick,silverTallCandlestickOff,sterlingSilverTallCandlestick,sterlingSilverTallCandlestickOff,goldTallCandlestick,goldTallCandlestickOff,roseGoldTallCandlestick,roseGoldTallCandlestickOff;
-    public static Block flamingBlock;
+    public static Block flamingBlock, arrowRopeBlock;
     public static Block spikeBlock, leafCover;
     public static Block gabion1, gabion2, stockadeBlock;
     public static Block chaliceBlock,chaliceBlock2;
@@ -151,6 +148,12 @@ public class BlockSetup {
             blockList.add(flamingBlock);
         }
 
+        if(Config.enableRopeArrows){
+            arrowRopeBlock = new ArrowRopeBlock();
+
+            blockList.add(arrowRopeBlock);
+        }
+
         if(Config.enableSpikes) {
             spikeBlock = new SpikeBlock();
 
@@ -182,6 +185,7 @@ public class BlockSetup {
         RenderingRegistry.registerBlockHandler(stockadeRenderId = RenderingRegistry.getNextAvailableRenderId(), new StockadeRender());
         RenderingRegistry.registerBlockHandler(chaliceRenderId = RenderingRegistry.getNextAvailableRenderId(), new ChaliceRender());
         RenderingRegistry.registerBlockHandler(hypocaustRenderId = RenderingRegistry.getNextAvailableRenderId(), new HypocaustRender());
+        RenderingRegistry.registerBlockHandler(arrowRopeRenderId = RenderingRegistry.getNextAvailableRenderId(), new ArrowRopeRender());
     }
 
 

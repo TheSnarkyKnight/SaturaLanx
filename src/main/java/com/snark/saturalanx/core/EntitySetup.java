@@ -35,6 +35,10 @@ public class EntitySetup {
             EntityRegistry.registerGlobalEntityID(EntityPoisonArrow.class,"poisonarrowSL",EntityRegistry.findGlobalUniqueEntityId());
             EntityRegistry.registerModEntity(EntityPoisonArrow.class,"poisonarrowSL",7,SaturaLanx.instance,64,10,true);
         }
+        if(Config.enableRopeArrows){
+            EntityRegistry.registerGlobalEntityID(EntityPoisonArrow.class,"ropearrowSL",EntityRegistry.findGlobalUniqueEntityId());
+            EntityRegistry.registerModEntity(EntityPoisonArrow.class,"ropearrowSL",8,SaturaLanx.instance,64,10,true);
+        }
         if(Config.enablePotGrenades) {
             EntityRegistry.registerGlobalEntityID(EntityPotGrenade.class, "potGrenadeSL", EntityRegistry.findGlobalUniqueEntityId());
             EntityRegistry.registerModEntity(EntityPotGrenade.class, "potGrenadeSL", 1, SaturaLanx.instance, 64, 10, true);
@@ -88,6 +92,8 @@ public class EntitySetup {
             RenderingRegistry.registerEntityRenderingHandler(EntityFlameArrow.class,new RenderCustomArrow(new String[]{"CrudeFlameArrow","FlameArrow","FireArrow"}));
         if(Config.enablePoisonArrows)
             RenderingRegistry.registerEntityRenderingHandler(EntityPoisonArrow.class, new RenderCustomArrow("PoisonArrow"));
+        if(Config.enableRopeArrows)
+            RenderingRegistry.registerEntityRenderingHandler(EntityRopeArrow.class, new RenderCustomArrow("RopeArrow"));
 
     }
 }

@@ -389,10 +389,6 @@ public class TallCandlestickRender implements ISimpleBlockRenderingHandler {
         return true;
     }
 
-    public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side) {
-        return side == ForgeDirection.DOWN;
-    }
-
     public boolean shouldRender3DInInventory(int modelId) {
         return true;
     }

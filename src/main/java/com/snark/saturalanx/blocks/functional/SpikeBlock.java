@@ -30,6 +30,7 @@ public class SpikeBlock extends BlockTerra{
     protected String[] names;
     public static DamageSource spikeDamageSource;
     public static String damageShape = "1x3";
+
     public SpikeBlock(){
         this.setBlockName("SpikeBlock");
         this.setCreativeTab(null);

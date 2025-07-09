@@ -23,6 +23,8 @@ saturalanx.potion.daturaPoison=Datura Poisoning
 saturalanx.potion.contaminatedPoison=Contaminated Wounds
 //Functional Blocks
 tile.FlamingBlock.name=Flaming Block
+tile.ArrowRope_0.name=Arrow Rope
+tile.ArrowRope_1.name=Rope Arrow
 tile.LeafCover_0.name=Leaf Cover
 tile.LeafCover_1.name=Leaf Cover
 tile.SpikeBlock_0.name=Wooden Spikes
@@ -191,6 +193,7 @@ item.BrassMace.name=Brass Mace
 //Ranged Weapons
 item.Bolas.name=Bolas
 item.PoisonArrow.name=Poison Arrow
+item.RopeArrow.name=Rope Arrow
 //Firearms
 item.Slowmatch.name=Slowmatch
 item.Shot0.name=Stone Shot

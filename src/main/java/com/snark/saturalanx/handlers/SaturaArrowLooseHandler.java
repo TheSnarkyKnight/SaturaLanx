@@ -6,6 +6,7 @@ import com.snark.saturalanx.core.Config;
 import com.snark.saturalanx.core.ItemSetup;
 import com.snark.saturalanx.entities.EntityFlameArrow;
 import com.snark.saturalanx.entities.EntityPoisonArrow;
+import com.snark.saturalanx.entities.EntityRopeArrow;
 import com.snark.saturalanx.items.warfare.PoisonedArrow;
 import com.snark.saturalanx.items.warfare.incendiary.FlameArrowItem;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -27,7 +28,7 @@ public class SaturaArrowLooseHandler{
         ItemStack bow = event.bow;
         ItemStack arrow = null;
 
-        if(bow.getItem() instanceof ItemCustomBow && (Config.enableFlameArrows||Config.enablePoisonArrows)){
+        if(bow.getItem() instanceof ItemCustomBow && (Config.enableFlameArrows||Config.enablePoisonArrows||Config.enableRopeArrows)){
             ItemStack s;
             int index = 0;
 
@@ -40,7 +41,7 @@ public class SaturaArrowLooseHandler{
                         index = i;
                     }
                 }
-                else if(s!=null && s.getItem() instanceof PoisonedArrow){
+                else if(s!=null && (s.getItem() instanceof PoisonedArrow || s.getItem() == ItemSetup.ropeArrow)){
                     arrow = s;
                     index = i;
                 }
@@ -81,6 +82,14 @@ public class SaturaArrowLooseHandler{
                 }
                 else if(arrow.getItem() instanceof PoisonedArrow){
                     eArrow = new EntityPoisonArrow(player.worldObj,player,forceMult*2,arrow.stackTagCompound);
+
+                    if(!player.capabilities.isCreativeMode){
+                        if(player.inventory.mainInventory[index].stackSize-- <= 0)
+                            player.inventory.setInventorySlotContents(index,null);
+                    }
+                }
+                else if(arrow.getItem() == ItemSetup.ropeArrow){
+                    eArrow = new EntityRopeArrow(player.worldObj,player,forceMult*2);
 
                     if(!player.capabilities.isCreativeMode){
                         if(player.inventory.mainInventory[index].stackSize-- <= 0)

@@ -59,6 +59,10 @@ public class NEISaturaLanxConfig implements IConfigureNEI {
             API.hideItem(new ItemStack(BlockSetup.bathWater));
             API.hideItem(new ItemStack(BlockSetup.bathWaterStatic));
         }
+        if(Config.enableRopeArrows){
+            API.hideItem(new ItemStack(BlockSetup.arrowRopeBlock,1,0));
+            API.hideItem(new ItemStack(BlockSetup.arrowRopeBlock,1,1));
+        }
     }
 }
 

@@ -163,6 +163,10 @@ public class CraftingRecipes {
             }
         }
 
+        if(Config.enableRopeArrows){
+            GameRegistry.addShapelessRecipe(new ItemStack(ropeArrow,1,0),new ItemStack(TFCItems.arrow,1,0),new ItemStack(TFCItems.rope,1,0));
+        }
+
         if (Config.enableIncendiaryPot) {
             GameRegistry.addShapelessRecipe(new ItemStack(incendiaryPot, 1), new ItemStack(pitchPot, 1), new ItemStack(wick));
         }
