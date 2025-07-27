@@ -143,6 +143,7 @@ public class Slowmatch extends ItemSatura {
 
         if(!stack.stackTagCompound.getBoolean("lit")&& Util.canBlockLight(x,y,z,world)){
             stack.stackTagCompound.setBoolean("lit",true);
+            return true;
         }
 
         return false;

@@ -128,6 +128,7 @@ protected int type;
         if(!stack.stackTagCompound.getBoolean("lit")&&Util.canBlockLight(x,y,z,world)){
             stack.stackTagCompound.setBoolean("lit",true);
             stack.stackTagCompound.setInteger("counter",100);
+            return true;
         }
 
         return false;

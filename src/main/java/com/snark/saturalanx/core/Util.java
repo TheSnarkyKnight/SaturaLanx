@@ -1,10 +1,15 @@
 package com.snark.saturalanx.core;
 
 import com.dunk.tfc.Blocks.BlockCandle;
+import com.dunk.tfc.Blocks.BlockCandleOff;
+import com.dunk.tfc.Blocks.Vanilla.BlockTorch;
+import com.dunk.tfc.Blocks.Vanilla.BlockTorchOff;
 import com.dunk.tfc.TileEntities.TEFirepit;
 import com.dunk.tfc.TileEntities.TEForge;
 import com.dunk.tfc.api.TFCBlocks;
+import com.dunk.tfc.api.TileEntities.TEFireEntity;
 import com.snark.saturalanx.blocks.decoration.TallCandlestickBlock;
+import com.snark.saturalanx.blocks.decoration.TallCandlestickOffBlock;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -42,22 +47,17 @@ public class Util {
     public static boolean canBlockLight(int x, int y, int z, World w){
         Block b = w.getBlock(x,y,z);
 
-        if(b == TFCBlocks.torch)
+        if(b instanceof BlockTorch && !(b instanceof BlockTorchOff))
             return true;
 
-        else if(b instanceof BlockCandle)
+        else if(b instanceof BlockCandle && !(b instanceof BlockCandleOff))
             return true;
 
-        else if(b instanceof TallCandlestickBlock)
+        else if(b instanceof TallCandlestickBlock && !(b instanceof TallCandlestickOffBlock))
             return true;
 
-        else if(b == TFCBlocks.firepit) {
-            TEFirepit f = (TEFirepit) w.getTileEntity(x, y, z);
-            return f != null && f.fireTemp > 1;
-        }
-
-        else if(b == TFCBlocks.forge){
-            TEForge f = (TEForge) w.getTileEntity(x,y,z);
+        else if(b == TFCBlocks.firepit || b == TFCBlocks.forge) {
+            TEFireEntity f = (TEFireEntity) w.getTileEntity(x, y, z);
             return f != null && f.fireTemp > 1;
         }
 
