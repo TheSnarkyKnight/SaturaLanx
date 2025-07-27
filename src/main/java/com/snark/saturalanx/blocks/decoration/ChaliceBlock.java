@@ -56,7 +56,7 @@ public class ChaliceBlock extends BlockTerraContainer {
 
     @Override
     public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-        for (int i = 0; i < names.length*2; i ++) {
+        for (int i = 0; i < names.length; i ++) {
             list.add(new ItemStack(item, 1, i));
         }
     }

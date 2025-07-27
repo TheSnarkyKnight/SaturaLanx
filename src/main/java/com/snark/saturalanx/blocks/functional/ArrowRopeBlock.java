@@ -7,6 +7,7 @@ import com.dunk.tfc.Items.ItemBlocks.ItemAnvil;
 import com.dunk.tfc.Items.ItemBlocks.ItemBarrels;
 import com.dunk.tfc.Items.ItemBlocks.ItemLargeVessel;
 import com.dunk.tfc.Items.ItemClothing;
+import com.dunk.tfc.Items.ItemTFCArmor;
 import com.dunk.tfc.api.Armor;
 import com.dunk.tfc.api.Interfaces.IEquipable;
 import com.dunk.tfc.api.TFCItems;
@@ -43,7 +44,7 @@ public class ArrowRopeBlock extends BlockTerra {
     private int breakTreshold;
     public ArrowRopeBlock(){
         super(Material.cloth);
-        this.setCreativeTab(SaturaLanx.tab);
+        this.setCreativeTab(null);
         this.setHardness(1.0F);
         this.setBlockName("ArrowRope");
         this.breakTreshold = Config.ropeArrowWeightAllowance*6;
@@ -59,10 +60,6 @@ public class ArrowRopeBlock extends BlockTerra {
         return null;
     }
 
-    @Override
-    public Item getItemDropped(int i, Random r, int j) {
-        return null;
-    }
 
     protected void dropBlocksInWorld(World world, int x, int y, int z) {
         if(!world.isRemote){
@@ -102,12 +99,6 @@ public class ArrowRopeBlock extends BlockTerra {
     }
 
     @Override
-    public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-            list.add(new ItemStack(item, 1, 0));
-        list.add(new ItemStack(item, 1, 1));
-    }
-
-    @Override
     public IIcon getIcon(int side, int meta){
         if(meta==0)
             return ropeIcon;
@@ -116,10 +107,7 @@ public class ArrowRopeBlock extends BlockTerra {
 
     @Override
     public boolean isLadder(IBlockAccess world, int x, int y, int z, EntityLivingBase entity) {
-        if(entity instanceof EntityPlayer){
-            return true;
-        }
-        return false;
+        return entity instanceof EntityPlayer;
     }
 
     @Override
@@ -135,12 +123,12 @@ public class ArrowRopeBlock extends BlockTerra {
 
     @Override
     public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
-        if(entity instanceof EntityPlayer){
+        if(!world.isRemote && entity instanceof EntityPlayer){
             int c = 0;
             EntityPlayer player = (EntityPlayer) entity;
             for (ItemStack is : ((InventoryPlayerTFC)player.inventory).extraEquipInventory) {
                 if (is != null) {
-                    if (is.getItem() instanceof ItemClothing) {
+                    if (is.getItem() instanceof ItemClothing||is.getItem() instanceof ItemTFCArmor) {
                         Armor a = ((ItemClothing) is.getItem()).getArmorType();
                         if (a != null) {
                             if (Armor.isMetal(a))
@@ -165,6 +153,12 @@ public class ArrowRopeBlock extends BlockTerra {
                 world.setBlock(x, y, z, Blocks.air, 0, 3);
             }
         }
+    }
+
+    @Override
+    public void onBlockHarvested(World world, int x, int y, int z, int side, EntityPlayer player) {
+        if(!world.isRemote)
+            this.dropBlocksInWorld(world, x, y, z);
     }
 
     @Override

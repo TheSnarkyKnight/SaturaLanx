@@ -136,8 +136,8 @@ public class ItemSetup {
             itemList.add(ropeArrow);
         }
         if (Config.enableIncendiaryPot) {
-            pitchPot = (new ItemSatura().setUnlocalizedName("CeramicPotPitch").setCreativeTab(tab).setTextureName(MODID + ":" + "CeramicPotPitch"));
-            wick = (new ItemSatura()).setUnlocalizedName("Wick").setCreativeTab(tab).setTextureName(MODID + ":" + "Wick");
+            pitchPot = (new ItemSatura().setUnlocalizedName("CeramicPotPitch"));
+            wick = (new ItemSatura()).setUnlocalizedName("Wick");
             incendiaryPot = (new IncendiaryPot()).setUnlocalizedName("IncendiaryPot").setCreativeTab(tab).setTextureName(WEAPONPATH + "IncendiaryPot");
 
             itemList.add(pitchPot);
