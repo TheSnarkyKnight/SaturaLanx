@@ -1,4 +1,4 @@
-package com.snark.saturalanx.items;
+package com.snark.saturalanx.items.pottery;
 
 import com.dunk.tfc.Items.Pottery.ItemPotteryMold;
 import cpw.mods.fml.relauncher.Side;
@@ -13,9 +13,9 @@ import java.util.List;
 
 import static com.snark.saturalanx.SaturaLanx.tab;
 
-public class PotteryMold extends ItemPotteryMold {
+public class PotteryMoldSL extends ItemPotteryMold {
 boolean b;
-    public PotteryMold(boolean b) {
+    public PotteryMoldSL(boolean b) {
         super();
         this.b = b;
         this.setCreativeTab(tab);

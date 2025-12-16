@@ -1,4 +1,4 @@
-package com.snark.saturalanx.items.warfare.gunpowder;
+package com.snark.saturalanx.items.weapons.gunpowder;
 
 import com.dunk.tfc.api.Enums.EnumItemReach;
 import com.dunk.tfc.api.Enums.EnumSize;
@@ -24,12 +24,12 @@ import java.util.List;
 
 import static com.snark.saturalanx.core.ItemSetup.WEAPONPATH;
 
-public class PotGrenade extends ItemSL {
+public class PotGrenadeItem extends ItemSL {
 
 protected IIcon icon2;
 protected int type;
 
-    public PotGrenade(){
+    public PotGrenadeItem(){
         super();
         this.stackable = false;
         this.size = EnumSize.SMALL;

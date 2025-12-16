@@ -1,14 +1,12 @@
 package com.snark.saturalanx.renders.entity;
 
 import com.snark.saturalanx.core.ItemSetup;
-import com.snark.saturalanx.entities.EntityBullet;
 import com.snark.saturalanx.entities.EntityPotGrenade;
-import com.snark.saturalanx.items.warfare.gunpowder.PotGrenade;
+import com.snark.saturalanx.items.weapons.gunpowder.PotGrenadeItem;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
@@ -25,13 +23,13 @@ public class RenderGrenade extends Render {
         switch (entity.getType()){
             case 1:
             default:
-                this.renderItem(Tessellator.instance, ((PotGrenade)ItemSetup.potGrenade).getLitIcon());
+                this.renderItem(Tessellator.instance, ((PotGrenadeItem)ItemSetup.potGrenade).getLitIcon());
                 break;
             case 2:
-                this.renderItem(Tessellator.instance, ((PotGrenade)ItemSetup.potGrenadeQuick).getLitIcon());
+                this.renderItem(Tessellator.instance, ((PotGrenadeItem)ItemSetup.potGrenadeQuick).getLitIcon());
                 break;
             case 3:
-                this.renderItem(Tessellator.instance, ((PotGrenade)ItemSetup.potGrenadeLong).getLitIcon());
+                this.renderItem(Tessellator.instance, ((PotGrenadeItem)ItemSetup.potGrenadeLong).getLitIcon());
                 break;
         }
         GL11.glDisable(GL12.GL_RESCALE_NORMAL);

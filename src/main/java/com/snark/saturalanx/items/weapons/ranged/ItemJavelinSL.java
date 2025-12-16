@@ -1,4 +1,4 @@
-package com.snark.saturalanx.items.warfare;
+package com.snark.saturalanx.items.weapons.ranged;
 
 import com.dunk.tfc.Items.Tools.ItemJavelin;
 import com.dunk.tfc.Render.Item.PoleItemRenderer;

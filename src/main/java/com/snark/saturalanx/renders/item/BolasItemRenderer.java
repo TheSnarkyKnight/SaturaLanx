@@ -3,7 +3,7 @@ package com.snark.saturalanx.renders.item;
 import com.dunk.tfc.Core.TFC_Time;
 import com.dunk.tfc.Handlers.Client.ClientTickHandler;
 import com.dunk.tfc.Render.Item.SlingItemRenderer;
-import com.snark.saturalanx.items.warfare.Bolas;
+import com.snark.saturalanx.items.weapons.ranged.BolasItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -48,7 +48,7 @@ public class BolasItemRenderer extends SlingItemRenderer {
         GL11.glRotatef(-45.0F, 0.0F, 0.0F, 1.0F);
         if (player != null && player.isUsingItem() || item.hasTagCompound() && item.stackTagCompound.hasKey("shooting")) {
             int j = item.getMaxItemUseDuration() - player.getItemInUseCount();
-            float force = (float) j / ((Bolas) item.getItem()).getUseSpeed(player);
+            float force = (float) j / ((BolasItem) item.getItem()).getUseSpeed(player);
             if ((double) force >= 0.5) {
                 GL11.glScalef(1.25F, 1.25F, 1.25F);
             }

@@ -3,9 +3,8 @@ package com.snark.saturalanx.handlers;
 import com.snark.saturalanx.core.Config;
 import com.snark.saturalanx.core.ItemSetup;
 import com.snark.saturalanx.entities.EntityPotGrenade;
-import com.snark.saturalanx.items.warfare.gunpowder.PotGrenade;
+import com.snark.saturalanx.items.weapons.gunpowder.PotGrenadeItem;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
@@ -37,7 +36,7 @@ public class SaturaEntityInteractHandler {
                         break;
                 }
 
-                ((PotGrenade)is.getItem()).setComponents(is,comp[0],comp[1],comp[2],comp[3],true);
+                ((PotGrenadeItem)is.getItem()).setComponents(is,comp[0],comp[1],comp[2],comp[3],true);
 
                 player.inventory.mainInventory[player.inventory.currentItem] = is;
 

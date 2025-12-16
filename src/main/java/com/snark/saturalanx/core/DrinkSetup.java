@@ -6,9 +6,9 @@ import com.dunk.tfc.api.Enums.EnumFoodGroup;
 import com.dunk.tfc.api.TFCFluids;
 import com.dunk.tfc.api.TFCItems;
 import com.snark.saturalanx.SaturaLanx;
-import com.snark.saturalanx.items.Alcohol;
-import com.snark.saturalanx.items.BucketSatura;
-import com.snark.saturalanx.items.Drink;
+import com.snark.saturalanx.items.AlcoholItemSL;
+import com.snark.saturalanx.items.tools.BucketSL;
+import com.snark.saturalanx.items.DrinkItemSL;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -51,66 +51,66 @@ public class DrinkSetup {
 
         //Misc
 
-        oliveOil = (new Drink(1000.0F)).setWaterRestoreRatio(1.0F).setCalories(1.50F).setCanDrinkInParts(true).setFoodGroup(EnumFoodGroup.Vegetable).setUnlocalizedName("Olive Oil");
+        oliveOil = (new DrinkItemSL(1000.0F)).setWaterRestoreRatio(1.0F).setCalories(1.50F).setCanDrinkInParts(true).setFoodGroup(EnumFoodGroup.Vegetable).setUnlocalizedName("Olive Oil");
 
         //Teas
 
-        dandelionTea = (new Drink(1000.0F)).setWaterRestoreRatio(1.0F).setCalories(0.30F).setCanDrinkInParts(true).setFoodGroup(EnumFoodGroup.Vegetable).setUnlocalizedName("DandelionTea");
-        dandelionCoffee = (new Drink(1000.0F)).setWaterRestoreRatio(1.0F).setCalories(0.30F).setCanDrinkInParts(true).setFoodGroup(EnumFoodGroup.Vegetable).setUnlocalizedName("DandelionCoffee");
-        goldenrodTea = (new Drink(1000.0F)).setWaterRestoreRatio(1.0F).setCalories(0.30F).setCanDrinkInParts(true).setFoodGroup(EnumFoodGroup.Vegetable).setUnlocalizedName("GoldenrodTea");
-        daisyTea = (new Drink(1000.0F)).setWaterRestoreRatio(1.0F).setCalories(0.30F).setCanDrinkInParts(true).setFoodGroup(EnumFoodGroup.Vegetable).setUnlocalizedName("DaisyTea");
+        dandelionTea = (new DrinkItemSL(1000.0F)).setWaterRestoreRatio(1.0F).setCalories(0.30F).setCanDrinkInParts(true).setFoodGroup(EnumFoodGroup.Vegetable).setUnlocalizedName("DandelionTea");
+        dandelionCoffee = (new DrinkItemSL(1000.0F)).setWaterRestoreRatio(1.0F).setCalories(0.30F).setCanDrinkInParts(true).setFoodGroup(EnumFoodGroup.Vegetable).setUnlocalizedName("DandelionCoffee");
+        goldenrodTea = (new DrinkItemSL(1000.0F)).setWaterRestoreRatio(1.0F).setCalories(0.30F).setCanDrinkInParts(true).setFoodGroup(EnumFoodGroup.Vegetable).setUnlocalizedName("GoldenrodTea");
+        daisyTea = (new DrinkItemSL(1000.0F)).setWaterRestoreRatio(1.0F).setCalories(0.30F).setCanDrinkInParts(true).setFoodGroup(EnumFoodGroup.Vegetable).setUnlocalizedName("DaisyTea");
 
         //Fruit juice
-        whiteGrapeJuice = (new Drink(1000.0F)).setWaterRestoreRatio(1.0F).setCalories(0.608F).setCanDrinkInParts(true).setFoodGroup(EnumFoodGroup.Fruit).setUnlocalizedName("WhiteGrapeJuice");
-        melonJuice = (new Drink(1000.0F)).setWaterRestoreRatio(1.0F).setCalories(0.608F).setCanDrinkInParts(true).setFoodGroup(EnumFoodGroup.Fruit).setUnlocalizedName("MelonJuice");
+        whiteGrapeJuice = (new DrinkItemSL(1000.0F)).setWaterRestoreRatio(1.0F).setCalories(0.608F).setCanDrinkInParts(true).setFoodGroup(EnumFoodGroup.Fruit).setUnlocalizedName("WhiteGrapeJuice");
+        melonJuice = (new DrinkItemSL(1000.0F)).setWaterRestoreRatio(1.0F).setCalories(0.608F).setCanDrinkInParts(true).setFoodGroup(EnumFoodGroup.Fruit).setUnlocalizedName("MelonJuice");
 
         //Wine
-        whiteWine = (new Alcohol(1000.0F)).setAlcoholContent(0.14F).setCalories(0.492F).setTier(1).setCanDrinkInParts(true).setWaterRestoreRatio(0.375F).setUnlocalizedName("WhiteWine");
-        melonWine = (new Alcohol(1000.0F)).setAlcoholContent(0.14F).setCalories(0.492F).setTier(1).setCanDrinkInParts(true).setWaterRestoreRatio(0.375F).setUnlocalizedName("MelonWine");
+        whiteWine = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.14F).setCalories(0.492F).setTier(1).setCanDrinkInParts(true).setWaterRestoreRatio(0.375F).setUnlocalizedName("WhiteWine");
+        melonWine = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.14F).setCalories(0.492F).setTier(1).setCanDrinkInParts(true).setWaterRestoreRatio(0.375F).setUnlocalizedName("MelonWine");
 
         //Distillates
-        melonBrandy = (new Alcohol(1000.0F)).setAlcoholContent(0.45F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("MelonBrandy");
+        melonBrandy = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.45F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("MelonBrandy");
 
         //Sugarwater, kilju and pontikka
-        sugarWater = (new Drink(1000.0F)).setWaterRestoreRatio(0.8F).setCalories(1.0F).setCanDrinkInParts(true).setFoodGroup(null).setUnlocalizedName("SugarWater");
-        kilju = (new Alcohol(1000.0F)).setAlcoholContent(0.20F).setCalories(0.560F).setTier(1).setCanDrinkInParts(true).setWaterRestoreRatio(0.350F).setUnlocalizedName("Kilju");
-        pontikka = (new Alcohol(1000.0F)).setAlcoholContent(0.45F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("Pontikka");
+        sugarWater = (new DrinkItemSL(1000.0F)).setWaterRestoreRatio(0.8F).setCalories(1.0F).setCanDrinkInParts(true).setFoodGroup(null).setUnlocalizedName("SugarWater");
+        kilju = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.20F).setCalories(0.560F).setTier(1).setCanDrinkInParts(true).setWaterRestoreRatio(0.350F).setUnlocalizedName("Kilju");
+        pontikka = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.45F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("Pontikka");
 
         //Ethanol
-        ethanol = (new Alcohol(1000.0F)).setAlcoholContent(0.95F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("Ethanol");
-        ethanolBucketClay = (new BucketSatura(Blocks.air).setUnlocalizedName("CeramicBucketEthanol").setContainerItem(TFCItems.clayBucketEmpty).setCreativeTab(tab).setTextureName(MODID + ":" + "CeramicBucketEthanol"));
-        ethanolBucketWood = (new BucketSatura(Blocks.air).setUnlocalizedName("WoodenBucketEthanol").setContainerItem(TFCItems.woodenBucketEmpty).setCreativeTab(tab).setTextureName(MODID + ":" + "WoodenBucketEthanol"));
+        ethanol = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.95F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("Ethanol");
+        ethanolBucketClay = (new BucketSL(Blocks.air).setUnlocalizedName("CeramicBucketEthanol").setContainerItem(TFCItems.clayBucketEmpty).setCreativeTab(tab).setTextureName(MODID + ":" + "CeramicBucketEthanol"));
+        ethanolBucketWood = (new BucketSL(Blocks.air).setUnlocalizedName("WoodenBucketEthanol").setContainerItem(TFCItems.woodenBucketEmpty).setCreativeTab(tab).setTextureName(MODID + ":" + "WoodenBucketEthanol"));
 
         //Liquors
-        liquorBase = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("LiquorBase");
+        liquorBase = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("LiquorBase");
 
-        dandelionLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("DandelionLiquor");
+        dandelionLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("DandelionLiquor");
 
-        lemonLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("LemonLiquor");
-        orangeLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("OrangeLiquor");
-        appleLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("AppleLiquor");
-        peachLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("PeachLiquor");
-        plumLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("PlumLiquor");
-        cherryLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("CherryLiquor");
-        papayaLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("PapayaLiquor");
-        dateLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("DateLiquor");
-        coconutLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("CoconutLiquor");
-        bananaLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("BananaLiquor");
-        melonLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("MelonLiquor");
-        figLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("FigLiquor");
-        grapeLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("GrapeLiquor");
-        whiteGrapeLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("WhiteGrapeLiquor");
-        blueberryLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("BlueberryLiquor");
-        raspberryLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("RaspberryLiquor");
-        strawberryLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("StrawberryLiquor");
-        blackberryLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("BlackberryLiquor");
-        cranberryLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("CranberryLiquor");
-        wintergreenLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("WintergreenLiquor");
-        bunchberryLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("BunchberryLiquor");
-        cloudberryLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("CloudberryLiquor");
-        gooseberryLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("GooseberryLiquor");
-        snowberryLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("SnowberryLiquor");
-        elderberryLiquor = (new Alcohol(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("ElderberryLiquor");
+        lemonLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("LemonLiquor");
+        orangeLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("OrangeLiquor");
+        appleLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("AppleLiquor");
+        peachLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("PeachLiquor");
+        plumLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("PlumLiquor");
+        cherryLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("CherryLiquor");
+        papayaLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("PapayaLiquor");
+        dateLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("DateLiquor");
+        coconutLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("CoconutLiquor");
+        bananaLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("BananaLiquor");
+        melonLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("MelonLiquor");
+        figLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("FigLiquor");
+        grapeLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("GrapeLiquor");
+        whiteGrapeLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("WhiteGrapeLiquor");
+        blueberryLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("BlueberryLiquor");
+        raspberryLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("RaspberryLiquor");
+        strawberryLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("StrawberryLiquor");
+        blackberryLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("BlackberryLiquor");
+        cranberryLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("CranberryLiquor");
+        wintergreenLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("WintergreenLiquor");
+        bunchberryLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("BunchberryLiquor");
+        cloudberryLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("CloudberryLiquor");
+        gooseberryLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("GooseberryLiquor");
+        snowberryLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("SnowberryLiquor");
+        elderberryLiquor = (new AlcoholItemSL(1000.0F)).setAlcoholContent(0.4F).setTier(2).setCanDrinkInParts(true).setUnlocalizedName("ElderberryLiquor");
 
         drinks = new ArrayList<ItemDrink>();
 
@@ -191,66 +191,66 @@ public class DrinkSetup {
 
         //Teas
         if(Config.enableDandelionFood) {
-            ((Drink) dandelionTea).setupFluidDrinks(DANDELIONTEA, 1000, dandelionTea, TFCItems.glassBottle);
-            ((Drink) dandelionCoffee).setupFluidDrinks(DANDELIONCOFFEE, 1000, dandelionCoffee, TFCItems.glassBottle);
+            ((DrinkItemSL) dandelionTea).setupFluidDrinks(DANDELIONTEA, 1000, dandelionTea, TFCItems.glassBottle);
+            ((DrinkItemSL) dandelionCoffee).setupFluidDrinks(DANDELIONCOFFEE, 1000, dandelionCoffee, TFCItems.glassBottle);
         }
         if(Config.enableGoldenrodFood)
-            ((Drink)goldenrodTea).setupFluidDrinks(GOLDENRODTEA,1000,goldenrodTea,TFCItems.glassBottle);
+            ((DrinkItemSL)goldenrodTea).setupFluidDrinks(GOLDENRODTEA,1000,goldenrodTea,TFCItems.glassBottle);
         if(Config.enableDaisyFood)
-            ((Drink)daisyTea).setupFluidDrinks(DAISYTEA,1000,daisyTea,TFCItems.glassBottle);
+            ((DrinkItemSL)daisyTea).setupFluidDrinks(DAISYTEA,1000,daisyTea,TFCItems.glassBottle);
         //White grape juice and wine
         if(Config.enableWhiteGrapes) {
-            ((Drink) whiteGrapeJuice).setupFluidDrinks(WHITEGRAPEJUICE, 1000, whiteGrapeJuice, TFCItems.glassBottle);
-            ((Alcohol) whiteWine).setupFluidDrinks(WHITEWHINE, 1000, whiteWine, TFCItems.glassBottle);
+            ((DrinkItemSL) whiteGrapeJuice).setupFluidDrinks(WHITEGRAPEJUICE, 1000, whiteGrapeJuice, TFCItems.glassBottle);
+            ((AlcoholItemSL) whiteWine).setupFluidDrinks(WHITEWHINE, 1000, whiteWine, TFCItems.glassBottle);
         }
 
-        ((Drink) melonJuice).setupFluidDrinks(MELONJUICE, 1000, melonJuice, TFCItems.glassBottle);
-        ((Alcohol) melonWine).setupFluidDrinks(MELONWINE, 1000, melonWine, TFCItems.glassBottle);
-        ((Alcohol) melonBrandy).setupFluidDrinks(MELONBRANDY, 1000, melonBrandy, TFCItems.glassBottle);
+        ((DrinkItemSL) melonJuice).setupFluidDrinks(MELONJUICE, 1000, melonJuice, TFCItems.glassBottle);
+        ((AlcoholItemSL) melonWine).setupFluidDrinks(MELONWINE, 1000, melonWine, TFCItems.glassBottle);
+        ((AlcoholItemSL) melonBrandy).setupFluidDrinks(MELONBRANDY, 1000, melonBrandy, TFCItems.glassBottle);
 
-        ((Drink)oliveOil).setupFluidDrinks(TFCFluids.OLIVEOIL,1000,oliveOil,TFCItems.glassBottle);
+        ((DrinkItemSL)oliveOil).setupFluidDrinks(TFCFluids.OLIVEOIL,1000,oliveOil,TFCItems.glassBottle);
 
         //Sugarwater, kilju and pontikka
-        ((Drink)sugarWater).setupFluidDrinks(SUGARWATER,1000,sugarWater,TFCItems.glassBottle);
-        ((Alcohol)kilju).setupFluidDrinks(KILJU,1000,kilju,TFCItems.glassBottle);
-        ((Alcohol)pontikka).setupFluidDrinks(PONTIKKA,1000,pontikka,TFCItems.glassBottle);
+        ((DrinkItemSL)sugarWater).setupFluidDrinks(SUGARWATER,1000,sugarWater,TFCItems.glassBottle);
+        ((AlcoholItemSL)kilju).setupFluidDrinks(KILJU,1000,kilju,TFCItems.glassBottle);
+        ((AlcoholItemSL)pontikka).setupFluidDrinks(PONTIKKA,1000,pontikka,TFCItems.glassBottle);
 
         //Ethanol
-        ((Alcohol)ethanol).setupFluidDrinks(ETHANOL,1000,ethanol,TFCItems.glassBottle);
-        ((BucketSatura)ethanolBucketClay).registerFluidContainerHelper(ETHANOL,1000,new ItemStack(ethanolBucketClay), new ItemStack(TFCItems.clayBucketEmpty));
-        ((BucketSatura)ethanolBucketWood).registerFluidContainerHelper(ETHANOL,1000,new ItemStack(ethanolBucketWood), new ItemStack(TFCItems.woodenBucketEmpty));
+        ((AlcoholItemSL)ethanol).setupFluidDrinks(ETHANOL,1000,ethanol,TFCItems.glassBottle);
+        ((BucketSL)ethanolBucketClay).registerFluidContainerHelper(ETHANOL,1000,new ItemStack(ethanolBucketClay), new ItemStack(TFCItems.clayBucketEmpty));
+        ((BucketSL)ethanolBucketWood).registerFluidContainerHelper(ETHANOL,1000,new ItemStack(ethanolBucketWood), new ItemStack(TFCItems.woodenBucketEmpty));
 
         //Liquors
         if(Config.enableLiqueurs) {
-            ((Alcohol) liquorBase).setupFluidDrinks(LIQUORBASE, 1000, liquorBase, TFCItems.glassBottle);
+            ((AlcoholItemSL) liquorBase).setupFluidDrinks(LIQUORBASE, 1000, liquorBase, TFCItems.glassBottle);
 
-            ((Alcohol) dandelionLiquor).setupFluidDrinks(DANDELIONLIQUOR, 1000, dandelionLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) dandelionLiquor).setupFluidDrinks(DANDELIONLIQUOR, 1000, dandelionLiquor, TFCItems.glassBottle);
 
-            ((Alcohol) lemonLiquor).setupFluidDrinks(LEMONLIQUOR, 1000, lemonLiquor, TFCItems.glassBottle);
-            ((Alcohol) orangeLiquor).setupFluidDrinks(ORANGELIQUOR, 1000, orangeLiquor, TFCItems.glassBottle);
-            ((Alcohol) appleLiquor).setupFluidDrinks(APPLELIQUOR, 1000, appleLiquor, TFCItems.glassBottle);
-            ((Alcohol) peachLiquor).setupFluidDrinks(PEACHLIQUOR, 1000, peachLiquor, TFCItems.glassBottle);
-            ((Alcohol) plumLiquor).setupFluidDrinks(PLUMLIQUOR, 1000, plumLiquor, TFCItems.glassBottle);
-            ((Alcohol) cherryLiquor).setupFluidDrinks(CHERRYLIQUOR, 1000, cherryLiquor, TFCItems.glassBottle);
-            ((Alcohol) papayaLiquor).setupFluidDrinks(PAPAYALIQUOR, 1000, papayaLiquor, TFCItems.glassBottle);
-            ((Alcohol) dateLiquor).setupFluidDrinks(DATELIQUOR, 1000, dateLiquor, TFCItems.glassBottle);
-            ((Alcohol) coconutLiquor).setupFluidDrinks(COCONUTLIQUOR, 1000, coconutLiquor, TFCItems.glassBottle);
-            ((Alcohol) bananaLiquor).setupFluidDrinks(BANANALIQUOR, 1000, bananaLiquor, TFCItems.glassBottle);
-            ((Alcohol) melonLiquor).setupFluidDrinks(MELONLIQUOR, 1000, melonLiquor, TFCItems.glassBottle);
-            ((Alcohol) figLiquor).setupFluidDrinks(FIGLIQUOR, 1000, figLiquor, TFCItems.glassBottle);
-            ((Alcohol) grapeLiquor).setupFluidDrinks(GRAPELIQUOR, 1000, grapeLiquor, TFCItems.glassBottle);
-            ((Alcohol) whiteGrapeLiquor).setupFluidDrinks(WHITEGRAPELIQUOR, 1000, whiteGrapeLiquor, TFCItems.glassBottle);
-            ((Alcohol) blueberryLiquor).setupFluidDrinks(BLUEBERRYLIQUOR, 1000, blueberryLiquor, TFCItems.glassBottle);
-            ((Alcohol) raspberryLiquor).setupFluidDrinks(RASPBERRYLIQUOR, 1000, raspberryLiquor, TFCItems.glassBottle);
-            ((Alcohol) strawberryLiquor).setupFluidDrinks(STRAWBERRYLIQUOR, 1000, strawberryLiquor, TFCItems.glassBottle);
-            ((Alcohol) blackberryLiquor).setupFluidDrinks(BLACKBERRYLIQUOR, 1000, blackberryLiquor, TFCItems.glassBottle);
-            ((Alcohol) cranberryLiquor).setupFluidDrinks(CRANBERRYLIQUOR, 1000, cranberryLiquor, TFCItems.glassBottle);
-            ((Alcohol) wintergreenLiquor).setupFluidDrinks(WINTERGREENLIQUOR, 1000, wintergreenLiquor, TFCItems.glassBottle);
-            ((Alcohol) bunchberryLiquor).setupFluidDrinks(BUNCHBERRYLIQUOR, 1000, bunchberryLiquor, TFCItems.glassBottle);
-            ((Alcohol) cloudberryLiquor).setupFluidDrinks(CLOUDBERRYLIQUOR, 1000, cloudberryLiquor, TFCItems.glassBottle);
-            ((Alcohol) snowberryLiquor).setupFluidDrinks(SNOWBERRYLIQUOR, 1000, snowberryLiquor, TFCItems.glassBottle);
-            ((Alcohol) gooseberryLiquor).setupFluidDrinks(GOOSEBERRYLIQUOR, 1000, gooseberryLiquor, TFCItems.glassBottle);
-            ((Alcohol) elderberryLiquor).setupFluidDrinks(ELDERBERRYLIQUOR, 1000, elderberryLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) lemonLiquor).setupFluidDrinks(LEMONLIQUOR, 1000, lemonLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) orangeLiquor).setupFluidDrinks(ORANGELIQUOR, 1000, orangeLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) appleLiquor).setupFluidDrinks(APPLELIQUOR, 1000, appleLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) peachLiquor).setupFluidDrinks(PEACHLIQUOR, 1000, peachLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) plumLiquor).setupFluidDrinks(PLUMLIQUOR, 1000, plumLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) cherryLiquor).setupFluidDrinks(CHERRYLIQUOR, 1000, cherryLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) papayaLiquor).setupFluidDrinks(PAPAYALIQUOR, 1000, papayaLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) dateLiquor).setupFluidDrinks(DATELIQUOR, 1000, dateLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) coconutLiquor).setupFluidDrinks(COCONUTLIQUOR, 1000, coconutLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) bananaLiquor).setupFluidDrinks(BANANALIQUOR, 1000, bananaLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) melonLiquor).setupFluidDrinks(MELONLIQUOR, 1000, melonLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) figLiquor).setupFluidDrinks(FIGLIQUOR, 1000, figLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) grapeLiquor).setupFluidDrinks(GRAPELIQUOR, 1000, grapeLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) whiteGrapeLiquor).setupFluidDrinks(WHITEGRAPELIQUOR, 1000, whiteGrapeLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) blueberryLiquor).setupFluidDrinks(BLUEBERRYLIQUOR, 1000, blueberryLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) raspberryLiquor).setupFluidDrinks(RASPBERRYLIQUOR, 1000, raspberryLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) strawberryLiquor).setupFluidDrinks(STRAWBERRYLIQUOR, 1000, strawberryLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) blackberryLiquor).setupFluidDrinks(BLACKBERRYLIQUOR, 1000, blackberryLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) cranberryLiquor).setupFluidDrinks(CRANBERRYLIQUOR, 1000, cranberryLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) wintergreenLiquor).setupFluidDrinks(WINTERGREENLIQUOR, 1000, wintergreenLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) bunchberryLiquor).setupFluidDrinks(BUNCHBERRYLIQUOR, 1000, bunchberryLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) cloudberryLiquor).setupFluidDrinks(CLOUDBERRYLIQUOR, 1000, cloudberryLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) snowberryLiquor).setupFluidDrinks(SNOWBERRYLIQUOR, 1000, snowberryLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) gooseberryLiquor).setupFluidDrinks(GOOSEBERRYLIQUOR, 1000, gooseberryLiquor, TFCItems.glassBottle);
+            ((AlcoholItemSL) elderberryLiquor).setupFluidDrinks(ELDERBERRYLIQUOR, 1000, elderberryLiquor, TFCItems.glassBottle);
         }
     }
 

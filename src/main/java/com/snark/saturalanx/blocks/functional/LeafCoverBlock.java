@@ -18,9 +18,9 @@ import java.util.Random;
 
 import static com.snark.saturalanx.SaturaLanx.tab;
 
-public class LeafCover extends BlockLeafLitter {
+public class LeafCoverBlock extends BlockLeafLitter {
 
-    public LeafCover(){
+    public LeafCoverBlock(){
         this.setCreativeTab(tab);
         this.setBlockName("LeafCover");
         this.setHardness(0.5F);

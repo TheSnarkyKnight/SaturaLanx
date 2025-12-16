@@ -3,16 +3,13 @@ package com.snark.saturalanx.items.tools;
 import com.dunk.tfc.api.Enums.EnumItemReach;
 import com.dunk.tfc.api.Enums.EnumSize;
 import com.dunk.tfc.api.Enums.EnumWeight;
-import com.dunk.tfc.api.TFCBlocks;
 import com.snark.saturalanx.core.Util;
 import com.snark.saturalanx.entities.EntityFireCracker;
-import com.snark.saturalanx.items.ItemSatura;
+import com.snark.saturalanx.items.ItemSL;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -20,7 +17,7 @@ import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
 import static com.snark.saturalanx.SaturaLanx.MODID;
 
-public class Firecracker extends ItemSatura {
+public class Firecracker extends ItemSL {
     int num;
 
     public Firecracker(int i){

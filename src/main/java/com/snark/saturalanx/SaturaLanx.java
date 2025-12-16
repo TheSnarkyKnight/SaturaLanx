@@ -21,7 +21,7 @@ public class SaturaLanx
 {
     public static final String MODID = "saturalanx";
     public static final String MODNAME = "Satura Lanx";
-    public static final String VERSION = "0.3.0";
+    public static final String VERSION = "0.4.0";
     public static boolean bidLoaded, kvassLoaded;
     public static CreativeTabs tab = new CreativeTabs("Satura Lanx") {
         @Override

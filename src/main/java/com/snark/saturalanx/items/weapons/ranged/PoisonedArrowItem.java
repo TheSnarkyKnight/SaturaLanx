@@ -1,4 +1,4 @@
-package com.snark.saturalanx.items.warfare;
+package com.snark.saturalanx.items.weapons.ranged;
 
 import com.snark.saturalanx.core.Config;
 import com.snark.saturalanx.items.ItemSL;

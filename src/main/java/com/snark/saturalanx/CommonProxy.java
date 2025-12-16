@@ -46,7 +46,7 @@ public class CommonProxy {
 
     public void postInit(FMLPostInitializationEvent event){
         MoldRecipes.registerPartialMolds();
-        FoodSetup.registerHeat();
+        HeatSetup.registerHeat();
     }
 
     private void getLoadedMods(){

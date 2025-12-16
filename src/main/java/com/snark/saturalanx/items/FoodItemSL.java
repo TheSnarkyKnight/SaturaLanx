@@ -1,11 +1,7 @@
 package com.snark.saturalanx.items;
 
-import com.dunk.tfc.Core.Player.FoodStatsTFC;
-import com.dunk.tfc.Core.TFC_Core;
 import com.dunk.tfc.Food.ItemFoodTFC;
-import com.dunk.tfc.TerraFirmaCraft;
 import com.dunk.tfc.api.Enums.EnumFoodGroup;
-import com.dunk.tfc.api.Interfaces.IFood;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -13,25 +9,24 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
 import static com.snark.saturalanx.SaturaLanx.tab;
 import static com.snark.saturalanx.core.FoodSetup.tulipBulb;
 
-public class Food extends ItemFoodTFC {
+public class FoodItemSL extends ItemFoodTFC {
 
-    public Food(EnumFoodGroup fw, int sw, int so, int sa, int bi, int um, boolean edible){
+    public FoodItemSL(EnumFoodGroup fw, int sw, int so, int sa, int bi, int um, boolean edible){
         super(fw,sw,so,sa,bi,um,edible);
         this.setCreativeTab(tab);
     }
 
-    public Food(EnumFoodGroup fw, int sw, int so, int sa, int bi, int um, boolean edible,boolean poison){
+    public FoodItemSL(EnumFoodGroup fw, int sw, int so, int sa, int bi, int um, boolean edible, boolean poison){
         super(fw,sw,so,sa,bi,um,edible,poison);
         this.setCreativeTab(tab);
     }
 
-    public Food(EnumFoodGroup fw, int sw, int so, int sa, int bi, int um, boolean edible,boolean poison, boolean guaranteePoison){
+    public FoodItemSL(EnumFoodGroup fw, int sw, int so, int sa, int bi, int um, boolean edible, boolean poison, boolean guaranteePoison){
         super(fw,sw,so,sa,bi,um,edible,poison,guaranteePoison);
         this.setCreativeTab(tab);
     }

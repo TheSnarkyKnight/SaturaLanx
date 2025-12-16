@@ -1,4 +1,4 @@
-package com.snark.saturalanx.items.warfare.gunpowder;
+package com.snark.saturalanx.items.weapons.gunpowder;
 
 import com.dunk.tfc.api.TFCItems;
 import com.snark.saturalanx.core.Config;
@@ -12,9 +12,9 @@ import net.minecraft.world.World;
 import static com.snark.saturalanx.SaturaLanx.MODID;
 import static net.minecraft.init.Items.*;
 
-public class MatchlockBlunderbuss extends Arquebus{
+public class MatchlockBlunderbussItem extends MatchlockArquebusItem {
     private int pellets;
-    public MatchlockBlunderbuss(ToolMaterial material, float damage) {
+    public MatchlockBlunderbussItem(ToolMaterial material, float damage) {
         super(material, damage);
         this.loadingTime = Config.mBlunderbussLoadingTime;
         this.aimingTime = Config.mBlunderbussAimingTime;
@@ -97,7 +97,7 @@ public class MatchlockBlunderbuss extends Arquebus{
                 world.spawnEntityInWorld(bullet);
 
         }
-        //spawnSmoke(player);
+        spawnSmoke(player);
         world.playSoundAtEntity(player,MODID+":handgonne",1,1);
         stack.stackTagCompound.setBoolean("load",false);
         stack.damageItem(1,player);

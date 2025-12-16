@@ -57,6 +57,12 @@ public class Config {
     public static int woodenSpikesDamage = 20;
     public static int metalSpikesDamage = 40;
     public static boolean enableLeafCover = true;
+    public static boolean enableBearTrap = true;
+    public static boolean bearTrapShouldAffectPlayers = true;
+    public static int bearTrapDamageFactor = 10;
+    public static int bearTrapAnimalMaxHealth = 3000;
+    public static int bearTrapAnimalEscapeChance = 50;
+
 
     //Ranged weapons
     public static String BOLAS = "Bolas";
@@ -73,6 +79,11 @@ public class Config {
     public static boolean enablePoisonArrows = true;
     public static int poisonProjectileEffectDurationModifier = 50;
     public static int poisonProjectileExpirationTime = TFCOptions.yearLength;
+    public static String SPEARTHROWER = "Spear Thrower";
+    public static boolean enableSpearThrower = true;
+    public static float primitiveSpearThrowerForceMultiplier = 1.3F;
+    public static float spearThrowerForceMultiplier = 1.7F;
+    public static int spearThrowerReadyTime = 4;
 
     public static String ROPEARROWS = "Rope Arrows";
     public static boolean enableRopeArrows = true;
@@ -83,28 +94,31 @@ public class Config {
     public static String EXTRAMACES = "Extra Maces";
     public static boolean enableExtraMaces = true;
 
+    public static String HARDENEDSPEAR = "Fire Hardened Wood Spears";
+    public static boolean enableFireHardenedSpears = true;
+    public static int fireHardenedSpearDamageModifier = 50;
+    public static int fireHardenedSpearDurabilityModifier = 50;
+
     //Gunpowder
-    public static String SLOWMATCH = "Slowmatch";
+    public static String FIREARMS = "Firearms";
     public static int slowmatchLength = 6000;
-    public static String HANDGONNE = "Handgonne";
+
     public static boolean enableHandgonne = true;
     public static int handgonneLoadingTime = 200;
     public static int handgonneAimingTime = 80;
     public static int handgonneDamage = 320;
-    public static String ARQUEBUS = "Matchlock Arquebus";
+
     public static boolean enableArquebus = true;
     public static int arquebusLoadingTime = 200;
     public static int arquebusAimingTime = 20;
     public static int arquebusDamage = 450;
 
-    public static String MBLUNDERBUSS = "Matchlock Blunderbuss";
     public static boolean enableMBlunderbuss = true;
     public static int mBlunderbussLoadingTime = 200;
     public static int mBlunderbussAimingTime = 20;
     public static int mBlunderbussDamage = 44;
     public static int mBlunderbussPellets = 10;
 
-    public static String MHANDMORTAR = "Matchlock Hand Mortar";
     public static boolean enableMHandMortar = true;
     public static int mHandMortarLoadingTime = 400;
     public static int mHandMortarAimingTime = 40;
@@ -224,6 +238,12 @@ public class Config {
 
         enableLeafCover = config.getBoolean("Enable Leaf Cover",TRAPS,true,"Enable leaf cover blocks");
 
+        enableBearTrap = config.getBoolean("Enable Bear Trap",TRAPS,true,"Enable bear traps");
+        bearTrapShouldAffectPlayers = config.getBoolean("Bear Trap Should Affect Players",TRAPS,true,"Determines if players can be affected by bear traps");
+        bearTrapDamageFactor = config.getInt("Bear Trap Damage Factor",TRAPS,10,0,Integer.MAX_VALUE/20,"How much damage should a bear trap inflict. This is multiplied by 20 by TFC, and is modified by bear trap material");
+        bearTrapAnimalEscapeChance = config.getInt("Bear Trap Animal Escape Chance",TRAPS,50,0,100,"What's the chance for an aggroed animal to escape from a bear trap. Acts as a max value, scales with the inverse of animal health");
+        bearTrapAnimalMaxHealth = config.getInt("Bear Trap Animal Max Health",TRAPS,3000,0,Integer.MAX_VALUE,"Mobs with more health than this won't get stuck in bear traps");
+
         //Ranged weapons
         enableBolas = config.getBoolean("Enable Bolas",BOLAS,true,"Enables bolas.");
         bolasDamage = config.getInt("Bolas Damage",BOLAS,120,0,Integer.MAX_VALUE,"The amount of damage done by a bolas. Keep in mind that the actual damage equals this * 1.5");
@@ -243,27 +263,36 @@ public class Config {
         poisonProjectileExpirationTime = config.getInt("Poison Projectile Expiration Time", POISONPROJECTILES,TFCOptions.yearLength,-1,Integer.MAX_VALUE,"How many days do poison projectiles keep their effects for. If set to -1, poison projectiles will keep their effect indefinitely");
         poisonProjectileEffectDurationModifier = config.getInt("Poison Arrow Effect Duration Modifier", POISONPROJECTILES,50,0,100,"How much the duration of the poison projectile's effect can vary, expressed as a percentage of its base duration.");
 
+        enableFireHardenedSpears = config.getBoolean("Enable Fire Hardened Spears",HARDENEDSPEAR,true,"Enables fire hardened spears");
+        fireHardenedSpearDurabilityModifier = config.getInt("Fire Hardened Spear Durability Modifier",HARDENEDSPEAR,50,1,100,"Percentage modifier for hardened spear durability.");
+        fireHardenedSpearDamageModifier = config.getInt("Fire Hardened Spear Damage Modifier",HARDENEDSPEAR,50,1,100,"Percentage modifier for hardened spear damage.");
+
+        enableSpearThrower = config.getBoolean("Enable Spear Thrower",SPEARTHROWER,true,"Enables spear throwers");
+        spearThrowerForceMultiplier = config.getFloat("Spear Thrower Force Multiplier",SPEARTHROWER,1.7F,1,5,"Force multiplier for spear thrower projectiles");
+        primitiveSpearThrowerForceMultiplier = config.getFloat("Primitive Spear Thrower Force Multiplier",SPEARTHROWER,1.3F,1,5,"Force multiplier for spear thrower projectiles");
+        spearThrowerReadyTime = config.getInt("Spear Thrower Ready Time",SPEARTHROWER,4,0,Integer.MAX_VALUE,"How many seconds it takes to ready the spear thrower");
+        
         //Melee weapons
         enableExtraMaces = config.getBoolean("Enable Extra Maces",EXTRAMACES,true,"Enables stone clubs, lead and brass maces");
 
         //Firearms
-        slowmatchLength = config.getInt("Slowmatch Burn Length",SLOWMATCH,6000,0,Integer.MAX_VALUE,"How long (in ticks) should slowmatch burn");
+        slowmatchLength = config.getInt("Slowmatch Burn Length",FIREARMS,6000,0,Integer.MAX_VALUE,"How long (in ticks) should slowmatch burn");
 
-        enableHandgonne = config.getBoolean("Enable Handgonnes",HANDGONNE,true,"Enables handgonnes.");
-        handgonneLoadingTime = config.getInt("Handgonne Loading Time",HANDGONNE,200,0,72000,"The amount of time (in game ticks) that the player needs to reload the handgonne.");
-        handgonneAimingTime = config.getInt("Handgonne Aiming Time",HANDGONNE,80,0,72000,"The amount of time (in game ticks) that the player needs to aim and fire the handgonne.");
-        handgonneDamage = config.getInt("Handgonne Damage",HANDGONNE,320,1,Integer.MAX_VALUE,"The base damage dealt by handgonne bullets.");
+        enableHandgonne = config.getBoolean("Enable Handgonnes",FIREARMS,true,"Enables handgonnes.");
+        handgonneLoadingTime = config.getInt("Handgonne Loading Time",FIREARMS,200,0,72000,"The amount of time (in game ticks) that the player needs to reload the handgonne.");
+        handgonneAimingTime = config.getInt("Handgonne Aiming Time",FIREARMS,80,0,72000,"The amount of time (in game ticks) that the player needs to aim and fire the handgonne.");
+        handgonneDamage = config.getInt("Handgonne Damage",FIREARMS,320,1,Integer.MAX_VALUE,"The base damage dealt by handgonne bullets.");
 
-        enableArquebus = config.getBoolean("Enable Arquebuses",ARQUEBUS,true,"Enables arquebuses.");
-        arquebusLoadingTime = config.getInt("Arquebus Loading TIme",ARQUEBUS,200,0,72000,"The amount of time (in game ticks) that the player needs to reload the arquebus.");
-        arquebusAimingTime = config.getInt("Arquebus Aiming Time",ARQUEBUS,20,0,72000,"The amount of time (in game ticks) that the player needs to aim and fire the arquebus.");
-        arquebusDamage = config.getInt("Arquebus Damage",ARQUEBUS,450,0,Integer.MAX_VALUE,"The base damage dealt by arquebus bullets.");
+        enableArquebus = config.getBoolean("Enable Arquebuses",FIREARMS,true,"Enables arquebuses.");
+        arquebusLoadingTime = config.getInt("Arquebus Loading TIme",FIREARMS,200,0,72000,"The amount of time (in game ticks) that the player needs to reload the arquebus.");
+        arquebusAimingTime = config.getInt("Arquebus Aiming Time",FIREARMS,20,0,72000,"The amount of time (in game ticks) that the player needs to aim and fire the arquebus.");
+        arquebusDamage = config.getInt("Arquebus Damage",FIREARMS,450,0,Integer.MAX_VALUE,"The base damage dealt by arquebus bullets.");
 
-        enableMBlunderbuss = config.getBoolean("Enable Matchlock Blunderbusses",MBLUNDERBUSS,true,"Enables matchlock blunderbusses");
-        mBlunderbussLoadingTime = config.getInt("Matchlock Blunderbuss Loading Time",MBLUNDERBUSS,200,0,72000,"The amount of time (in game ticks) that the player needs to reload the matchlock blunderbuss");
-        mBlunderbussAimingTime = config.getInt("Matchlock Blunderbuss Aiming Time",MBLUNDERBUSS,20,0,72000,"The amount of time (in game ticks) that the player needs to fire the matchlock blunderbuss");
-        mBlunderbussDamage = config.getInt("Matchlock Blunderbuss Damage",MBLUNDERBUSS,44,0,Integer.MAX_VALUE,"The base damage dealt by the matchlock blunderbuss's pellet.");
-        mBlunderbussPellets = config.getInt("Matchlock Blunderbuss Pellets",MBLUNDERBUSS,10,0,Integer.MAX_VALUE,"The amounts of pellets fired by the matchlock blunderbuss");
+        enableMBlunderbuss = config.getBoolean("Enable Matchlock Blunderbusses",FIREARMS,true,"Enables matchlock blunderbusses");
+        mBlunderbussLoadingTime = config.getInt("Matchlock Blunderbuss Loading Time",FIREARMS,200,0,72000,"The amount of time (in game ticks) that the player needs to reload the matchlock blunderbuss");
+        mBlunderbussAimingTime = config.getInt("Matchlock Blunderbuss Aiming Time",FIREARMS,20,0,72000,"The amount of time (in game ticks) that the player needs to fire the matchlock blunderbuss");
+        mBlunderbussDamage = config.getInt("Matchlock Blunderbuss Damage",FIREARMS,44,0,Integer.MAX_VALUE,"The base damage dealt by the matchlock blunderbuss's pellet.");
+        mBlunderbussPellets = config.getInt("Matchlock Blunderbuss Pellets",FIREARMS,10,0,Integer.MAX_VALUE,"The amounts of pellets fired by the matchlock blunderbuss");
 
         //Incendiaries
         enableIncendiaryPot = config.getBoolean("Enable Incendiary Pots",INCENDIARYPOT,true,"Enables incendiary pots");
@@ -283,8 +312,6 @@ public class Config {
         fireArrowGasEffectsInterval = config.getInt("Fire Arrow Gas Effects Interval",FLAMEARROWS,10,0,Integer.MAX_VALUE/20,"How many seconds should a fire arrow try to apply gas effects tp entities");
         fireArrowIgniteAreaOfEffect = config.getInt("Fire Arrow Entity Ignition AOE",FLAMEARROWS,1,1,Integer.MAX_VALUE,"Radius in blocks that a fire arrow will check for entities to set on fire.");
         fireArrowGasAreaOfEffect = config.getInt("Fire Arrow Gas Effects AOE",FLAMEARROWS,2,1,Integer.MAX_VALUE,"Radius in blocks that a fire arrow will check for entities to subject to gas effects.");
-
-
 
         /*enableFiresticks = config.getBoolean("Enable Firesticks",FIRESTICK,true,"Enables firesticks.");
         firestickMeleeDamage = config.getInt("Firestick Melee Damage",FIRESTICK,50,0,Integer.MAX_VALUE,"Damage dealt by firesticks in melee");

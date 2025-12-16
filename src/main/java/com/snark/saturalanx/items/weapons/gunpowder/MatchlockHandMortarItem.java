@@ -1,7 +1,7 @@
-package com.snark.saturalanx.items.warfare.gunpowder;
+package com.snark.saturalanx.items.weapons.gunpowder;
 
-public class MatchlockHandMortar extends Arquebus{
-    public MatchlockHandMortar(ToolMaterial material, float damage) {
+public class MatchlockHandMortarItem extends MatchlockArquebusItem {
+    public MatchlockHandMortarItem(ToolMaterial material, float damage) {
         super(material, damage);
     }
 

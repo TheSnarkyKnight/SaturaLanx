@@ -1,4 +1,4 @@
-package com.snark.saturalanx.items.warfare.incendiary;
+package com.snark.saturalanx.items.weapons.incendiary;
 
 import com.dunk.tfc.api.Enums.EnumItemReach;
 import com.dunk.tfc.api.Enums.EnumSize;
@@ -22,10 +22,10 @@ import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
 import static com.snark.saturalanx.core.ItemSetup.WEAPONPATH;
 
-public class IncendiaryPot extends ItemSL {
+public class IncendiaryPotItem extends ItemSL {
 
     public IIcon icon2;
-    public IncendiaryPot(){
+    public IncendiaryPotItem(){
         super();
         this.stackable = false;
         this.size = EnumSize.SMALL;

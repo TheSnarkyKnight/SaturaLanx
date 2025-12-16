@@ -14,14 +14,14 @@ import net.minecraftforge.fluids.FluidStack;
 
 import static com.snark.saturalanx.SaturaLanx.tab;
 
-public class Drink extends ItemDrink {
+public class DrinkItemSL extends ItemDrink {
 
-    public Drink(float v){
+    public DrinkItemSL(float v){
         super(v);
         this.setCreativeTab(tab);
     }
 
-    public Drink(float v, int t){
+    public DrinkItemSL(float v, int t){
         super(v,t);
         this.setCreativeTab(tab);
     }

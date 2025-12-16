@@ -26,6 +26,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
@@ -37,9 +38,9 @@ import static com.snark.saturalanx.SaturaLanx.MODID;
 import static com.snark.saturalanx.core.ItemSetup.slowmatch;
 import static net.minecraft.init.Items.gunpowder;
 
-public class ArquebusItem extends SwordItemSL {
+public class MatchlockArquebusItem extends SwordItemSL {
     int loadingTime,aimingTime,bulletDamage,matchLength;
-    public ArquebusItem(Item.ToolMaterial material, float damage){
+    public MatchlockArquebusItem(Item.ToolMaterial material, float damage){
         super(material,damage);
         this.damageType = EnumDamageType.CRUSHING;
         this.setCreativeTab(SaturaLanx.tab);
@@ -272,7 +273,7 @@ public class ArquebusItem extends SwordItemSL {
         bullet.setShouldPickup((byte)1);
 
         world.playSoundAtEntity(player,MODID + ":handgonne",1.0F,1.0F);
-        //spawnSmoke(player);
+        spawnSmoke(player);
         if(!world.isRemote){
             world.spawnEntityInWorld(bullet);
         }
@@ -296,37 +297,12 @@ public class ArquebusItem extends SwordItemSL {
         }
     }
 
-    public void addItemInformation(ItemStack is, EntityPlayer player, List<String> arraylist){
-        NBTTagCompound tag = is.getTagCompound();
-        if(tag != null){
-            int match = is.stackTagCompound.getInteger("match");
-
-            if(match<=matchLength&&match>((matchLength/2)+(matchLength/4)))
-                arraylist.add(EnumChatFormatting.WHITE+"The match is almost new");
-            if(match<=((matchLength/2)+(matchLength/4))&&match>matchLength/2)
-                arraylist.add(EnumChatFormatting.WHITE+"There's plenty of match left");
-            if(match<=matchLength/2&&match>matchLength/4)
-                arraylist.add(EnumChatFormatting.WHITE+"The match is starting to run out");
-            if(match<=matchLength/4&&match>0)
-                arraylist.add(EnumChatFormatting.WHITE+"The match has almost run out");
-            if(match<=0)
-                arraylist.add(EnumChatFormatting.WHITE+"There's no match");
-        }
-    }
-
     protected void spawnSmoke(EntityPlayer player){
-        for(int i = 0;i<5;i++) {
-            Random rand = new Random();
-            int x = rand.nextInt(2);
-            int y = rand.nextInt(2);
-            int z = rand.nextInt(2);
-            if(rand.nextInt(2)==0)
-                x *= -1;
-            if(rand.nextInt(2)==0)
-                y *= -1;
-            if(rand.nextInt(2)==0)
-                z *= -1;
-            player.worldObj.spawnParticle("smoke", player.posX, player.posY + player.getEyeHeight(), player.posZ, x,y,z);
+        for(int i = 0;i<15;i++) {
+            int x = Math.random() < 0.5 ? 1 : -1;
+            int z = Math.random() < 0.5 ? 1 : -1;
+            Vec3 vecDir = player.getLookVec().addVector(player.getRNG().nextGaussian()*0.2,player.getRNG().nextGaussian()*0.2,player.getRNG().nextGaussian()*0.2);
+            player.worldObj.spawnParticle("smoke", player.posX + vecDir.xCoord, player.posY + vecDir.yCoord + player.getEyeHeight(), player.posZ + vecDir.zCoord, 0.025*x,0.025,0.025*z);
         }
     }
 

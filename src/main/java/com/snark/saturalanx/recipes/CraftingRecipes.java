@@ -186,6 +186,13 @@ public class CraftingRecipes {
 
         }
 
+        if(Config.enableSpearThrower){
+            for(Item s: string){
+                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(primitiveSpearThrower,1,0),"stickWood","itemKnife",new ItemStack(s,1,0)));
+            }
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(spearThrower,1,0),"woodLumber","itemRock","itemKnife",new ItemStack(TFCItems.leatherStrap,1,0)));
+        }
+
         if (Config.enableSpikes) {
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(spikeItem, 1, 0), "stickWood", "itemKnife"));
         }

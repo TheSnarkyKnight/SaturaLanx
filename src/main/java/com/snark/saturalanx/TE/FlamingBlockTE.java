@@ -4,9 +4,11 @@ import com.dunk.tfc.TileEntities.NetworkTileEntity;
 import com.snark.saturalanx.core.Config;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 
-public class FlamingBlockTE extends NetworkTileEntity {
+public class FlamingBlockTE extends TileEntity {
     int count;
+
     public FlamingBlockTE(){
         super();
         count = Config.incendiaryPotBlockLife * 20;
@@ -31,19 +33,4 @@ public class FlamingBlockTE extends NetworkTileEntity {
         nbt.setInteger("count",this.count);
     }
 
-    public void handleInitPacket(NBTTagCompound nbt) {
-        this.readFromNBT(nbt);
-    }
-
-    public void createInitNBT(NBTTagCompound nbt) {
-        this.writeToNBT(nbt);
-    }
-
-    public void handleDataPacket(NBTTagCompound nbt) {
-        this.readFromNBT(nbt);
-    }
-
-    public void createDataNBT(NBTTagCompound nbt) {
-        this.writeToNBT(nbt);
-    }
 }

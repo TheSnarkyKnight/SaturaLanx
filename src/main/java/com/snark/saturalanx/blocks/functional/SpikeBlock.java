@@ -57,7 +57,7 @@ public class SpikeBlock extends BlockTerra{
                 damage += (entity.fallDistance * 8F) * 10F;
                 if(metadata==0){
                     if((Math.random() * 100) < Config.woodenSpikesBreakChance){
-                        world.playSoundAtEntity(entity,"minecraft:entity.zombie.break_wooden_door",1.0F,1.0F);
+                        world.playSoundAtEntity(entity,"entity.zombie.break_wooden_door",1.0F,1.0F);
                         world.setBlockToAir(x,y,z);
                     }
 

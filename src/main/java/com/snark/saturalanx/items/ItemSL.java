@@ -15,8 +15,8 @@ import java.util.List;
 import static com.snark.saturalanx.SaturaLanx.MODID;
 import static com.snark.saturalanx.SaturaLanx.tab;
 
-public class ItemSatura extends ItemTerra {
-    public ItemSatura() {
+public class ItemSL extends ItemTerra {
+    public ItemSL() {
         super();
         this.setCreativeTab(tab);
         this.setMaxDamage(-1);
@@ -26,7 +26,7 @@ public class ItemSatura extends ItemTerra {
         this.textureFolder = "";
     }
 
-    public ItemSatura(String[] s) {
+    public ItemSL(String[] s) {
         this();
         this.hasSubtypes = true;
         this.metaNames = s;

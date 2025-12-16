@@ -1,4 +1,4 @@
-package com.snark.saturalanx.items.warfare;
+package com.snark.saturalanx.items.weapons;
 
 import com.dunk.tfc.Items.Tools.ItemCustomSword;
 import com.dunk.tfc.api.Enums.EnumDamageType;

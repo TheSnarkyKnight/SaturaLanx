@@ -1,4 +1,4 @@
-package com.snark.saturalanx.items.warfare.gunpowder;
+package com.snark.saturalanx.items.weapons.gunpowder;
 
 import com.dunk.tfc.Blocks.Devices.BlockPottery;
 import com.dunk.tfc.Core.Player.PlayerManagerTFC;
@@ -14,7 +14,7 @@ import com.snark.saturalanx.SaturaLanx;
 import com.snark.saturalanx.core.Config;
 import com.snark.saturalanx.core.Util;
 import com.snark.saturalanx.entities.EntityBullet;
-import com.snark.saturalanx.items.warfare.SwordItemSL;
+import com.snark.saturalanx.items.weapons.SwordItemSL;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,6 +25,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
@@ -32,13 +33,13 @@ import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import static com.snark.saturalanx.SaturaLanx.MODID;
 import static net.minecraft.init.Items.gunpowder;
 
-public class Handgonne extends SwordItemSL {
+public class HandgonneItem extends SwordItemSL {
 
     int loadingTime;
     int aimingTime;
     int bulletDamage;
 
-    public Handgonne(Item.ToolMaterial material, float damage){
+    public HandgonneItem(Item.ToolMaterial material, float damage){
         super(material,damage);
         this.damageType = EnumDamageType.CRUSHING;
         this.setCreativeTab(SaturaLanx.tab);
@@ -236,7 +237,7 @@ public class Handgonne extends SwordItemSL {
         bullet.setType(ammo);
 
         world.playSoundAtEntity(player,MODID + ":handgonne",1.0F,1.0F);
-        world.spawnParticle("smoke",0.2,0.2,0.2,0.2,0.2,0.2);
+        spawnSmoke(player);
         if(!world.isRemote){
             world.spawnEntityInWorld(bullet);
         }
@@ -262,5 +263,14 @@ public class Handgonne extends SwordItemSL {
     @Override
     public boolean canStack() {
         return false;
+    }
+
+    protected void spawnSmoke(EntityPlayer player){
+        for(int i = 0;i<15;i++) {
+            int x = Math.random() < 0.5 ? 1 : -1;
+            int z = Math.random() < 0.5 ? 1 : -1;
+            Vec3 vecDir = player.getLookVec().addVector(player.getRNG().nextGaussian()*0.2,player.getRNG().nextGaussian()*0.2,player.getRNG().nextGaussian()*0.2);
+            player.worldObj.spawnParticle("smoke", player.posX + vecDir.xCoord, player.posY + vecDir.yCoord + player.getEyeHeight(), player.posZ + vecDir.zCoord, 0.025*x,0.025,0.025*z);
+        }
     }
 }

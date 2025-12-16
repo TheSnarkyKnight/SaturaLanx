@@ -1,6 +1,7 @@
 package com.snark.saturalanx.renders.blocks;
 
 import com.snark.saturalanx.blocks.building.StockadeBlock;
+import com.snark.saturalanx.core.Util;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -20,26 +21,26 @@ public class StockadeRender implements ISimpleBlockRenderingHandler {
         render.clearOverrideBlockTexture();
         render.setOverrideBlockTexture(block.getIcon(0,0));
         render.setRenderBounds(0,0,0,1,1,0.25);
-        renderInvBlock(block,meta,render);
+        Util.renderInvBlock(block, meta, render);
         GL11.glPopMatrix();
 
         GL11.glPushMatrix();
         GL11.glTranslatef(0,0.8F,0);
         render.setRenderBounds(0, 0, 0, 1, 0.7, 0.25);
-        renderInvBlock(block,meta,render);
+        Util.renderInvBlock(block,meta,render);
         render.setOverrideBlockTexture(block.getIcon(0,1));
         for(int i = 1;i<=5;i++) {
             render.setRenderBounds(0+(bmod*i), 0.7+(((float)i-1)/hmod), 0.0+(bmod*i), 0.25-(bmod*i), 0.7+(((float)i)/hmod), 0.25-(bmod*i));
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
 
             render.setRenderBounds(0.25+(bmod*i), 0.7+(((float)i-1)/hmod), 0.0+(bmod*i), 0.50-(bmod*i), 0.7+(((float)i)/hmod), 0.25-(bmod*i));
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
 
             render.setRenderBounds(0.5+(bmod*i), 0.7+(((float)i-1)/hmod), 0.0+(bmod*i), 0.75-(bmod*i), 0.7+(((float)i)/hmod), 0.25-(bmod*i));
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
 
             render.setRenderBounds(0.75+(bmod*i), 0.7+(((float)i-1)/hmod), 0.0+(bmod*i), 1-(bmod*i), 0.7+(((float)i)/hmod), 0.25-(bmod*i));
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
         }
         GL11.glPopMatrix();
 
@@ -203,36 +204,6 @@ public class StockadeRender implements ISimpleBlockRenderingHandler {
         }
         render.clearOverrideBlockTexture();
         return true;
-    }
-
-    public static void renderInvBlock(Block block, int m, RenderBlocks renderer) {
-        Tessellator var14 = Tessellator.instance;
-        int meta = m;
-
-        var14.startDrawingQuads();
-        var14.setNormal(0.0F, -1.0F, 0.0F);
-        renderer.renderFaceYNeg(block, 0.0, 0.0, 0.0, block.getIcon(0, meta));
-        var14.draw();
-        var14.startDrawingQuads();
-        var14.setNormal(0.0F, 1.0F, 0.0F);
-        renderer.renderFaceYPos(block, 0.0, 0.0, 0.0, block.getIcon(1, meta));
-        var14.draw();
-        var14.startDrawingQuads();
-        var14.setNormal(0.0F, 0.0F, -1.0F);
-        renderer.renderFaceXNeg(block, 0.0, 0.0, 0.0, block.getIcon(2, meta));
-        var14.draw();
-        var14.startDrawingQuads();
-        var14.setNormal(0.0F, 0.0F, 1.0F);
-        renderer.renderFaceXPos(block, 0.0, 0.0, 0.0, block.getIcon(3, meta));
-        var14.draw();
-        var14.startDrawingQuads();
-        var14.setNormal(-1.0F, 0.0F, 0.0F);
-        renderer.renderFaceZNeg(block, 0.0, 0.0, 0.0, block.getIcon(4, meta));
-        var14.draw();
-        var14.startDrawingQuads();
-        var14.setNormal(1.0F, 0.0F, 0.0F);
-        renderer.renderFaceZPos(block, 0.0, 0.0, 0.0, block.getIcon(5, meta));
-        var14.draw();
     }
 
     @Override

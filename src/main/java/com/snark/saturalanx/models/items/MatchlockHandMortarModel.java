@@ -8,7 +8,7 @@ import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class MatchlockHandMortar extends ModelBase {
+public class MatchlockHandMortarModel extends ModelBase {
 	private final ModelRenderer stock;
 	private final ModelRenderer stockButt_r1;
 	private final ModelRenderer barrel;
@@ -19,7 +19,7 @@ public class MatchlockHandMortar extends ModelBase {
 	private final ModelRenderer leverCurveTop_r1;
 	private final ModelRenderer leverCurveBottom_r1;
 
-	public MatchlockHandMortar() {
+	public MatchlockHandMortarModel() {
 		textureWidth = 64;
 		textureHeight = 64;
 

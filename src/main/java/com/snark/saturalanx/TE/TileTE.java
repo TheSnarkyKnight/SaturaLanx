@@ -7,9 +7,10 @@ import com.snark.saturalanx.core.BlockSetup;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class TileTE extends NetworkTileEntity {
+public class TileTE extends TileEntity {
 
     private int dirtId = -1;
     private int gravelId = -1;
@@ -50,19 +51,4 @@ public class TileTE extends NetworkTileEntity {
         nbt.setInteger("gravelId",this.gravelId);
     }
 
-    public void handleInitPacket(NBTTagCompound nbt) {
-        this.readFromNBT(nbt);
-    }
-
-    public void createInitNBT(NBTTagCompound nbt) {
-        this.writeToNBT(nbt);
-    }
-
-    public void handleDataPacket(NBTTagCompound nbt) {
-        this.readFromNBT(nbt);
-    }
-
-    public void createDataNBT(NBTTagCompound nbt) {
-        this.writeToNBT(nbt);
-    }
 }

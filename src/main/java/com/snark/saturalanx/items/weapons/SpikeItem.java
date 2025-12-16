@@ -1,4 +1,4 @@
-package com.snark.saturalanx.items.warfare;
+package com.snark.saturalanx.items.weapons;
 
 
 import com.dunk.tfc.Core.TFC_Core;

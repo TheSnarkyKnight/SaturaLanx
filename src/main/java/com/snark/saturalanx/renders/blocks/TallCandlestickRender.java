@@ -3,6 +3,7 @@ package com.snark.saturalanx.renders.blocks;
 import com.dunk.tfc.Core.TFC_Textures;
 import com.dunk.tfc.Render.RenderBlocksWithRotation;
 import com.snark.saturalanx.blocks.decoration.TallCandlestickOffBlock;
+import com.snark.saturalanx.core.Util;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -43,11 +44,11 @@ public class TallCandlestickRender implements ISimpleBlockRenderingHandler {
         render.setOverrideBlockTexture(metal);
 
         render.setRenderBounds(0.25,0,0.25,0.75,0.10,0.75);
-        renderInvBlock(block,meta,render);
+        Util.renderInvBlock(block, meta, render);
         render.setRenderBounds(0.3,0.10,0.3,0.7,0.20,0.7);
-        renderInvBlock(block,meta,render);
+        Util.renderInvBlock(block,meta,render);
         render.setRenderBounds(0.45,0.2,0.45,0.55,1,0.55);
-        renderInvBlock(block,meta,render);
+        Util.renderInvBlock(block,meta,render);
 
         GL11.glPopMatrix();
         GL11.glPushMatrix();
@@ -57,127 +58,97 @@ public class TallCandlestickRender implements ISimpleBlockRenderingHandler {
 
             //Arm
             render.setRenderBounds(0.45,0.0,0.45,0.55,0.1,0.55);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
 
             //Cup
             render.setRenderBounds(0.42, 0.1, 0.42, 0.58, 0.4, 0.58);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
             render.setRenderBounds(0.4,0.38,0.4,0.6,0.39,0.6);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
 
             //Candle
             render.setOverrideBlockTexture(block.getIcon(0,0));
             render.setRenderBounds(0.45, 0.4, 0.45, 0.55, 0.7, 0.55);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
 
             //Wick
             render.setOverrideBlockTexture(block.getIcon(i,0));
             render.setRenderBounds(0.49,0.7,0.49,0.51,0.75,0.51);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
         }
         else if(block==silverTallCandlestick||block==silverTallCandlestickOff||block==sterlingSilverTallCandlestick||block==sterlingSilverTallCandlestickOff){
 
             //Arm
             render.setRenderBounds(0.45,0.0,0.29,0.55,0.1,0.71);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
 
             //Cups
             render.setRenderBounds(0.42,0.1,0.22,0.58,0.4,0.38);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
             render.setRenderBounds(0.42,0.1,0.63,0.58,0.4,0.79);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
 
             render.setRenderBounds(0.40,0.38,0.2,0.6,0.39,0.4);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
             render.setRenderBounds(0.42,0.38,0.61,0.60,0.39,0.81);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
 
             //Candles
             render.setOverrideBlockTexture(block.getIcon(0,0));
             render.setRenderBounds(0.45,0.4,0.25,0.55,0.7,0.35);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
             render.setRenderBounds(0.45,0.4,0.66,0.55,0.7,0.76);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
 
             //Wicks
             render.setOverrideBlockTexture(block.getIcon(i,0));
             render.setRenderBounds(0.49,0.7,0.29,0.51,0.75,0.31);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
             render.setRenderBounds(0.49,0.7,0.7,0.51,0.75,0.72);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
         }else{
 
             //Arm
             render.setRenderBounds(0.45, 0.0, 0.13, 0.55, 0.1, 0.87);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
 
             //Cups
             render.setRenderBounds(0.42, 0.1, 0.05, 0.58, 0.4, 0.21);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
             render.setRenderBounds(0.42, 0.1, 0.42, 0.58, 0.4, 0.58);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
             render.setRenderBounds(0.42, 0.1, 0.79, 0.58, 0.4, 0.95);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
 
             render.setRenderBounds(0.4, 0.38, 0.03, 0.6, 0.39, 0.23);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
             render.setRenderBounds(0.4, 0.38, 0.4, 0.6, 0.39, 0.6);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
             render.setRenderBounds(0.4, 0.38, 0.77, 0.6, 0.39, 0.97);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
 
             //Candles
             render.setOverrideBlockTexture(block.getIcon(0,0));
             render.setRenderBounds(0.45,0.4,0.08,0.55,0.7,0.18);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
             render.setRenderBounds(0.45,0.4,0.45,0.55,0.7,0.55);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
             render.setRenderBounds(0.45,0.4,0.81,0.55,0.7,0.91);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
 
             //Wicks
             render.setOverrideBlockTexture(block.getIcon(i,0));
             render.setRenderBounds(0.49,0.7,0.12,0.51,0.75,0.14);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
             render.setRenderBounds(0.49,0.7,0.49,0.51,0.75,0.51);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
             render.setRenderBounds(0.49,0.7,0.85,0.51,0.75,0.87);
-            renderInvBlock(block,meta,render);
+            Util.renderInvBlock(block,meta,render);
 
         }
 
         render.clearOverrideBlockTexture();
         GL11.glPopMatrix();
-    }
-
-    public static void renderInvBlock(Block block, int m, RenderBlocks renderer) {
-        Tessellator var14 = Tessellator.instance;
-        int meta = m;
-
-        var14.startDrawingQuads();
-        var14.setNormal(0.0F, -1.0F, 0.0F);
-        renderer.renderFaceYNeg(block, 0.0, 0.0, 0.0, block.getIcon(0, meta));
-        var14.draw();
-        var14.startDrawingQuads();
-        var14.setNormal(0.0F, 1.0F, 0.0F);
-        renderer.renderFaceYPos(block, 0.0, 0.0, 0.0, block.getIcon(1, meta));
-        var14.draw();
-        var14.startDrawingQuads();
-        var14.setNormal(0.0F, 0.0F, -1.0F);
-        renderer.renderFaceXNeg(block, 0.0, 0.0, 0.0, block.getIcon(2, meta));
-        var14.draw();
-        var14.startDrawingQuads();
-        var14.setNormal(0.0F, 0.0F, 1.0F);
-        renderer.renderFaceXPos(block, 0.0, 0.0, 0.0, block.getIcon(3, meta));
-        var14.draw();
-        var14.startDrawingQuads();
-        var14.setNormal(-1.0F, 0.0F, 0.0F);
-        renderer.renderFaceZNeg(block, 0.0, 0.0, 0.0, block.getIcon(4, meta));
-        var14.draw();
-        var14.startDrawingQuads();
-        var14.setNormal(1.0F, 0.0F, 0.0F);
-        renderer.renderFaceZPos(block, 0.0, 0.0, 0.0, block.getIcon(5, meta));
-        var14.draw();
     }
 
     @Override

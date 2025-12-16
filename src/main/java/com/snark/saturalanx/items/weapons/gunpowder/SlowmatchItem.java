@@ -1,4 +1,4 @@
-package com.snark.saturalanx.items.warfare.gunpowder;
+package com.snark.saturalanx.items.weapons.gunpowder;
 
 import com.dunk.tfc.api.Enums.EnumSize;
 import com.dunk.tfc.api.Enums.EnumWeight;
@@ -20,9 +20,9 @@ import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import static com.snark.saturalanx.SaturaLanx.MODID;
 import static com.snark.saturalanx.SaturaLanx.tab;
 
-public class Slowmatch extends ItemSL {
+public class SlowmatchItem extends ItemSL {
     private IIcon litIcon;
-    public Slowmatch(){
+    public SlowmatchItem(){
         this.setCreativeTab(tab);
         this.setSize(EnumSize.SMALL);
         this.setWeight(EnumWeight.LIGHT);

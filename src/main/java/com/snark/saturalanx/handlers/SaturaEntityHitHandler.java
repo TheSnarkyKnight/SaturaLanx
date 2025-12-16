@@ -31,9 +31,9 @@ public class SaturaEntityHitHandler extends EntityDamageHandler {
                     int amplifier = ((EntityBolas) source).amplifier;
 
                     if (Math.random() * 1 == 0)
-                        duration += (Math.random() * Config.bolasDurationModifier);
+                        duration += (int) (Math.random() * Config.bolasDurationModifier);
                     else
-                        duration -= (Math.random() * Config.bolasDurationModifier);
+                        duration -= (int) (Math.random() * Config.bolasDurationModifier);
 
                     if (duration < 0)
                         duration = 0;

@@ -1,4 +1,4 @@
-package com.snark.saturalanx.items;
+package com.snark.saturalanx.items.tools;
 
 import com.dunk.tfc.Items.Tools.ItemCustomBucket;
 import cpw.mods.fml.relauncher.Side;
@@ -11,13 +11,13 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
-public class BucketSatura extends ItemCustomBucket {
+public class BucketSL extends ItemCustomBucket {
 
-    public BucketSatura(Block contents){
+    public BucketSL(Block contents){
         super(contents);
     }
 
-    public BucketSatura(Block contents, Item container) {
+    public BucketSL(Block contents, Item container) {
         super(contents, container);
     }
 

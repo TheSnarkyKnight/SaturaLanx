@@ -11,6 +11,8 @@ import com.dunk.tfc.api.TileEntities.TEFireEntity;
 import com.snark.saturalanx.blocks.decoration.TallCandlestickBlock;
 import com.snark.saturalanx.blocks.decoration.TallCandlestickOffBlock;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -128,6 +130,36 @@ public class Util {
         public static void burnSurroundings (World world,int x, int y, int z){
             Util.burnSurroundings(world, x, y, z, 1, 1, 1);
         }
+
+    public static void renderInvBlock(Block block, int m, RenderBlocks renderer) {
+        Tessellator var14 = Tessellator.instance;
+        int meta = m;
+
+        var14.startDrawingQuads();
+        var14.setNormal(0.0F, -1.0F, 0.0F);
+        renderer.renderFaceYNeg(block, 0.0, 0.0, 0.0, block.getIcon(0, meta));
+        var14.draw();
+        var14.startDrawingQuads();
+        var14.setNormal(0.0F, 1.0F, 0.0F);
+        renderer.renderFaceYPos(block, 0.0, 0.0, 0.0, block.getIcon(1, meta));
+        var14.draw();
+        var14.startDrawingQuads();
+        var14.setNormal(0.0F, 0.0F, -1.0F);
+        renderer.renderFaceXNeg(block, 0.0, 0.0, 0.0, block.getIcon(2, meta));
+        var14.draw();
+        var14.startDrawingQuads();
+        var14.setNormal(0.0F, 0.0F, 1.0F);
+        renderer.renderFaceXPos(block, 0.0, 0.0, 0.0, block.getIcon(3, meta));
+        var14.draw();
+        var14.startDrawingQuads();
+        var14.setNormal(-1.0F, 0.0F, 0.0F);
+        renderer.renderFaceZNeg(block, 0.0, 0.0, 0.0, block.getIcon(4, meta));
+        var14.draw();
+        var14.startDrawingQuads();
+        var14.setNormal(1.0F, 0.0F, 0.0F);
+        renderer.renderFaceZPos(block, 0.0, 0.0, 0.0, block.getIcon(5, meta));
+        var14.draw();
+    }
 
     }
 

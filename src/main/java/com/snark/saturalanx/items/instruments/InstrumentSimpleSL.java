@@ -1,21 +1,16 @@
 package com.snark.saturalanx.items.instruments;
 
-import com.dunk.tfc.api.Enums.EnumItemReach;
-import com.dunk.tfc.api.Enums.EnumSize;
-import com.dunk.tfc.api.Enums.EnumWeight;
-import com.snark.saturalanx.items.ItemSatura;
+import com.snark.saturalanx.items.ItemSL;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-import static com.snark.saturalanx.SaturaLanx.tab;
-
-public class SaturaInstrumentSimple extends ItemSatura {
+public class InstrumentSimpleSL extends ItemSL {
     private String sound, sound2;
     private float volume, volume2, pitch, pitch2;
 
-    public SaturaInstrumentSimple(float v, float v2, float p, float p2){
+    public InstrumentSimpleSL(float v, float v2, float p, float p2){
         super();
         this.setMaxStackSize(1);
         this.volume = v;

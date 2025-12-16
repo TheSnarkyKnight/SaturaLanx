@@ -7,8 +7,8 @@ import com.snark.saturalanx.core.ItemSetup;
 import com.snark.saturalanx.entities.EntityFlameArrow;
 import com.snark.saturalanx.entities.EntityPoisonArrow;
 import com.snark.saturalanx.entities.EntityRopeArrow;
-import com.snark.saturalanx.items.warfare.PoisonedArrow;
-import com.snark.saturalanx.items.warfare.incendiary.FlameArrowItem;
+import com.snark.saturalanx.items.weapons.ranged.PoisonedArrowItem;
+import com.snark.saturalanx.items.weapons.incendiary.FlameArrowItem;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -41,7 +41,7 @@ public class SaturaArrowLooseHandler{
                         index = i;
                     }
                 }
-                else if(s!=null && (s.getItem() instanceof PoisonedArrow || s.getItem() == ItemSetup.ropeArrow)){
+                else if(s!=null && (s.getItem() instanceof PoisonedArrowItem || s.getItem() == ItemSetup.ropeArrow)){
                     arrow = s;
                     index = i;
                 }
@@ -80,7 +80,7 @@ public class SaturaArrowLooseHandler{
                     if(!player.capabilities.isCreativeMode)
                         player.inventory.setInventorySlotContents(index,null);
                 }
-                else if(arrow.getItem() instanceof PoisonedArrow){
+                else if(arrow.getItem() instanceof PoisonedArrowItem){
                     eArrow = new EntityPoisonArrow(player.worldObj,player,forceMult*2,arrow.stackTagCompound);
 
                     if(!player.capabilities.isCreativeMode){

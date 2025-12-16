@@ -1,26 +1,30 @@
 package com.snark.saturalanx.core;
 
-import com.dunk.tfc.Items.ItemTerraMetal;
-import com.dunk.tfc.Items.Pottery.ItemPotteryMoldBase;
 import com.dunk.tfc.api.Constant.Global;
 import com.dunk.tfc.api.Enums.EnumDamageType;
 import com.dunk.tfc.api.Metal;
 import com.snark.saturalanx.SaturaLanx;
 import com.snark.saturalanx.items.*;
-import com.snark.saturalanx.items.instruments.SaturaInstrumentSimple;
+import com.snark.saturalanx.items.instruments.InstrumentSimpleSL;
+import com.snark.saturalanx.items.pottery.PotteryMoldSL;
+import com.snark.saturalanx.items.pottery.PotterySL;
+import com.snark.saturalanx.items.pottery.TileItem;
 import com.snark.saturalanx.items.tools.Firecracker;
-import com.snark.saturalanx.items.warfare.*;
-import com.snark.saturalanx.items.warfare.gunpowder.*;
-import com.snark.saturalanx.items.warfare.incendiary.FlameArrowItem;
-import com.snark.saturalanx.items.warfare.incendiary.IncendiaryPot;
-import com.snark.saturalanx.renders.item.ArquebusRender;
-import com.snark.saturalanx.renders.item.HandgonneRender;
-import com.snark.saturalanx.renders.item.MatchlockBlunderbussRender;
+import com.snark.saturalanx.items.tools.ToolHeadSL;
+import com.snark.saturalanx.items.weapons.*;
+import com.snark.saturalanx.items.weapons.gunpowder.*;
+import com.snark.saturalanx.items.weapons.incendiary.FlameArrowItem;
+import com.snark.saturalanx.items.weapons.incendiary.IncendiaryPotItem;
+import com.snark.saturalanx.items.weapons.ranged.BolasItem;
+import com.snark.saturalanx.items.weapons.ranged.ItemJavelinSL;
+import com.snark.saturalanx.items.weapons.ranged.SpearThrowerItem;
+import com.snark.saturalanx.renders.item.*;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.common.util.EnumHelper;
 
 import java.util.ArrayList;
 
@@ -36,7 +40,7 @@ public class ItemSetup {
     public static Item crudeFlameArrow, flameArrow, unfinishedFireArrow, fireArrow;
     public static Item slowmatch,match,potGrenade,potGrenadeQuick,potGrenadeLong;
     public static Item firecracker;
-    public static Item bolas;
+    public static Item bolas, hardenedWoodSpear, primitiveSpearThrower, spearThrower;
     public static Item ropeArrow;
     public static Item saturaMaceMold, leadMaceHead, brassMaceHead;
     public static Item stoneClub, leadMace, brassMace;
@@ -62,14 +66,14 @@ public class ItemSetup {
 
         itemList = new ArrayList<Item>();
 
-        dummyBullet = new ItemSatura(new String[]{"GunBulletStone", "GunBulletLead", "GunPelletStone", "GunPelletLead", "GunPelletSalt"}).setFolder("weapons/guns/bullet").setUnlocalizedName("DummyBullet").setCreativeTab(null);
+        dummyBullet = new ItemSL(new String[]{"GunBulletStone", "GunBulletLead", "GunPelletStone", "GunPelletLead", "GunPelletSalt"}).setFolder("weapons/guns/bullet").setUnlocalizedName("DummyBullet").setCreativeTab(null);
         itemList.add(dummyBullet);
 
         if (Config.enableColouredBricks) {
-            lapisBrick = (new Pottery()).setMetaNames(new String[]{"LapisClayBrick", "LapisBrick"}).setUnlocalizedName("LapisBrick");
-            hematiteBrick = (new Pottery()).setMetaNames(new String[]{"HematiteClayBrick", "HematiteBrick"}).setUnlocalizedName("HematiteBrick");
-            limoniteBrick = (new Pottery()).setMetaNames(new String[]{"LimoniteClayBrick", "LimoniteBrick"}).setUnlocalizedName("LimoniteBrick");
-            malachiteBrick = (new Pottery()).setMetaNames(new String[]{"MalachiteClayBrick", "MalachiteBrick"}).setUnlocalizedName("MalachiteBrick");
+            lapisBrick = (new PotterySL()).setMetaNames(new String[]{"LapisClayBrick", "LapisBrick"}).setUnlocalizedName("LapisBrick");
+            hematiteBrick = (new PotterySL()).setMetaNames(new String[]{"HematiteClayBrick", "HematiteBrick"}).setUnlocalizedName("HematiteBrick");
+            limoniteBrick = (new PotterySL()).setMetaNames(new String[]{"LimoniteClayBrick", "LimoniteBrick"}).setUnlocalizedName("LimoniteBrick");
+            malachiteBrick = (new PotterySL()).setMetaNames(new String[]{"MalachiteClayBrick", "MalachiteBrick"}).setUnlocalizedName("MalachiteBrick");
 
             itemList.add(lapisBrick);
             itemList.add(hematiteBrick);
@@ -90,16 +94,16 @@ public class ItemSetup {
             itemList.add(floorTileMalachite);
         }
         if(Config.enableTallCandlestick){
-            tallCandleholder = new ItemSatura(new String[]{"BrassTallCandleholder","PewterTallCandleholder","SilverTallCandleholder","SterlingSilverTallCandleholder","GoldTallCandleholder","RoseGoldTallCandleholder"}).setUnlocalizedName("TallCandleholder");
+            tallCandleholder = new ItemSL(new String[]{"BrassTallCandleholder","PewterTallCandleholder","SilverTallCandleholder","SterlingSilverTallCandleholder","GoldTallCandleholder","RoseGoldTallCandleholder"}).setUnlocalizedName("TallCandleholder");
 
             itemList.add(tallCandleholder);
         }
         if (Config.enableHandgonne) {
-            brassHandgonne = new Handgonne(bronzeToolMaterial, copperToolMaterial.getDamageVsEntity()).setUnlocalizedName("BrassHandgonne");
-            bronzeHandgonne = new Handgonne(bronzeToolMaterial, copperToolMaterial.getDamageVsEntity()).setUnlocalizedName("BronzeHandgonne").setTextureName(WEAPONPATH + "guns/BronzeHandgonne");
-            bismuthBronzeHandgonne = new Handgonne(bismuthBronzeToolMaterial, copperToolMaterial.getDamageVsEntity()).setUnlocalizedName("BismuthBronzeHandgonne").setTextureName(WEAPONPATH + "guns/BismuthBronzeHandgonne");
-            blackBronzeHandgonne = new Handgonne(blackBronzeToolMaterial, copperToolMaterial.getDamageVsEntity()).setUnlocalizedName("BlackBronzeHandgonne").setTextureName(WEAPONPATH + "guns/BlackBronzeHandgonne");
-            ironHandgonne = new Handgonne(ironToolMaterial, bronzeToolMaterial.getDamageVsEntity()).setUnlocalizedName("IronHandgonne").setTextureName(WEAPONPATH + "guns/WroughtIronHandgonne");
+            brassHandgonne = new HandgonneItem(bronzeToolMaterial, copperToolMaterial.getDamageVsEntity()).setUnlocalizedName("BrassHandgonne");
+            bronzeHandgonne = new HandgonneItem(bronzeToolMaterial, copperToolMaterial.getDamageVsEntity()).setUnlocalizedName("BronzeHandgonne").setTextureName(WEAPONPATH + "guns/BronzeHandgonne");
+            bismuthBronzeHandgonne = new HandgonneItem(bismuthBronzeToolMaterial, copperToolMaterial.getDamageVsEntity()).setUnlocalizedName("BismuthBronzeHandgonne").setTextureName(WEAPONPATH + "guns/BismuthBronzeHandgonne");
+            blackBronzeHandgonne = new HandgonneItem(blackBronzeToolMaterial, copperToolMaterial.getDamageVsEntity()).setUnlocalizedName("BlackBronzeHandgonne").setTextureName(WEAPONPATH + "guns/BlackBronzeHandgonne");
+            ironHandgonne = new HandgonneItem(ironToolMaterial, bronzeToolMaterial.getDamageVsEntity()).setUnlocalizedName("IronHandgonne").setTextureName(WEAPONPATH + "guns/WroughtIronHandgonne");
 
             itemList.add(brassHandgonne);
             itemList.add(bronzeHandgonne);
@@ -108,15 +112,15 @@ public class ItemSetup {
             itemList.add(ironHandgonne);
         }
         if (Config.enableExtraMaces) {
-            saturaMaceMold = (new PotteryMold(true)).setCounter(4).setBaseDamage(2).setMaxUnits(100).setMetals(new Metal[]{Global.LEAD, Global.BRASS}).setMetaNames(new String[]{"ClayMaceMold", "EmptyMaceMold", "LeadMaceMold", "BrassMaceMold"}).setUnlocalizedName("SaturaMaceMold");
+            saturaMaceMold = (new PotteryMoldSL(true)).setCounter(4).setBaseDamage(2).setMaxUnits(100).setMetals(new Metal[]{Global.LEAD, Global.BRASS}).setMetaNames(new String[]{"ClayMaceMold", "EmptyMaceMold", "LeadMaceMold", "BrassMaceMold"}).setUnlocalizedName("SaturaMaceMold");
 
-            stoneClub = (new SwordSatura(igInToolMaterial, igInToolMaterial.getDamageVsEntity(), EnumDamageType.CRUSHING)).setCrushDamageShape("3X5_MACE").setAttackSpeed(19).setUnlocalizedName("StoneClub").setCreativeTab(tab).setTextureName(WEAPONPATH + "StoneClub").setMaxDamage(igInStoneUses);
-            leadMaceHead = (new ToolHead()).setMetal(Global.LEAD).setUnlocalizedName("LeadMaceHead").setTextureName(WEAPONPATH + "LeadMaceHead");
-            ((ToolHead) leadMaceHead).setPath(WEAPONPATH);
-            leadMace = (new SwordSatura(copperToolMaterial, copperToolMaterial.getDamageVsEntity() + 50, EnumDamageType.CRUSHING)).setCrushDamageShape("3X5_MACE").setAttackSpeed(23).setUnlocalizedName("LeadMace").setTextureName(WEAPONPATH + "LeadMace").setMaxDamage(copperUses / 2);
-            brassMaceHead = (new ToolHead()).setMetal(Global.BRASS).setUnlocalizedName("BrassMaceHead").setTextureName(WEAPONPATH + "BrassMaceHead");
-            ((ToolHead) brassMaceHead).setPath(WEAPONPATH);
-            brassMace = (new SwordSatura(bronzeToolMaterial, bronzeToolMaterial.getDamageVsEntity() - 30, EnumDamageType.CRUSHING)).setCrushDamageShape("3X5_MACE").setAttackSpeed(19).setUnlocalizedName("BrassMace").setTextureName(WEAPONPATH + "BrassMace").setMaxDamage(bronzeUses - 50);
+            stoneClub = (new SwordItemSL(igInToolMaterial, igInToolMaterial.getDamageVsEntity(), EnumDamageType.CRUSHING)).setCrushDamageShape("3X5_MACE").setAttackSpeed(19).setUnlocalizedName("StoneClub").setCreativeTab(tab).setTextureName(WEAPONPATH + "StoneClub").setMaxDamage(igInStoneUses);
+            leadMaceHead = (new ToolHeadSL()).setMetal(Global.LEAD).setUnlocalizedName("LeadMaceHead").setTextureName(WEAPONPATH + "LeadMaceHead");
+            ((ToolHeadSL) leadMaceHead).setPath(WEAPONPATH);
+            leadMace = (new SwordItemSL(copperToolMaterial, copperToolMaterial.getDamageVsEntity() + 50, EnumDamageType.CRUSHING)).setCrushDamageShape("3X5_MACE").setAttackSpeed(23).setUnlocalizedName("LeadMace").setTextureName(WEAPONPATH + "LeadMace").setMaxDamage(copperUses / 2);
+            brassMaceHead = (new ToolHeadSL()).setMetal(Global.BRASS).setUnlocalizedName("BrassMaceHead").setTextureName(WEAPONPATH + "BrassMaceHead");
+            ((ToolHeadSL) brassMaceHead).setPath(WEAPONPATH);
+            brassMace = (new SwordItemSL(bronzeToolMaterial, bronzeToolMaterial.getDamageVsEntity() - 30, EnumDamageType.CRUSHING)).setCrushDamageShape("3X5_MACE").setAttackSpeed(19).setUnlocalizedName("BrassMace").setTextureName(WEAPONPATH + "BrassMace").setMaxDamage(bronzeUses - 50);
 
             itemList.add(saturaMaceMold);
             itemList.add(stoneClub);
@@ -126,19 +130,33 @@ public class ItemSetup {
             itemList.add(brassMace);
         }
         if (Config.enableBolas) {
-            bolas = (new Bolas()).setUnlocalizedName("Bolas").setTextureName(WEAPONPATH + "Bolas").setMaxDamage(1).setMaxStackSize(1);
+            bolas = (new BolasItem()).setUnlocalizedName("Bolas").setTextureName(WEAPONPATH + "Bolas").setMaxDamage(1).setMaxStackSize(1);
 
             itemList.add(bolas);
         }
+        if (Config.enableFireHardenedSpears){
+            Item.ToolMaterial hardenedWood = EnumHelper.addToolMaterial("HardenedWoodSpear",0,(woodToolMaterial.getMaxUses()*Config.fireHardenedSpearDurabilityModifier)/100, boneEff,woodToolMaterial.getDamageVsEntity()+((woodToolMaterial.getDamageVsEntity() * Config.fireHardenedSpearDamageModifier)/100),1);
+
+            hardenedWoodSpear = (new ItemJavelinSL(hardenedWood, 40 + ((float) (40 * Config.fireHardenedSpearDamageModifier) /100))).setPierceDamageShape("2X2").setAttackSpeed(12).setUnlocalizedName("FireHardenedWoodSpear");
+
+            itemList.add(hardenedWoodSpear);
+        }
+        if(Config.enableSpearThrower){
+            primitiveSpearThrower = new SpearThrowerItem(100, Config.primitiveSpearThrowerForceMultiplier).setUnlocalizedName("PrimitiveSpearThrower");
+            spearThrower = new SpearThrowerItem(250,Config.spearThrowerForceMultiplier).setUnlocalizedName("SpearThrower");
+
+            itemList.add(primitiveSpearThrower);
+            itemList.add(spearThrower);
+        }
         if(Config.enableRopeArrows){
-            ropeArrow = new ItemSatura().setFolder("weapons/projectiles").setUnlocalizedName("RopeArrow").setMaxStackSize(16);
+            ropeArrow = new ItemSL().setFolder("weapons/projectiles").setUnlocalizedName("RopeArrow").setMaxStackSize(16);
 
             itemList.add(ropeArrow);
         }
         if (Config.enableIncendiaryPot) {
-            pitchPot = (new ItemSatura().setUnlocalizedName("CeramicPotPitch"));
-            wick = (new ItemSatura()).setUnlocalizedName("Wick");
-            incendiaryPot = (new IncendiaryPot()).setUnlocalizedName("IncendiaryPot").setCreativeTab(tab).setTextureName(WEAPONPATH + "IncendiaryPot");
+            pitchPot = (new ItemSL().setUnlocalizedName("CeramicPotPitch"));
+            wick = (new ItemSL()).setUnlocalizedName("Wick");
+            incendiaryPot = (new IncendiaryPotItem()).setUnlocalizedName("IncendiaryPot").setCreativeTab(tab).setTextureName(WEAPONPATH + "IncendiaryPot");
 
             itemList.add(pitchPot);
             itemList.add(wick);
@@ -147,7 +165,7 @@ public class ItemSetup {
         if (Config.enableFlameArrows){
             crudeFlameArrow = new FlameArrowItem(1,0,0).setUnlocalizedName("CrudeFlameArrow");
             flameArrow = new FlameArrowItem(2, -10,20).setUnlocalizedName("FlameArrow");
-            unfinishedFireArrow = new ItemSatura().setFolder("weapons/projectiles").setUnlocalizedName("UnfinishedFireArrow");
+            unfinishedFireArrow = new ItemSL().setFolder("weapons/projectiles").setUnlocalizedName("UnfinishedFireArrow");
             fireArrow = new FlameArrowItem(3,-20,30).setUnlocalizedName("FireArrow");
 
             itemList.add(crudeFlameArrow);
@@ -161,17 +179,17 @@ public class ItemSetup {
             itemList.add(spikeItem);
         }
         if (Config.enableFirecrackers || Config.enablePotGrenades || Config.enableSmokeBombs) {
-            match = (new ItemSatura(new String[]{"ScouredString", "Blackmatch", "Quickmatch", "Long Blackmatch"})).setUnlocalizedName("Match");
+            match = (new ItemSL(new String[]{"ScouredString", "Blackmatch", "Quickmatch", "Long Blackmatch"})).setUnlocalizedName("Match");
 
             itemList.add(match);
         }
         if (Config.enablePotGrenades) {
-            potGrenade = (new PotGrenade()).setUnlocalizedName("PotGrenade").setCreativeTab(tab).setMaxDamage(Config.potGrenadeFuseLength);
-            ((PotGrenade) potGrenade).setType(1);
-            potGrenadeQuick = (new PotGrenade()).setUnlocalizedName("PotGrenadeQuick").setCreativeTab(tab).setMaxDamage(Config.potGrenadeFuseLength / 2);
-            ((PotGrenade) potGrenadeQuick).setType(2);
-            potGrenadeLong = (new PotGrenade()).setUnlocalizedName("PotGrenadeLong").setCreativeTab(tab).setMaxDamage(Config.potGrenadeFuseLength + (Config.potGrenadeFuseLength / 2));
-            ((PotGrenade) potGrenadeLong).setType(3);
+            potGrenade = (new PotGrenadeItem()).setUnlocalizedName("PotGrenade").setCreativeTab(tab).setMaxDamage(Config.potGrenadeFuseLength);
+            ((PotGrenadeItem) potGrenade).setType(1);
+            potGrenadeQuick = (new PotGrenadeItem()).setUnlocalizedName("PotGrenadeQuick").setCreativeTab(tab).setMaxDamage(Config.potGrenadeFuseLength / 2);
+            ((PotGrenadeItem) potGrenadeQuick).setType(2);
+            potGrenadeLong = (new PotGrenadeItem()).setUnlocalizedName("PotGrenadeLong").setCreativeTab(tab).setMaxDamage(Config.potGrenadeFuseLength + (Config.potGrenadeFuseLength / 2));
+            ((PotGrenadeItem) potGrenadeLong).setType(3);
 
             itemList.add(potGrenade);
             itemList.add(potGrenadeQuick);
@@ -183,34 +201,34 @@ public class ItemSetup {
         itemList.add(firecracker);
         }
         if(Config.enableCastanets) {
-            castanets = (new SaturaInstrumentSimple(1.3F, 1, 1, 1)).setUnlocalizedName("Castanets");
-            ((SaturaInstrumentSimple) castanets).setSounds(new String[]{MODID + ":castanet1", MODID + ":castanet2"});
+            castanets = (new InstrumentSimpleSL(1.3F, 1, 1, 1)).setUnlocalizedName("Castanets");
+            ((InstrumentSimpleSL) castanets).setSounds(new String[]{MODID + ":castanet1", MODID + ":castanet2"});
 
             itemList.add(castanets);
         }
 
         if(Config.enableArquebus||Config.enableMBlunderbuss) {
-            slowmatch = new Slowmatch().setUnlocalizedName("Slowmatch").setCreativeTab(tab);
-            mechanism = new ItemSatura(new String[]{"MatchlockMechanism"}).setFolder("weapons/guns").setUnlocalizedName("Mechanism");
+            slowmatch = new SlowmatchItem().setUnlocalizedName("Slowmatch").setCreativeTab(tab);
+            mechanism = new ItemSL(new String[]{"MatchlockMechanism"}).setFolder("weapons/guns").setUnlocalizedName("Mechanism");
 
             itemList.add(slowmatch);
             itemList.add(mechanism);
         }
         if(Config.enableArquebus){
-            brassArquebus = new Arquebus(bronzeToolMaterial, copperToolMaterial.getDamageVsEntity()).setUnlocalizedName("BrassArquebus");
-            ironArquebus = new Arquebus(ironToolMaterial, bronzeToolMaterial.getDamageVsEntity()).setUnlocalizedName("IronArquebus");
-            steelArquebus = new Arquebus(steelToolMaterial, bronzeToolMaterial.getDamageVsEntity()).setUnlocalizedName("SteelArquebus");
+            brassArquebus = new MatchlockArquebusItem(bronzeToolMaterial, copperToolMaterial.getDamageVsEntity()).setUnlocalizedName("BrassArquebus");
+            ironArquebus = new MatchlockArquebusItem(ironToolMaterial, bronzeToolMaterial.getDamageVsEntity()).setUnlocalizedName("IronArquebus");
+            steelArquebus = new MatchlockArquebusItem(steelToolMaterial, bronzeToolMaterial.getDamageVsEntity()).setUnlocalizedName("SteelArquebus");
 
             itemList.add(brassArquebus);
             itemList.add(ironArquebus);
             itemList.add(steelArquebus);
         }
         if(Config.enableMBlunderbuss){
-            flaredBarrel = new ItemSatura(new String[]{"BrassFlaredBarrel", "IronFlaredBarrel", "SteelFlaredBarrel"}).setFolder("weapons/guns").setUnlocalizedName("FlaredBarrel");
-            shot = new ItemSatura(new String[]{"StoneShot", "LeadShot"}).setFolder("weapons/guns").setUnlocalizedName("Shot");
-            brassMBlunderbuss = new MatchlockBlunderbuss(bronzeToolMaterial, copperToolMaterial.getDamageVsEntity()).setUnlocalizedName("BrassMBlunderbuss");
-            ironMBlunderbuss = new MatchlockBlunderbuss(ironToolMaterial, bronzeToolMaterial.getDamageVsEntity()).setUnlocalizedName("IronMBlunderbuss");
-            steelMBlunderbuss = new MatchlockBlunderbuss(steelToolMaterial, bronzeToolMaterial.getDamageVsEntity()).setUnlocalizedName("SteelMBlunderbuss");
+            flaredBarrel = new ItemSL(new String[]{"BrassFlaredBarrel", "IronFlaredBarrel", "SteelFlaredBarrel"}).setFolder("weapons/guns").setUnlocalizedName("FlaredBarrel");
+            shot = new ItemSL(new String[]{"StoneShot", "LeadShot"}).setFolder("weapons/guns").setUnlocalizedName("Shot");
+            brassMBlunderbuss = new MatchlockBlunderbussItem(bronzeToolMaterial, copperToolMaterial.getDamageVsEntity()).setUnlocalizedName("BrassMBlunderbuss");
+            ironMBlunderbuss = new MatchlockBlunderbussItem(ironToolMaterial, bronzeToolMaterial.getDamageVsEntity()).setUnlocalizedName("IronMBlunderbuss");
+            steelMBlunderbuss = new MatchlockBlunderbussItem(steelToolMaterial, bronzeToolMaterial.getDamageVsEntity()).setUnlocalizedName("SteelMBlunderbuss");
 
             itemList.add(brassMBlunderbuss);
             itemList.add(ironMBlunderbuss);
@@ -253,6 +271,12 @@ public class ItemSetup {
 
         SaturaLanx.log.info("Registering item renders...");
 
+        if(Config.enableBolas)
+            MinecraftForgeClient.registerItemRenderer(bolas, new BolasItemRenderer());
+        if(Config.enableSpearThrower){
+            MinecraftForgeClient.registerItemRenderer(primitiveSpearThrower, new SpearThrowerRender());
+            MinecraftForgeClient.registerItemRenderer(spearThrower, new SpearThrowerRender());
+        }
         if(Config.enableHandgonne) {
             MinecraftForgeClient.registerItemRenderer(brassHandgonne, new HandgonneRender());
             MinecraftForgeClient.registerItemRenderer(bronzeHandgonne, new HandgonneRender());

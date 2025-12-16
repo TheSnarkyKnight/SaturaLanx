@@ -25,7 +25,7 @@ import java.util.Map;
 import static com.dunk.tfc.api.TFCBlocks.*;
 import static com.snark.saturalanx.core.BlockSetup.*;
 
-public class HypocaustTE extends NetworkTileEntity {
+public class HypocaustTE extends TileEntity {
     private int minX,maxX,minZ,maxZ;
     private boolean active,formed;
 
@@ -245,19 +245,4 @@ public class HypocaustTE extends NetworkTileEntity {
         nbt.setBoolean("formed",this.formed);
     }
 
-    public void handleInitPacket(NBTTagCompound nbt) {
-        this.readFromNBT(nbt);
-    }
-
-    public void createInitNBT(NBTTagCompound nbt) {
-        this.writeToNBT(nbt);
-    }
-
-    public void handleDataPacket(NBTTagCompound nbt) {
-        this.readFromNBT(nbt);
-    }
-
-    public void createDataNBT(NBTTagCompound nbt) {
-        this.writeToNBT(nbt);
-    }
 }

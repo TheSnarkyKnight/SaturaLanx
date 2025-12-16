@@ -1,15 +1,13 @@
 package com.snark.saturalanx.handlers;
 
-import com.dunk.tfc.Items.Pottery.ItemPotterySmallVessel;
 import com.dunk.tfc.api.TFCBlocks;
 import com.dunk.tfc.api.TFCItems;
 import com.snark.saturalanx.core.Config;
 import com.snark.saturalanx.core.ItemSetup;
-import com.snark.saturalanx.items.warfare.gunpowder.PotGrenade;
+import com.snark.saturalanx.items.weapons.ranged.SpearThrowerItem;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -48,6 +46,11 @@ public class SaturaCraftingHandler {
                 tools = OreDictionary.getOres("itemHammer",false);
                 handleItem(e.player, iinventory,tools);
             }
+            //Spear thrower crafting
+            if(makeSpearThrower(itemstack, iinventory)){
+                tools = OreDictionary.getOres("itemKnife", false);
+                handleItem(e.player, iinventory,tools);
+            }
 
         }
     }
@@ -61,6 +64,12 @@ public class SaturaCraftingHandler {
     private boolean makeShot(ItemStack result, IInventory grid){
         if(Config.enableMBlunderbuss)
             return (result.getItem().equals(ItemSetup.shot) && (gridHasItem(grid, TFCItems.looseRock)||gridHasItem(grid, TFCBlocks.gravel2)||gridHasItem(grid, TFCItems.leadBullet)));
+        return false;
+    }
+
+    private boolean makeSpearThrower(ItemStack result, IInventory grid){
+        if(Config.enableSpearThrower)
+            return (result.getItem() instanceof SpearThrowerItem) && ((gridHasItem(grid, TFCItems.looseRock))&&gridHasItem(grid,TFCItems.leatherStrap)||(gridHasItem(grid,TFCItems.stick)));
         return false;
     }
 

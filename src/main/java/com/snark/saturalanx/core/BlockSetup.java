@@ -21,8 +21,7 @@ import java.util.ArrayList;
 
 public class BlockSetup {
 
-    public static String BLOCKPATH = "saturalanx:blocks/";
-    public static int tileRenderId,tallCandlestickRenderId, stockadeRenderId, chaliceRenderId, hypocaustRenderId, arrowRopeRenderId;
+    public static int tileRenderId,tallCandlestickRenderId, stockadeRenderId, chaliceRenderId, hypocaustRenderId, arrowRopeRenderId, bearTrapRenderId, trophyRenderId;
     public static ArrayList<Block> blockList;
     public static Block colouredBricks, floorTiles, mortaredCobble1, mortaredCobble2;
     public static Block brassTallCandlestickOff,brassTallCandlestick,pewterTallCandlestick,pewterTallCandlestickOff,silverTallCandlestick,silverTallCandlestickOff,sterlingSilverTallCandlestick,sterlingSilverTallCandlestickOff,goldTallCandlestick,goldTallCandlestickOff,roseGoldTallCandlestick,roseGoldTallCandlestickOff;
@@ -161,9 +160,13 @@ public class BlockSetup {
         }
 
         if(Config.enableLeafCover) {
-            leafCover = new LeafCover();
+            leafCover = new LeafCoverBlock();
 
             blockList.add(leafCover);
+        }
+
+        if(Config.enableBearTrap){
+
         }
     }
 
@@ -186,6 +189,7 @@ public class BlockSetup {
         RenderingRegistry.registerBlockHandler(chaliceRenderId = RenderingRegistry.getNextAvailableRenderId(), new ChaliceRender());
         RenderingRegistry.registerBlockHandler(hypocaustRenderId = RenderingRegistry.getNextAvailableRenderId(), new HypocaustRender());
         RenderingRegistry.registerBlockHandler(arrowRopeRenderId = RenderingRegistry.getNextAvailableRenderId(), new ArrowRopeRender());
+        
     }
 
 

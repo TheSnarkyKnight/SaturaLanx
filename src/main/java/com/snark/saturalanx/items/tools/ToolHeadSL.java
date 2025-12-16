@@ -1,15 +1,14 @@
-package com.snark.saturalanx.items;
+package com.snark.saturalanx.items.tools;
 
 import com.dunk.tfc.Items.Tools.ItemMiscToolHead;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.item.Item;
 
 import static com.snark.saturalanx.SaturaLanx.tab;
 
-public class ToolHead extends ItemMiscToolHead {
+public class ToolHeadSL extends ItemMiscToolHead {
 
     private String path;
-    public ToolHead(){
+    public ToolHeadSL(){
         super();
         this.setCreativeTab(tab);
         path = "";

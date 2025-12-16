@@ -12,9 +12,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 import java.util.List;
+import java.util.Random;
 
 public class EntityFlameArrow extends EntityProjectileTFC {
 
@@ -142,6 +144,15 @@ public class EntityFlameArrow extends EntityProjectileTFC {
                 if(duration%100==0&&duration>=100)
                     worldObj.playSoundAtEntity(this,"saturalanx:fuse",1F,1);
             }
+        }
+        if(this.isBurning()){
+            for (int i = 0; i < 5; i++) {
+                double dx = posX + worldObj.rand.nextGaussian()*0.2;
+                double dy = posY + Double.max(worldObj.rand.nextGaussian()*0.2,-0.1);
+                double dz = posZ + worldObj.rand.nextGaussian()*0.2;
+                this.worldObj.spawnParticle("smoke", dx, dy, dz, 0, 0, 0);
+            }
+            this.worldObj.spawnParticle("flame",posX,posY+0.1,posZ,0,0,0);
         }
         if (!this.isAirBorne && this.isBurning() && worldObj.rand.nextInt(8) < 2) {
                 if ((this.worldObj.getTotalWorldTime() % 100) == 0 && this.worldObj.rand.nextInt(100) <= this.iChance)

@@ -1,20 +1,15 @@
-package com.snark.saturalanx.items;
+package com.snark.saturalanx.items.pottery;
 
 import com.dunk.tfc.Blocks.BlockRoad;
-import com.dunk.tfc.TileEntities.TEPottery;
 import com.dunk.tfc.TileEntities.TERoad;
-import com.dunk.tfc.api.TFCBlocks;
-import com.snark.saturalanx.SaturaLanx;
 import com.snark.saturalanx.TE.TileTE;
 import com.snark.saturalanx.core.BlockSetup;
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileItem extends Pottery{
+public class TileItem extends PotterySL {
     private int num;
     public TileItem(){
         super();
@@ -28,6 +23,7 @@ public class TileItem extends Pottery{
     public void setNum(int i){
         this.num = i;
     }
+
     public boolean onItemUse(ItemStack itemstack, EntityPlayer entityplayer, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
 
         if(!world.isRemote&&itemstack.getItemDamage()==1&&!entityplayer.isSneaking()){

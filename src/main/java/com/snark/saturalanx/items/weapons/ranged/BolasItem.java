@@ -1,4 +1,4 @@
-package com.snark.saturalanx.items.warfare;
+package com.snark.saturalanx.items.weapons.ranged;
 
 import com.dunk.tfc.Items.ItemTerra;
 import com.dunk.tfc.api.Enums.EnumItemReach;
@@ -8,7 +8,6 @@ import com.dunk.tfc.api.Interfaces.ISize;
 import com.snark.saturalanx.core.ItemSetup;
 import com.snark.saturalanx.core.Config;
 import com.snark.saturalanx.entities.EntityBolas;
-import com.snark.saturalanx.renders.item.BolasItemRenderer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -158,7 +157,6 @@ public class BolasItem extends ItemTerra{
 
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister par1IconRegister) {
-        MinecraftForgeClient.registerItemRenderer(this, new BolasItemRenderer());
         this.itemIcon = par1IconRegister.registerIcon(WEAPONPATH + "bolas0");
         this.iconArray = new IIcon[this.bowPullIconNameArray.length];
 

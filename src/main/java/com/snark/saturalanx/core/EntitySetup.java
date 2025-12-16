@@ -1,10 +1,7 @@
 package com.snark.saturalanx.core;
 
 import com.snark.saturalanx.SaturaLanx;
-import com.snark.saturalanx.TE.ChaliceTE;
-import com.snark.saturalanx.TE.FlamingBlockTE;
-import com.snark.saturalanx.TE.HypocaustTE;
-import com.snark.saturalanx.TE.TileTE;
+import com.snark.saturalanx.TE.*;
 import com.snark.saturalanx.entities.*;
 import com.snark.saturalanx.renders.entity.RenderBullet;
 import com.snark.saturalanx.renders.entity.RenderCustomArrow;
@@ -24,37 +21,25 @@ public class EntitySetup {
         SaturaLanx.log.info("Registering entities...");
 
         if(Config.enableIncendiaryPot) {
-            EntityRegistry.registerGlobalEntityID(EntityIncendiaryPot.class, "incendiaryPotSL", EntityRegistry.findGlobalUniqueEntityId());
             EntityRegistry.registerModEntity(EntityIncendiaryPot.class, "incendiaryPotSL", 0, SaturaLanx.instance, 64, 10, true);
         }
         if(Config.enableFlameArrows){
-            EntityRegistry.registerGlobalEntityID(EntityFlameArrow.class,"flamearrowSL",EntityRegistry.findGlobalUniqueEntityId());
             EntityRegistry.registerModEntity(EntityFlameArrow.class,"flamearrowSL",6,SaturaLanx.instance,64,10,true);
         }
         if(Config.enablePoisonArrows){
-            EntityRegistry.registerGlobalEntityID(EntityPoisonArrow.class,"poisonarrowSL",EntityRegistry.findGlobalUniqueEntityId());
             EntityRegistry.registerModEntity(EntityPoisonArrow.class,"poisonarrowSL",7,SaturaLanx.instance,64,10,true);
         }
         if(Config.enableRopeArrows){
-            EntityRegistry.registerGlobalEntityID(EntityPoisonArrow.class,"ropearrowSL",EntityRegistry.findGlobalUniqueEntityId());
             EntityRegistry.registerModEntity(EntityPoisonArrow.class,"ropearrowSL",8,SaturaLanx.instance,64,10,true);
         }
         if(Config.enablePotGrenades) {
-            EntityRegistry.registerGlobalEntityID(EntityPotGrenade.class, "potGrenadeSL", EntityRegistry.findGlobalUniqueEntityId());
             EntityRegistry.registerModEntity(EntityPotGrenade.class, "potGrenadeSL", 1, SaturaLanx.instance, 64, 10, true);
-            EntityRegistry.registerGlobalEntityID(EntityShrapnel.class, "shrapnelSL", EntityRegistry.findGlobalUniqueEntityId());
             EntityRegistry.registerModEntity(EntityShrapnel.class, "shrapnelSL", 2, SaturaLanx.instance, 64, 10, true);
         }
         if (Config.enableFirecrackers) {
-            EntityRegistry.registerGlobalEntityID(EntityFireCracker.class, "firecrackerSL", EntityRegistry.findGlobalUniqueEntityId());
             EntityRegistry.registerModEntity(EntityFireCracker.class, "firecrackerSL", 3, SaturaLanx.instance, 64, 10, true);
         }
-        if(Config.enableSmokeBombs){
-            EntityRegistry.registerGlobalEntityID(EntitySmokeBomb.class, "smokebombSL", EntityRegistry.findGlobalUniqueEntityId());
-            EntityRegistry.registerModEntity(EntitySmokeBomb.class,"smokebombSL",4,SaturaLanx.instance,64,10,true);
-        }
         if(Config.enableHandgonne||Config.enableArquebus||Config.enableMBlunderbuss){
-            EntityRegistry.registerGlobalEntityID(EntityBullet.class,"bulletSL",EntityRegistry.findGlobalUniqueEntityId());
             EntityRegistry.registerModEntity(EntityBullet.class,"bulletSL",5,SaturaLanx.instance,64,10,true);
         }
     }
@@ -71,6 +56,9 @@ public class EntitySetup {
             GameRegistry.registerTileEntity(ChaliceTE.class,"SLChaliceBlockTE");
         if(Config.enableHypocaust)
             GameRegistry.registerTileEntity(HypocaustTE.class,"SLHypocaustTE");
+        //if(Config.enableBearTrap)
+
+
     }
 
     @SideOnly(Side.CLIENT)

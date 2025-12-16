@@ -1,4 +1,4 @@
-package com.snark.saturalanx.items.warfare.incendiary;
+package com.snark.saturalanx.items.weapons.incendiary;
 
 import com.dunk.tfc.Core.TFC_Core;
 import com.dunk.tfc.api.TFCItems;

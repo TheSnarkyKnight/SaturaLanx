@@ -4,7 +4,7 @@ import com.dunk.tfc.Items.Pottery.ItemPotterySmallVessel;
 import com.dunk.tfc.api.TFCBlocks;
 import com.dunk.tfc.api.TFCItems;
 import com.snark.saturalanx.core.ItemSetup;
-import com.snark.saturalanx.items.warfare.gunpowder.PotGrenade;
+import com.snark.saturalanx.items.weapons.gunpowder.PotGrenadeItem;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
@@ -72,7 +72,7 @@ public class BombRecipe implements IRecipe {
             }
             if (vessel != null) {
                 float[] comp = getComponents(vessel);
-                ((PotGrenade) stack.getItem()).setComponents(stack, comp[0], comp[1], comp[2], comp[3],false);
+                ((PotGrenadeItem) stack.getItem()).setComponents(stack, comp[0], comp[1], comp[2], comp[3],false);
             }
 
             return stack;

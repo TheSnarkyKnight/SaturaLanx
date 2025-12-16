@@ -1,6 +1,5 @@
-package com.snark.saturalanx.items;
+package com.snark.saturalanx.items.pottery;
 
-import com.dunk.tfc.Core.TFCTabs;
 import com.dunk.tfc.Items.Pottery.ItemPotteryBase;
 import com.dunk.tfc.api.Enums.EnumSize;
 import com.dunk.tfc.api.Enums.EnumWeight;
@@ -9,9 +8,9 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import static com.snark.saturalanx.SaturaLanx.MODID;
 import static com.snark.saturalanx.SaturaLanx.tab;
 
-public class Pottery extends ItemPotteryBase {
+public class PotterySL extends ItemPotteryBase {
 
-    public Pottery(){
+    public PotterySL(){
         this.hasSubtypes = true;
         this.setCreativeTab(tab);
         this.metaNames = new String[]{"", ""};

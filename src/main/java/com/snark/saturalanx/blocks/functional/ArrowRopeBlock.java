@@ -33,6 +33,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import org.lwjgl.Sys;
 
 import java.util.List;
 import java.util.Random;
@@ -62,17 +63,7 @@ public class ArrowRopeBlock extends BlockTerra {
 
 
     protected void dropBlocksInWorld(World world, int x, int y, int z) {
-        if(!world.isRemote){
-            if(world.getBlockMetadata(x,y,z)>0){
-                ItemStack is;
-                if(world.rand.nextInt(2)==0)
-                    is = new ItemStack(ItemSetup.ropeArrow,1,0);
-                else
-                    is = new ItemStack(TFCItems.rope,1,0);
-                EntityItem ei = new EntityItem(world,x,y,z,is);
-                world.spawnEntityInWorld(ei);
-            }
-        }
+
     }
 
     @Override
@@ -125,39 +116,53 @@ public class ArrowRopeBlock extends BlockTerra {
     public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
         if(!world.isRemote && entity instanceof EntityPlayer){
             int c = 0;
+
             EntityPlayer player = (EntityPlayer) entity;
-            for (ItemStack is : ((InventoryPlayerTFC)player.inventory).extraEquipInventory) {
-                if (is != null) {
-                    if (is.getItem() instanceof ItemClothing||is.getItem() instanceof ItemTFCArmor) {
-                        Armor a = ((ItemClothing) is.getItem()).getArmorType();
-                        if (a != null) {
-                            if (Armor.isMetal(a))
-                                c += 10;
-                            else if (a.armorId == 0 || a.armorId == 10 || a.armorId == 15 || a.armorId == 16 || a.armorId == 18)
-                                c += 2;
-                            else
-                                c++;
-                        }
-                    } else if (is.getItem() instanceof IEquipable && ((IEquipable) is.getItem()).getEquipType(is) == IEquipable.EquipType.BACK) {
-                        if (is.getItem() instanceof ItemLargeVessel)
-                            c += 2;
-                        else if (is.getItem() instanceof ItemBarrels)
-                            c += 5;
-                        else if (is.getItem() instanceof ItemAnvil)
-                            c += 10;
-                    }
-                }
-            }
-            if (c > breakTreshold && entity.motionY > 0.1) {
+            for (ItemStack is : ((InventoryPlayerTFC)player.inventory).extraEquipInventory)
+                c += getArmorType(is);
+            for (ItemStack is : player.inventory.armorInventory)
+                c += getArmorType(is);
+
+            if (c > breakTreshold && Math.abs(entity.motionY) > 0.1) {
                 world.playSoundAtEntity(entity, "random:break", 1, 1);
                 world.setBlock(x, y, z, Blocks.air, 0, 3);
             }
         }
     }
 
+    private int getArmorType(ItemStack is){
+        int c = 0;
+        if (is != null) {
+
+            Armor a = null;
+            if(is.getItem() instanceof ItemClothing)
+                a = ((ItemClothing) is.getItem()).getArmorType();
+            else if(is.getItem() instanceof ItemTFCArmor)
+                a = ((ItemTFCArmor) is.getItem()).armorTypeTFC;
+
+            if (a!=null) {
+                    if (Armor.isMetal(a))
+                        c = 10;
+                    else if (a.armorId == 0 || a.armorId == 10 || a.armorId == 15 || a.armorId == 16 || a.armorId == 18)
+                        c = 2;
+                    else
+                        c = 1;
+
+            } else if (is.getItem() instanceof IEquipable && ((IEquipable) is.getItem()).getEquipType(is) == IEquipable.EquipType.BACK) {
+                if (is.getItem() instanceof ItemLargeVessel)
+                    c = 2;
+                else if (is.getItem() instanceof ItemBarrels)
+                    c = 5;
+                else if (is.getItem() instanceof ItemAnvil)
+                    c = 10;
+            }
+        }
+        return c;
+    }
+
     @Override
     public void onBlockHarvested(World world, int x, int y, int z, int side, EntityPlayer player) {
-        if(!world.isRemote)
+        if(!world.isRemote&&world.getBlockMetadata(x,y,z)>0)
             this.dropBlocksInWorld(world, x, y, z);
     }
 

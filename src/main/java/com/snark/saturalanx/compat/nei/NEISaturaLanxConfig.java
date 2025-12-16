@@ -7,7 +7,7 @@ import com.snark.saturalanx.blocks.building.TilesBlock;
 import com.snark.saturalanx.core.BlockSetup;
 import com.snark.saturalanx.core.Config;
 import com.snark.saturalanx.core.ItemSetup;
-import com.snark.saturalanx.items.ItemSatura;
+import com.snark.saturalanx.items.ItemSL;
 import cpw.mods.fml.common.Optional;
 import net.minecraft.item.ItemStack;
 
@@ -33,7 +33,7 @@ public class NEISaturaLanxConfig implements IConfigureNEI {
         if(Config.enableIncendiaryPot)
             API.hideItem(new ItemStack(BlockSetup.flamingBlock));
         if(Config.enableHandgonne||Config.enableArquebus||Config.enableMBlunderbuss) {
-            for(int i = 0; i < ((ItemSatura) ItemSetup.dummyBullet).getIcons().length; i++)
+            for(int i = 0; i < ((ItemSL) ItemSetup.dummyBullet).getIcons().length; i++)
                 API.hideItem(new ItemStack(ItemSetup.dummyBullet, 1, i));
         }
         if(Config.enableSpikes) {
@@ -62,6 +62,9 @@ public class NEISaturaLanxConfig implements IConfigureNEI {
         if(Config.enableRopeArrows){
             API.hideItem(new ItemStack(BlockSetup.arrowRopeBlock,1,0));
             API.hideItem(new ItemStack(BlockSetup.arrowRopeBlock,1,1));
+        }
+        if(Config.enablePotGrenades){
+
         }
     }
 }
