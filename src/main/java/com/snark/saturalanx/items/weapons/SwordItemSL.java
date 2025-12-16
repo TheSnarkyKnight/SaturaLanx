@@ -7,15 +7,15 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import static com.snark.saturalanx.core.ItemSetup.WEAPONPATH;
 import static com.snark.saturalanx.SaturaLanx.tab;
 
-public class SwordSatura extends ItemCustomSword {
+public class SwordItemSL extends ItemCustomSword {
 
 
-    public SwordSatura(ToolMaterial par2EnumToolMaterial, float damage, EnumDamageType dt) {
+    public SwordItemSL(ToolMaterial par2EnumToolMaterial, float damage, EnumDamageType dt) {
         super(par2EnumToolMaterial, damage, dt);
         this.setCreativeTab(tab);
     }
 
-    public SwordSatura(ToolMaterial par2EnumToolMaterial, float damage) {
+    public SwordItemSL(ToolMaterial par2EnumToolMaterial, float damage) {
         super(par2EnumToolMaterial, damage);
         this.setCreativeTab(tab);
     }

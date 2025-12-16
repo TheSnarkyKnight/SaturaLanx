@@ -26,7 +26,7 @@ import net.minecraftforge.client.MinecraftForgeClient;
 import static com.snark.saturalanx.core.ItemSetup.WEAPONPATH;
 import static com.snark.saturalanx.SaturaLanx.tab;
 
-public class Bolas extends ItemTerra{
+public class BolasItem extends ItemTerra{
     public int projectileDamage;
     public int maxSwing;
     public int minSwing;
@@ -34,7 +34,7 @@ public class Bolas extends ItemTerra{
     private String[] bowPullIconNameArray = new String[]{"pulling_0", "pulling_1", "pulling_2", "pulling_3"};
     private IIcon[] iconArray;
 
-    public Bolas(){
+    public BolasItem(){
         super();
         this.setCreativeTab(tab);
         this.setMaxStackSize(1);

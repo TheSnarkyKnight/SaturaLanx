@@ -8,7 +8,7 @@ import com.dunk.tfc.api.Enums.EnumWeight;
 import com.dunk.tfc.api.TFCBlocks;
 import com.snark.saturalanx.SaturaLanx;
 import com.snark.saturalanx.core.BlockSetup;
-import com.snark.saturalanx.items.ItemSatura;
+import com.snark.saturalanx.items.ItemSL;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -25,7 +25,7 @@ import java.util.List;
 
 import static com.snark.saturalanx.SaturaLanx.MODID;
 
-public class SpikeItem extends ItemSatura {
+public class SpikeItem extends ItemSL {
     protected IIcon[] icons;
 
 

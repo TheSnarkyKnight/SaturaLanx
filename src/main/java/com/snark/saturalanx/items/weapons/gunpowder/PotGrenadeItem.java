@@ -1,21 +1,17 @@
 package com.snark.saturalanx.items.warfare.gunpowder;
 
-import com.dunk.tfc.TileEntities.TEFirepit;
-import com.dunk.tfc.TileEntities.TEForge;
 import com.dunk.tfc.api.Enums.EnumItemReach;
 import com.dunk.tfc.api.Enums.EnumSize;
 import com.dunk.tfc.api.Enums.EnumWeight;
-import com.dunk.tfc.api.TFCBlocks;
 import com.snark.saturalanx.core.Util;
 import com.snark.saturalanx.entities.EntityPotGrenade;
-import com.snark.saturalanx.items.ItemSatura;
+import com.snark.saturalanx.items.ItemSL;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
@@ -28,7 +24,7 @@ import java.util.List;
 
 import static com.snark.saturalanx.core.ItemSetup.WEAPONPATH;
 
-public class PotGrenade extends ItemSatura {
+public class PotGrenade extends ItemSL {
 
 protected IIcon icon2;
 protected int type;

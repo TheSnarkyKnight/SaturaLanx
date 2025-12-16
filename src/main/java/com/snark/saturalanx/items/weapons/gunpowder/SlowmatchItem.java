@@ -1,17 +1,15 @@
-package com.snark.saturalanx.items.warfare.incendiary;
+package com.snark.saturalanx.items.warfare.gunpowder;
 
-import com.dunk.tfc.Core.TFC_Core;
-import com.dunk.tfc.api.TFCBlocks;
-import com.dunk.tfc.api.TFCItems;
+import com.dunk.tfc.api.Enums.EnumSize;
+import com.dunk.tfc.api.Enums.EnumWeight;
 import com.snark.saturalanx.core.Config;
 import com.snark.saturalanx.core.Util;
-import com.snark.saturalanx.items.ItemSatura;
+import com.snark.saturalanx.items.ItemSL;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
@@ -19,33 +17,23 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
-import static com.snark.saturalanx.core.ItemSetup.WEAPONPATH;
-import static com.snark.saturalanx.core.ItemSetup.fireArrow;
+import static com.snark.saturalanx.SaturaLanx.MODID;
+import static com.snark.saturalanx.SaturaLanx.tab;
 
-public class FlameArrowItem extends ItemSatura {
+public class Slowmatch extends ItemSL {
     private IIcon litIcon;
-    private int salvageChance, igniteChance;
-
-    public FlameArrowItem(int dMod, int sMod, int iMod){
-        super();
-        this.maxStackSize = 1;
-        this.setMaxDamage(Config.flameArrowBurnDuration * dMod * 20);
-        salvageChance = Config.flameArrowSalvageChance + sMod;
-        igniteChance = Config.flameArrowIgniteChance + iMod;
-    }
-
-    public int getSalvageChance() {
-        return salvageChance;
-    }
-
-    public int getIgniteChance() {
-        return igniteChance;
+    public Slowmatch(){
+        this.setCreativeTab(tab);
+        this.setSize(EnumSize.SMALL);
+        this.setWeight(EnumWeight.LIGHT);
+        this.setMaxStackSize(1);
+        this.setMaxDamage(Config.slowmatchLength);
     }
 
     @Override
     public void registerIcons(IIconRegister registerer) {
-        this.itemIcon = registerer.registerIcon(WEAPONPATH+"projectiles/"+this.getUnlocalizedName().substring(5));
-        this.litIcon = registerer.registerIcon(WEAPONPATH+"projectiles/"+this.getUnlocalizedName().substring(5)+"Lit");
+        this.itemIcon = registerer.registerIcon(MODID + ":Slowmatch");
+        this.litIcon = registerer.registerIcon(MODID + ":SlowmatchLit");
     }
 
     @Override
@@ -87,8 +75,6 @@ public class FlameArrowItem extends ItemSatura {
     public void onCreated(ItemStack stack, World world, EntityPlayer player) {
         stack.stackTagCompound = new NBTTagCompound();
         stack.stackTagCompound.setBoolean("lit",false);
-        if(stack.getItem() == fireArrow)
-            stack.stackTagCompound.setInteger("counter",0);
     }
 
     @Override
@@ -97,8 +83,6 @@ public class FlameArrowItem extends ItemSatura {
         if(stack.stackTagCompound == null){
             stack.stackTagCompound = new NBTTagCompound();
             stack.stackTagCompound.setBoolean("lit",false);
-            if(stack.getItem() == fireArrow)
-                stack.stackTagCompound.setInteger("counter",0);
         }
 
         boolean lit = stack.stackTagCompound.getBoolean("lit");
@@ -125,10 +109,6 @@ public class FlameArrowItem extends ItemSatura {
         if(!lit){
             stack.stackTagCompound.setBoolean("lit",true);
             world.playSoundAtEntity(player,"fire.ignite",1,1);
-            if(stack.getItem() == fireArrow) {
-                stack.stackTagCompound.setInteger("counter",0);
-                world.playSoundAtEntity(player, "saturalanx:fuse", 0.8F, 1);
-            }
         }
 
     }
@@ -137,23 +117,11 @@ public class FlameArrowItem extends ItemSatura {
     public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean isHeld){
         if(stack.stackTagCompound!=null&&stack.stackTagCompound.getBoolean("lit")){
             stack.damageItem(1, (EntityLivingBase) entity);
-            if(stack.getItem()==fireArrow){
-                int i = stack.stackTagCompound.getInteger("counter");
-                if (i == 100) {
-                    world.playSoundAtEntity(entity, "saturalanx:fuse", 0.8F, 1);
-                    i = 0;
-                } else
-                    i++;
-                stack.stackTagCompound.setInteger("counter", i);
-            }
             if(stack.getItemDamage()<=0) {
                 if (!(entity instanceof EntityPlayer && ((EntityPlayer) entity).capabilities.isCreativeMode)) {
                     stack.stackTagCompound.setBoolean("lit", false);
-                    if(entity instanceof EntityPlayer) {
+                    if(entity instanceof EntityPlayer)
                         ((EntityPlayer) entity).inventory.setInventorySlotContents(slot,null);
-                        if(world.rand.nextInt(100) <= this.salvageChance)
-                            TFC_Core.giveItemToPlayer(new ItemStack(TFCItems.arrow,1), (EntityPlayer) entity);
-                    }
                 }
             }
         }
@@ -169,13 +137,11 @@ public class FlameArrowItem extends ItemSatura {
 
         if(!stack.stackTagCompound.getBoolean("lit")&& Util.canBlockLight(x,y,z,world)){
             stack.stackTagCompound.setBoolean("lit",true);
-            if(stack.getItem() == fireArrow) {
-                stack.stackTagCompound.setInteger("counter",0);
-                world.playSoundAtEntity(player, "saturalanx:fuse", 0.8F, 1);
-            }
+            return true;
         }
 
         return false;
     }
+
 
 }

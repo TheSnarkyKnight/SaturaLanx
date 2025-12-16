@@ -1,22 +1,18 @@
 package com.snark.saturalanx.items.warfare.incendiary;
 
-import com.dunk.tfc.TileEntities.TEFirepit;
-import com.dunk.tfc.TileEntities.TEForge;
 import com.dunk.tfc.api.Enums.EnumItemReach;
 import com.dunk.tfc.api.Enums.EnumSize;
 import com.dunk.tfc.api.Enums.EnumWeight;
-import com.dunk.tfc.api.TFCBlocks;
 import com.snark.saturalanx.core.Config;
 import com.snark.saturalanx.core.Util;
 import com.snark.saturalanx.entities.EntityIncendiaryPot;
-import com.snark.saturalanx.items.ItemSatura;
+import com.snark.saturalanx.items.ItemSL;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
@@ -26,7 +22,7 @@ import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
 import static com.snark.saturalanx.core.ItemSetup.WEAPONPATH;
 
-public class IncendiaryPot extends ItemSatura {
+public class IncendiaryPot extends ItemSL {
 
     public IIcon icon2;
     public IncendiaryPot(){

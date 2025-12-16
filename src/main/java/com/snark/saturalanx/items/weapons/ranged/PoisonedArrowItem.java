@@ -1,7 +1,7 @@
 package com.snark.saturalanx.items.warfare;
 
 import com.snark.saturalanx.core.Config;
-import com.snark.saturalanx.items.ItemSatura;
+import com.snark.saturalanx.items.ItemSL;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -11,8 +11,8 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class PoisonedArrow extends ItemSatura {
-    public PoisonedArrow(){
+public class PoisonedArrowItem extends ItemSL {
+    public PoisonedArrowItem(){
         super();
         this.setMaxStackSize(4);
         this.textureFolder = "weapons/arrows";
