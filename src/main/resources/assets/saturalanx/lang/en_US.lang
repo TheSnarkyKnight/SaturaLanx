@@ -189,9 +189,8 @@ item.LeadMace.name=Lead Mace
 item.BrassMaceHead.name=Brass Mace Head
 item.BrassMace.name=Brass Mace
 //Ranged Weapons
-item.PrimitiveSpearThrower.name=Crude Spear Thrower
-item.SpearThrower.name=Spear Thrower
-item.FireHardenedWoodSpear.name=Fire Hardened Wood Spear
+item.PrimitiveSpearThrower.name=Crude Spear-Thrower
+item.SpearThrower.name=Spear-Thrower
 item.Bolas.name=Bolas
 item.PoisonArrow.name=Poison Arrow
 item.RopeArrow.name=Rope Arrow

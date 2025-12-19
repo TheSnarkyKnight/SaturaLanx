@@ -40,7 +40,7 @@ public class ItemSetup {
     public static Item crudeFlameArrow, flameArrow, unfinishedFireArrow, fireArrow;
     public static Item slowmatch,match,potGrenade,potGrenadeQuick,potGrenadeLong;
     public static Item firecracker;
-    public static Item bolas, hardenedWoodSpear, primitiveSpearThrower, spearThrower;
+    public static Item bolas, primitiveSpearThrower, spearThrower;
     public static Item ropeArrow;
     public static Item saturaMaceMold, leadMaceHead, brassMaceHead;
     public static Item stoneClub, leadMace, brassMace;
@@ -133,13 +133,6 @@ public class ItemSetup {
             bolas = (new BolasItem()).setUnlocalizedName("Bolas").setTextureName(WEAPONPATH + "Bolas").setMaxDamage(1).setMaxStackSize(1);
 
             itemList.add(bolas);
-        }
-        if (Config.enableFireHardenedSpears){
-            Item.ToolMaterial hardenedWood = EnumHelper.addToolMaterial("HardenedWoodSpear",0,(woodToolMaterial.getMaxUses()*Config.fireHardenedSpearDurabilityModifier)/100, boneEff,woodToolMaterial.getDamageVsEntity()+((woodToolMaterial.getDamageVsEntity() * Config.fireHardenedSpearDamageModifier)/100),1);
-
-            hardenedWoodSpear = (new ItemJavelinSL(hardenedWood, 40 + ((float) (40 * Config.fireHardenedSpearDamageModifier) /100))).setPierceDamageShape("2X2").setAttackSpeed(12).setUnlocalizedName("FireHardenedWoodSpear");
-
-            itemList.add(hardenedWoodSpear);
         }
         if(Config.enableSpearThrower){
             primitiveSpearThrower = new SpearThrowerItem(100, Config.primitiveSpearThrowerForceMultiplier).setUnlocalizedName("PrimitiveSpearThrower");

@@ -81,8 +81,8 @@ public class Config {
     public static int poisonProjectileExpirationTime = TFCOptions.yearLength;
     public static String SPEARTHROWER = "Spear Thrower";
     public static boolean enableSpearThrower = true;
-    public static float primitiveSpearThrowerForceMultiplier = 1.3F;
-    public static float spearThrowerForceMultiplier = 1.7F;
+    public static float primitiveSpearThrowerForceMultiplier = 1.2F;
+    public static float spearThrowerForceMultiplier = 1.5F;
     public static int spearThrowerReadyTime = 4;
 
     public static String ROPEARROWS = "Rope Arrows";
@@ -93,11 +93,6 @@ public class Config {
     //Melee weapons
     public static String EXTRAMACES = "Extra Maces";
     public static boolean enableExtraMaces = true;
-
-    public static String HARDENEDSPEAR = "Fire Hardened Wood Spears";
-    public static boolean enableFireHardenedSpears = true;
-    public static int fireHardenedSpearDamageModifier = 50;
-    public static int fireHardenedSpearDurabilityModifier = 50;
 
     //Gunpowder
     public static String FIREARMS = "Firearms";
@@ -263,13 +258,9 @@ public class Config {
         poisonProjectileExpirationTime = config.getInt("Poison Projectile Expiration Time", POISONPROJECTILES,TFCOptions.yearLength,-1,Integer.MAX_VALUE,"How many days do poison projectiles keep their effects for. If set to -1, poison projectiles will keep their effect indefinitely");
         poisonProjectileEffectDurationModifier = config.getInt("Poison Arrow Effect Duration Modifier", POISONPROJECTILES,50,0,100,"How much the duration of the poison projectile's effect can vary, expressed as a percentage of its base duration.");
 
-        enableFireHardenedSpears = config.getBoolean("Enable Fire Hardened Spears",HARDENEDSPEAR,true,"Enables fire hardened spears");
-        fireHardenedSpearDurabilityModifier = config.getInt("Fire Hardened Spear Durability Modifier",HARDENEDSPEAR,50,1,100,"Percentage modifier for hardened spear durability.");
-        fireHardenedSpearDamageModifier = config.getInt("Fire Hardened Spear Damage Modifier",HARDENEDSPEAR,50,1,100,"Percentage modifier for hardened spear damage.");
-
         enableSpearThrower = config.getBoolean("Enable Spear Thrower",SPEARTHROWER,true,"Enables spear throwers");
-        spearThrowerForceMultiplier = config.getFloat("Spear Thrower Force Multiplier",SPEARTHROWER,1.7F,1,5,"Force multiplier for spear thrower projectiles");
-        primitiveSpearThrowerForceMultiplier = config.getFloat("Primitive Spear Thrower Force Multiplier",SPEARTHROWER,1.3F,1,5,"Force multiplier for spear thrower projectiles");
+        spearThrowerForceMultiplier = config.getFloat("Spear Thrower Force Multiplier",SPEARTHROWER,1.5F,1,5,"Force multiplier for spear thrower projectiles");
+        primitiveSpearThrowerForceMultiplier = config.getFloat("Primitive Spear Thrower Force Multiplier",SPEARTHROWER,1.2F,1,5,"Force multiplier for spear thrower projectiles");
         spearThrowerReadyTime = config.getInt("Spear Thrower Ready Time",SPEARTHROWER,4,0,Integer.MAX_VALUE,"How many seconds it takes to ready the spear thrower");
         
         //Melee weapons
