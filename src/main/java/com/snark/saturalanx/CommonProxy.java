@@ -7,6 +7,7 @@ import cpw.mods.fml.common.ModContainer;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraft.item.Item;
 
 import static com.snark.saturalanx.SaturaLanx.bidLoaded;
 import static com.snark.saturalanx.SaturaLanx.kvassLoaded;
@@ -28,6 +29,7 @@ public class CommonProxy {
         BlockSetup.registerBlocks();
         EntitySetup.registerTileEntities();
         EntitySetup.registerEntities();
+
     }
 
     public void init(FMLInitializationEvent event){
@@ -41,10 +43,10 @@ public class CommonProxy {
         CraftingRecipes.registerRecipes();
         KnappingRecipes.registerKnapping();
 
-
     }
 
     public void postInit(FMLPostInitializationEvent event){
+        ItemSetup.setupAmmoRegistries();
         MoldRecipes.registerPartialMolds();
         HeatSetup.registerHeat();
     }

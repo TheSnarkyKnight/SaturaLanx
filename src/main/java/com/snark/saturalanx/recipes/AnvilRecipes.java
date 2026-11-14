@@ -24,6 +24,72 @@ public class AnvilRecipes {
 
         AnvilManager manager = AnvilManager.getInstance();
 
+
+        manager.addPlan("ballScrew", new PlanRecipe(new RuleEnum[]{RuleEnum.DRAWTHIRDFROMLAST, RuleEnum.DRAWSECONDFROMLAST, RuleEnum.BENDLAST}));
+
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.blackBronzeIngot),null,"ballScrew",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.gunComponent,1,0)).addRecipeSkill("skill.gensmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.bismuthBronzeIngot),null,"ballScrew",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.gunComponent,1,0)).addRecipeSkill("skill.gensmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.bronzeIngot),null,"ballScrew",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.gunComponent,1,0)).addRecipeSkill("skill.gensmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.wroughtIronIngot),null,"ballScrew",false,AnvilReq.WROUGHTIRON,new ItemStack(ItemSetup.gunComponent,1,0)).addRecipeSkill("skill.gensmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.steelIngot),null,"ballScrew",false,AnvilReq.WROUGHTIRON,new ItemStack(ItemSetup.gunComponent,1,0)).addRecipeSkill("skill.gensmith"));
+
+        manager.addPlan("matchlockMechanism", new PlanRecipe(new RuleEnum[]{RuleEnum.BENDANY, RuleEnum.BENDANY, RuleEnum.DRAWANY}));
+
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.blackBronzeIngot),null,"matchlockMechanism",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.gunComponent,1,1)).addRecipeSkill("skill.gensmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.bismuthBronzeIngot),null,"matchlockMechanism",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.gunComponent,1,1)).addRecipeSkill("skill.gensmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.bronzeIngot),null,"matchlockMechanism",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.gunComponent,1,1)).addRecipeSkill("skill.gensmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.wroughtIronIngot),null,"matchlockMechanism",false,AnvilReq.WROUGHTIRON,new ItemStack(ItemSetup.gunComponent,1,1)).addRecipeSkill("skill.gensmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.steelIngot),null,"matchlockMechanism",false,AnvilReq.WROUGHTIRON,new ItemStack(ItemSetup.gunComponent,1,1)).addRecipeSkill("skill.gensmith"));
+
+        manager.addPlan("gunBarrel", new PlanRecipe(new RuleEnum[]{RuleEnum.BENDTHIRDFROMLAST, RuleEnum.HITSECONDFROMLAST, RuleEnum.BENDLAST}));
+
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.bronzeSheet),null,"gunBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.unfinishedBarrel,1,0)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.bismuthBronzeSheet),null,"gunBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.unfinishedBarrel,1,1)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.blackBronzeSheet),null,"gunBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.unfinishedBarrel,1,2)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.brassSheet),null,"gunBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.unfinishedBarrel,1,3)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.wroughtIronSheet),null,"gunBarrel",false,AnvilReq.WROUGHTIRON,new ItemStack(ItemSetup.unfinishedBarrel,1,5)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.steelSheet),null,"gunBarrel",false,AnvilReq.STEEL,new ItemStack(ItemSetup.unfinishedBarrel,1,7)).addRecipeSkill("skill.weaponsmith"));
+
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedBarrel,1,0),null,"gunBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.bronzeBarrel)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedBarrel,1,1),null,"gunBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.bismuthBronzeBarrel)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedBarrel,1,2),null,"gunBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.blackBronzeBarrel)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedBarrel,1,3),null,"gunBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.brassBarrel)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedBarrel,1,5),null,"gunBarrel",false,AnvilReq.WROUGHTIRON,new ItemStack(ItemSetup.ironBarrel)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedBarrel,1,7),null,"gunBarrel",false,AnvilReq.STEEL,new ItemStack(ItemSetup.steelBarrel)).addRecipeSkill("skill.weaponsmith"));
+
+        manager.addWeldRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedBarrel,1,3),new ItemStack(TFCItems.brassSheet),AnvilReq.BRONZE,new ItemStack(ItemSetup.unfinishedBarrel,1,4)).addRecipeSkill("skill.weaponsmith"));
+        manager.addWeldRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedBarrel,1,5),new ItemStack(TFCItems.wroughtIronSheet),AnvilReq.WROUGHTIRON,new ItemStack(ItemSetup.unfinishedBarrel,1,6)).addRecipeSkill("skill.weaponsmith"));
+        manager.addWeldRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedBarrel,1,7),new ItemStack(TFCItems.brassSheet),true,AnvilReq.STEEL,new ItemStack(ItemSetup.unfinishedBarrel,1,8)).addRecipeSkill("skill.weaponsmith"));
+
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedBarrel,1,4),null,"gunBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.brassLongBarrel)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedBarrel,1,6),null,"gunBarrel",false,AnvilReq.WROUGHTIRON,new ItemStack(ItemSetup.ironLongBarrel)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedBarrel,1,8),null,"gunBarrel",false,AnvilReq.STEEL,new ItemStack(ItemSetup.steelLongBarrel)).addRecipeSkill("skill.weaponsmith"));
+
+        manager.addPlan("flaredBarrel", new PlanRecipe(new RuleEnum[]{RuleEnum.BENDTHIRDFROMLAST,RuleEnum.HITSECONDFROMLAST,RuleEnum.UPSETLAST}));
+
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.bronzeSheet),null,"flaredBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,0)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.bismuthBronzeSheet),null,"flaredBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,1)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.blackBronzeSheet),null,"flaredBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,2)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.brassSheet),null,"flaredBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,3)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.wroughtIronSheet),null,"flaredBarrel",false,AnvilReq.WROUGHTIRON,new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,5)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.steelSheet),null,"flaredBarrel",false,AnvilReq.STEEL,new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,7)).addRecipeSkill("skill.weaponsmith"));
+
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,0),null,"flaredBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.bronzeFlaredBarrel)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,1),null,"flaredBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.bismuthBronzeFlaredBarrel)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,2),null,"flaredBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.blackBronzeFlaredBarrel)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,3),null,"flaredBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.brassFlaredBarrel)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,5),null,"flaredBarrel",false,AnvilReq.WROUGHTIRON,new ItemStack(ItemSetup.ironFlaredBarrel)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,7),null,"flaredBarrel",false,AnvilReq.STEEL,new ItemStack(ItemSetup.steelFlaredBarrel)).addRecipeSkill("skill.weaponsmith"));
+
+        manager.addWeldRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,3),new ItemStack(TFCItems.brassSheet),AnvilReq.BRONZE,new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,4)).addRecipeSkill("skill.weaponsmith"));
+        manager.addWeldRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,5),new ItemStack(TFCItems.wroughtIronSheet),AnvilReq.WROUGHTIRON,new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,6)).addRecipeSkill("skill.weaponsmith"));
+        manager.addWeldRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,7),new ItemStack(TFCItems.brassSheet),true,AnvilReq.STEEL,new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,8)).addRecipeSkill("skill.weaponsmith"));
+
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,4),null,"flaredBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.brassLongFlaredBarrel)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,6),null,"flaredBarrel",false,AnvilReq.WROUGHTIRON,new ItemStack(ItemSetup.ironLongFlaredBarrel)).addRecipeSkill("skill.weaponsmith"));
+        manager.addRecipe(new AnvilRecipe(new ItemStack(ItemSetup.unfinishedFlaredBarrel,1,8),null,"flaredBarrel",false,AnvilReq.STEEL,new ItemStack(ItemSetup.steelLongFlaredBarrel)).addRecipeSkill("skill.weaponsmith"));
+
+
         if(Config.enableExtraMaces){
 
             manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.leadIngot2x),(ItemStack) null,"mace",false, AnvilReq.COPPER, new ItemStack(ItemSetup.leadMaceHead,1)).addRecipeSkill("skill.weaponsmith"));
@@ -37,20 +103,6 @@ public class AnvilRecipes {
 
             manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.wroughtIronIngot),(ItemStack) null,"spike",false,AnvilReq.WROUGHTIRON,new ItemStack(ItemSetup.spikeItem,1,1)).addRecipeSkill("skill.gensmith"));
 
-        }
-        if(Config.enableArquebus||Config.enableMBlunderbuss){
-            manager.addPlan("matchlockMechanism", new PlanRecipe(new RuleEnum[]{RuleEnum.BENDANY, RuleEnum.BENDANY, RuleEnum.DRAWANY}));
-
-            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.wroughtIronIngot),null,"matchlockMechanism",false,AnvilReq.WROUGHTIRON,new ItemStack(ItemSetup.mechanism,1,0)).addRecipeSkill("skill.gensmith"));
-            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.steelIngot),null,"matchlockMechanism",false,AnvilReq.WROUGHTIRON,new ItemStack(ItemSetup.mechanism,1,0)).addRecipeSkill("skill.gensmith"));
-
-        }
-        if(Config.enableMBlunderbuss){
-            manager.addPlan("flaredBarrel", new PlanRecipe(new RuleEnum[]{RuleEnum.UPSETTHIRDFROMLAST,RuleEnum.UPSETSECONDFROMLAST,RuleEnum.UPSETLAST}));
-
-            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.brassSheet2x),null,"flaredBarrel",false,AnvilReq.BRONZE,new ItemStack(ItemSetup.flaredBarrel,1,0)).addRecipeSkill("skill.weaponsmith"));
-            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.wroughtIronSheet2x),null,"flaredBarrel",false,AnvilReq.WROUGHTIRON,new ItemStack(ItemSetup.flaredBarrel,1,1)).addRecipeSkill("skill.weaponsmith"));
-            manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.steelSheet2x),null,"flaredBarrel",false,AnvilReq.STEEL,new ItemStack(ItemSetup.flaredBarrel,1,2)).addRecipeSkill("skill.weaponsmith"));
         }
         if(Config.enableTallCandlestick){
             manager.addPlan("tallCandleholder",new PlanRecipe(new RuleEnum[]{RuleEnum.DRAWTHIRDFROMLAST,RuleEnum.DRAWSECONDFROMLAST,RuleEnum.BENDLAST}));

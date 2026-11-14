@@ -38,6 +38,8 @@ public class BarrelRecipes {
         BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(gunpowder,2),new FluidStack(TFCFluids.FRESHWATER,1000),(ItemStack) null,new FluidStack(FluidSetup.GUNPOWDERFLUID,1000)).setMinTechLevel(0).setSealedRecipe(false).setRemovesLiquid(false).setSealTime(0));
         BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(TFCItems.powder,2,4),new FluidStack(TFCFluids.FRESHWATER,1000),(ItemStack) null,new FluidStack(FluidSetup.SALTPETERFLUID,1000)).setMinTechLevel(0).setSealedRecipe(false).setRemovesLiquid(false).setSealTime(0));
         BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(ItemSetup.match,1,0),new FluidStack(FluidSetup.SALTPETERFLUID,100),new ItemStack(ItemSetup.slowmatch,1),new FluidStack(FluidSetup.SALTPETERFLUID,100)).setMinTechLevel(0).setSealedRecipe(true).setRemovesLiquid(true).setSealTime(5000));
+
+        BarrelManager.getInstance().addRecipe((new BarrelRecipe(new ItemStack(saturaBulletMold,1,1),new FluidStack(TFCFluids.WAX,100),new ItemStack(saturaBulletMoldExtra,1),new FluidStack(TFCFluids.WAX,100)).setSealedRecipe(false).setMinTechLevel(0).setSealTime(0).setRemovesLiquid(true)));
         //Incendiary Pot
         if(Config.enableIncendiaryPot) {
 

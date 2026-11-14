@@ -28,6 +28,10 @@ public class MoldRecipes {
             Global.LEAD.addValidPartialMold(ItemSetup.saturaMaceMold, 2, ItemSetup.saturaMaceMold, 2, 2);
             Global.BRASS.addValidPartialMold(ItemSetup.saturaMaceMold, 3, ItemSetup.saturaMaceMold, 2, 2);
 
+            Global.LEAD.addValidPartialMold(ItemSetup.saturaBulletMold,2,ItemSetup.saturaBulletMold,1,2);
+            Global.SILVER.addValidPartialMold(ItemSetup.saturaBulletMold,3,ItemSetup.saturaBulletMold,1,3);
+            Global.GOLD.addValidPartialMold(ItemSetup.saturaBulletMold,4,ItemSetup.saturaBulletMold,1,4);
+
         }
 
     }

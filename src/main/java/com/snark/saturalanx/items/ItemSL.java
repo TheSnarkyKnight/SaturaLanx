@@ -84,4 +84,8 @@ public class ItemSL extends ItemTerra {
         else
             return this.getUnlocalizedName();
     }
+
+    public int getNumSubtypes(){
+        return this.metaNames.length;
+    }
 }

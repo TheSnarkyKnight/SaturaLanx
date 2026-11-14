@@ -21,7 +21,7 @@ public class HandgonneRender implements IItemRenderer {
 
     @Override
     public boolean handleRenderType(ItemStack itemStack, ItemRenderType type) {
-        return true;
+        return type == ItemRenderType.EQUIPPED || type == ItemRenderType.EQUIPPED_FIRST_PERSON;
     }
 
     @Override
@@ -36,15 +36,15 @@ public class HandgonneRender implements IItemRenderer {
                 GL11.glPushMatrix();
 
                 if(itemStack.getItem()== ItemSetup.brassHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BrassHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneBrass.png"));
                 if(itemStack.getItem()== ItemSetup.bronzeHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BronzeHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneBronze.png"));
                 if(itemStack.getItem()== ItemSetup.blackBronzeHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BlackBronzeHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneBlackBronze.png"));
                 if(itemStack.getItem()== ItemSetup.bismuthBronzeHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BismuthBronzeHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneBismuthBronze.png"));
                 if(itemStack.getItem()== ItemSetup.ironHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/IronHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneIron.png"));
 
                 GL11.glRotatef(80,1,1,0);
                 //GL11.glRotatef(-50,1,0,0);
@@ -58,15 +58,15 @@ public class HandgonneRender implements IItemRenderer {
                 GL11.glPushMatrix();
 
                 if(itemStack.getItem()== ItemSetup.brassHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BrassHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneBrass.png"));
                 if(itemStack.getItem()== ItemSetup.bronzeHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BronzeHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneBronze.png"));
                 if(itemStack.getItem()== ItemSetup.blackBronzeHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BlackBronzeHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneBlackBronze.png"));
                 if(itemStack.getItem()== ItemSetup.bismuthBronzeHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BismuthBronzeHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneBismuthBronze.png"));
                 if(itemStack.getItem()== ItemSetup.ironHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/IronHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneIron.png"));
 
                 GL11.glRotatef(80,0,1,0);
                 //GL11.glRotatef(-50,1,0,0);
@@ -81,21 +81,20 @@ public class HandgonneRender implements IItemRenderer {
                 GL11.glPushMatrix();
 
                 if(itemStack.getItem()== ItemSetup.brassHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BrassHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneBrass.png"));
                 if(itemStack.getItem()== ItemSetup.bronzeHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BronzeHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneBronze.png"));
                 if(itemStack.getItem()== ItemSetup.blackBronzeHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BlackBronzeHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneBlackBronze.png"));
                 if(itemStack.getItem()== ItemSetup.bismuthBronzeHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BismuthBronzeHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneBismuthBronze.png"));
                 if(itemStack.getItem()== ItemSetup.ironHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/IronHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneIron.png"));
 
                 GL11.glRotatef(80,0,1,0);
                 GL11.glRotatef(-30,1,0,0);
                 GL11.glTranslatef(0.1F,0,0);
                 GL11.glScalef(0.7F,0.7F,0.8F);
-
 
                 model.render((Entity)objects[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
                 GL11.glPopMatrix();
@@ -105,15 +104,15 @@ public class HandgonneRender implements IItemRenderer {
                 GL11.glPushMatrix();
 
                 if(itemStack.getItem()== ItemSetup.brassHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BrassHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneBrass.png"));
                 if(itemStack.getItem()== ItemSetup.bronzeHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BronzeHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneBronze.png"));
                 if(itemStack.getItem()== ItemSetup.blackBronzeHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BlackBronzeHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneBlackBronze.png"));
                 if(itemStack.getItem()== ItemSetup.bismuthBronzeHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BismuthBronzeHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneBismuthBronze.png"));
                 if(itemStack.getItem()== ItemSetup.ironHandgonne)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/IronHandgonne.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/handgonne/HandgonneIron.png"));
 
                 GL11.glRotatef(90,0,1,0);
                 GL11.glRotatef(-30,1,0,0);

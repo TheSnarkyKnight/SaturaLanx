@@ -15,6 +15,9 @@ public class KnappingRecipes {
 
         SaturaLanx.log.info("Registering knapping recipes...");
 
+        //for(int i = 0;i<TFCItems.flatRock.getMaxDamage();i++)
+            CraftingManagerTFC.getInstance().addRecipe(new ItemStack(ItemSetup.bulletSL,8,0), new Object[]{"## ##", "## ##", "     ", "## ##", "## ##",'#', new ItemStack(TFCItems.flatRock, 1, 32767)});
+
         CraftingManagerTFC.getInstance().addRecipe(new ItemStack(ItemSetup.floorTile, 4, 0), new Object[]{"  X  ", "  X  ", "XXXXX", "  X  ", "  X  ",'X', new ItemStack(TFCItems.flatClay, 1, 1)});
 
         SaturaLanx.log.info("Done registering knapping recipes.");

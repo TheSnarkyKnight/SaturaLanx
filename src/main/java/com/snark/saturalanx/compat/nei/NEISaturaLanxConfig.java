@@ -33,8 +33,8 @@ public class NEISaturaLanxConfig implements IConfigureNEI {
         if(Config.enableIncendiaryPot)
             API.hideItem(new ItemStack(BlockSetup.flamingBlock));
         if(Config.enableHandgonne||Config.enableArquebus||Config.enableMBlunderbuss) {
-            for(int i = 0; i < ((ItemSL) ItemSetup.dummyBullet).getIcons().length; i++)
-                API.hideItem(new ItemStack(ItemSetup.dummyBullet, 1, i));
+            for(int i = 0; i < ((ItemSL) ItemSetup.shotPelletSL).getIcons().length; i++)
+                API.hideItem(new ItemStack(ItemSetup.shotPelletSL, 1, i));
         }
         if(Config.enableSpikes) {
             API.hideItem(new ItemStack(BlockSetup.spikeBlock, 1, 0));

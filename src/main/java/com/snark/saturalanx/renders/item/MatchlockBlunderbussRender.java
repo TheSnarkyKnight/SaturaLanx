@@ -19,8 +19,8 @@ public class MatchlockBlunderbussRender implements IItemRenderer {
     }
 
     @Override
-    public boolean handleRenderType(ItemStack itemStack, ItemRenderType itemRenderType) {
-        return true;
+    public boolean handleRenderType(ItemStack itemStack, ItemRenderType type) {
+        return type == ItemRenderType.EQUIPPED || type == ItemRenderType.EQUIPPED_FIRST_PERSON;
     }
 
     @Override
@@ -35,11 +35,11 @@ public class MatchlockBlunderbussRender implements IItemRenderer {
                 GL11.glPushMatrix();
 
                 if(itemStack.getItem()== ItemSetup.brassMBlunderbuss)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BrassBlunderbussM.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/blunderbuss/MatchlockBlunderbussBrass.png"));
                 if(itemStack.getItem()== ItemSetup.ironMBlunderbuss)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/IronBlunderbussM.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/blunderbuss/MatchlockBlunderbussIron.png"));
                 if(itemStack.getItem()== ItemSetup.steelMBlunderbuss)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/SteelBlunderbussM.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/blunderbuss/MatchlockBlunderbussSteel.png"));
 
                 GL11.glRotatef(80,1,1,0);
                 //GL11.glRotatef(-50,1,0,0);
@@ -53,11 +53,11 @@ public class MatchlockBlunderbussRender implements IItemRenderer {
                 GL11.glPushMatrix();
 
                 if(itemStack.getItem()== ItemSetup.brassMBlunderbuss)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BrassBlunderbussM.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/blunderbuss/MatchlockBlunderbussBrass.png"));
                 if(itemStack.getItem()== ItemSetup.ironMBlunderbuss)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/IronBlunderbussM.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/blunderbuss/MatchlockBlunderbussIron.png"));
                 if(itemStack.getItem()== ItemSetup.steelMBlunderbuss)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/SteelBlunderbussM.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/blunderbuss/MatchlockBlunderbussSteel.png"));
 
                 GL11.glRotatef(180,0,1,0);
                 GL11.glRotatef(180,1,0,0);
@@ -72,11 +72,11 @@ public class MatchlockBlunderbussRender implements IItemRenderer {
                 GL11.glPushMatrix();
 
                 if(itemStack.getItem()== ItemSetup.brassMBlunderbuss)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BrassBlunderbussM.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/blunderbuss/MatchlockBlunderbussBrass.png"));
                 if(itemStack.getItem()== ItemSetup.ironMBlunderbuss)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/IronBlunderbussM.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/blunderbuss/MatchlockBlunderbussIron.png"));
                 if(itemStack.getItem()== ItemSetup.steelMBlunderbuss)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/SteelBlunderbussM.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/blunderbuss/MatchlockBlunderbussSteel.png"));
 
                 GL11.glRotatef(-90,0,0,1);
                 GL11.glRotatef(90,0,1,0);
@@ -93,11 +93,11 @@ public class MatchlockBlunderbussRender implements IItemRenderer {
                 GL11.glPushMatrix();
 
                 if(itemStack.getItem()== ItemSetup.brassMBlunderbuss)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BrassBlunderbussM.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/blunderbuss/MatchlockBlunderbussBrass.png"));
                 if(itemStack.getItem()== ItemSetup.ironMBlunderbuss)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/IronBlunderbussM.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/blunderbuss/MatchlockBlunderbussIron.png"));
                 if(itemStack.getItem()== ItemSetup.steelMBlunderbuss)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/SteelBlunderbussM.png"));
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/blunderbuss/MatchlockBlunderbussSteel.png"));
 
                 GL11.glRotatef(-90,0,0,1);
                 GL11.glRotatef(90,0,1,0);

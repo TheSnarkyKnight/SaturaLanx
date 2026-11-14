@@ -24,13 +24,13 @@ boolean b;
     @Override
     public void registerIcons(IIconRegister registerer) {
 
-        this.clayIcon = registerer.registerIcon("saturalanx:pottery/"+this.metaNames[0]);
-        this.ceramicIcon = registerer.registerIcon("saturalanx:pottery/"+this.metaNames[1]);
+        this.clayIcon = registerer.registerIcon("saturalanx:pottery/molds/"+this.metaNames[0]);
+        this.ceramicIcon = registerer.registerIcon("saturalanx:pottery/molds/"+this.metaNames[1]);
         if (this.metaNames.length > 2) {
             this.metalIcons = new IIcon[this.metaNames.length - 2];
 
             for (int i = 0; i < this.metalIcons.length; ++i) {
-                this.metalIcons[i] = registerer.registerIcon("saturalanx:pottery/" + this.metaNames[2 + i]);
+                this.metalIcons[i] = registerer.registerIcon("saturalanx:pottery/molds/" + this.metaNames[2 + i]);
             }
         }
 

@@ -26,7 +26,7 @@ public class SaturaLanx
     public static CreativeTabs tab = new CreativeTabs("Satura Lanx") {
         @Override
         public Item getTabIconItem() {
-            return ItemSetup.dummyBullet;
+            return ItemSetup.shotPelletSL;
         }
     };
 

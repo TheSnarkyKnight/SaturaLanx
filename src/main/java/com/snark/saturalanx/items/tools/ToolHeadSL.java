@@ -1,30 +1,28 @@
 package com.snark.saturalanx.items.tools;
 
 import com.dunk.tfc.Items.Tools.ItemMiscToolHead;
+import com.dunk.tfc.api.Constant.Global;
+import com.dunk.tfc.api.Metal;
 import net.minecraft.client.renderer.texture.IIconRegister;
 
 import static com.snark.saturalanx.SaturaLanx.tab;
 
 public class ToolHeadSL extends ItemMiscToolHead {
 
-    private String path;
-    public ToolHeadSL(){
+    public ToolHeadSL(String name, Metal metal){
         super();
         this.setCreativeTab(tab);
-        path = "";
+        this.setUnlocalizedName(name);
+        this.setMetal(metal);
     }
 
     @Override
     public void registerIcons(IIconRegister registerer){
         String name = this.getUnlocalizedName().replace("item.","");
-        this.itemIcon = registerer.registerIcon(path + name);
+        this.itemIcon = registerer.registerIcon(textureFolder + name);
     }
 
-     public void setPath(String p){
-        this.path = p;
-     }
-
-     public String getPath(){
-        return this.path;
-     }
+    public Metal getMetalNoArgs(){
+        return this.getMetal(Global.UNKNOWN);
+    }
 }

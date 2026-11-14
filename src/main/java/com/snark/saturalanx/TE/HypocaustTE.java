@@ -141,22 +141,25 @@ public class HypocaustTE extends TileEntity {
 
         //gets total height of water over the hypocaust
         int h = 0;
+        int offset = 0;
         for(int i = 1;i<=3;i++){
             b = worldObj.getBlock(xCoord,yCoord+i,zCoord);
             if(b==freshWater||b==freshWaterStationary||b==bathWater||b==bathWaterStatic)
                 h++;
+            else
+                offset++;
         }
 
         //updates fluid blocks
             for(int y = 1;y<=h;y++){
                 for(int x = minX;x<=maxX;x++){
                     for(int z = minZ;z<=maxZ;z++){
-                        b = worldObj.getBlock(x,yCoord+y,z);
+                        b = worldObj.getBlock(x,yCoord+y+offset,z);
                         if(active&&(b==freshWater||b==freshWaterStationary)) {
-                            worldObj.setBlock(x, yCoord+y, z, bathWaterStatic);
+                            worldObj.setBlock(x, yCoord+y+offset, z, bathWaterStatic);
                         }
                         else if(!active&&(b==bathWater||b==bathWaterStatic)) {
-                            worldObj.setBlock(x, yCoord+y, z, freshWaterStationary);
+                            worldObj.setBlock(x, yCoord+y+offset, z, freshWaterStationary);
                         }
                     }
                 }

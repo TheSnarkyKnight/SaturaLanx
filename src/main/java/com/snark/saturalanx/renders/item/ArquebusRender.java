@@ -19,8 +19,8 @@ public class ArquebusRender implements IItemRenderer {
     }
 
     @Override
-    public boolean handleRenderType(ItemStack itemStack, ItemRenderType itemRenderType) {
-        return true;
+    public boolean handleRenderType(ItemStack itemStack, ItemRenderType type) {
+        return type == ItemRenderType.EQUIPPED || type == ItemRenderType.EQUIPPED_FIRST_PERSON;
     }
 
     @Override
@@ -34,12 +34,12 @@ public class ArquebusRender implements IItemRenderer {
             case INVENTORY:
                 GL11.glPushMatrix();
 
-                if(itemStack.getItem()== ItemSetup.brassArquebus)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BrassArquebus.png"));
-                if(itemStack.getItem()== ItemSetup.ironArquebus)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/IronArquebus.png"));
-                if(itemStack.getItem()== ItemSetup.steelArquebus)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/SteelArquebus.png"));
+                if(itemStack.getItem()== ItemSetup.brassMArquebus)
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/arquebus/MatchlockArquebusBrass.png"));
+                if(itemStack.getItem()== ItemSetup.ironMArquebus)
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/arquebus/MatchlockArquebusIron.png"));
+                if(itemStack.getItem()== ItemSetup.steelMArquebus)
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/arquebus/MatchlockArquebusSteel.png"));
 
                 GL11.glRotatef(80,1,1,0);
                 //GL11.glRotatef(-50,1,0,0);
@@ -52,12 +52,12 @@ public class ArquebusRender implements IItemRenderer {
             case ENTITY:
                 GL11.glPushMatrix();
 
-                if(itemStack.getItem()== ItemSetup.brassArquebus)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BrassArquebus.png"));
-                if(itemStack.getItem()== ItemSetup.ironArquebus)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/IronArquebus.png"));
-                if(itemStack.getItem()== ItemSetup.steelArquebus)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/SteelArquebus.png"));
+                if(itemStack.getItem()== ItemSetup.brassMArquebus)
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/arquebus/MatchlockArquebusBrass.png"));
+                if(itemStack.getItem()== ItemSetup.ironMArquebus)
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/arquebus/MatchlockArquebusIron.png"));
+                if(itemStack.getItem()== ItemSetup.steelMArquebus)
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/arquebus/MatchlockArquebusSteel.png"));
 
                 GL11.glRotatef(180,0,1,0);
                 GL11.glRotatef(180,1,0,0);
@@ -71,12 +71,12 @@ public class ArquebusRender implements IItemRenderer {
             case EQUIPPED:
                 GL11.glPushMatrix();
 
-                if(itemStack.getItem()== ItemSetup.brassArquebus)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BrassArquebus.png"));
-                if(itemStack.getItem()== ItemSetup.ironArquebus)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/IronArquebus.png"));
-                if(itemStack.getItem()== ItemSetup.steelArquebus)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/SteelArquebus.png"));
+                if(itemStack.getItem()== ItemSetup.brassMArquebus)
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/arquebus/MatchlockArquebusBrass.png"));
+                if(itemStack.getItem()== ItemSetup.ironMArquebus)
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/arquebus/MatchlockArquebusIron.png"));
+                if(itemStack.getItem()== ItemSetup.steelMArquebus)
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/arquebus/MatchlockArquebusSteel.png"));
 
                 GL11.glRotatef(-90,0,0,1);
                 GL11.glRotatef(90,0,1,0);
@@ -92,12 +92,12 @@ public class ArquebusRender implements IItemRenderer {
             case EQUIPPED_FIRST_PERSON:
                 GL11.glPushMatrix();
 
-                if(itemStack.getItem()== ItemSetup.brassArquebus)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/BrassArquebus.png"));
-                if(itemStack.getItem()== ItemSetup.ironArquebus)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/IronArquebus.png"));
-                if(itemStack.getItem()== ItemSetup.steelArquebus)
-                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/SteelArquebus.png"));
+                if(itemStack.getItem()== ItemSetup.brassMArquebus)
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/arquebus/MatchlockArquebusBrass.png"));
+                if(itemStack.getItem()== ItemSetup.ironMArquebus)
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/arquebus/MatchlockArquebusIron.png"));
+                if(itemStack.getItem()== ItemSetup.steelMArquebus)
+                    Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(MODID +":textures/models/items/weapons/arquebus/MatchlockArquebusSteel.png"));
 
                 GL11.glRotatef(-90,0,0,1);
                 GL11.glRotatef(90,0,1,0);

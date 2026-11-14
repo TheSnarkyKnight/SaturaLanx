@@ -28,7 +28,7 @@ public class Firecracker extends ItemSL {
 
     @Override
     public void registerIcons(IIconRegister registerer) {
-        this.itemIcon = registerer.registerIcon(MODID +":tools/"+this.getUnlocalizedName().replace("item.",""));
+        this.itemIcon = registerer.registerIcon(MODID +":tools/fireworks/"+this.getUnlocalizedName().replace("item.",""));
     }
 
     @Override

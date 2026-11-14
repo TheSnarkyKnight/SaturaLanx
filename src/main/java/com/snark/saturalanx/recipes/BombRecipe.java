@@ -102,7 +102,7 @@ public class BombRecipe implements IRecipe {
                         f[0] += i.stackSize;
                     if (i.getItem() == Item.getItemFromBlock(TFCBlocks.gravel) || i.getItem() == Item.getItemFromBlock(TFCBlocks.gravel2))
                         f[1] += (i.stackSize * 10);
-                    if (i.getItem() == ItemSetup.shot)
+                    if (i.getItem() == ItemSetup.shotSL)
                         f[2] += (i.stackSize*10);
                     if (i.getItem() == TFCItems.resin || i.getItem() == TFCItems.coal)
                         f[3] += i.stackSize;

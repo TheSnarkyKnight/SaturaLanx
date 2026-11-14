@@ -101,18 +101,35 @@ public class Config {
     public static boolean enableHandgonne = true;
     public static int handgonneLoadingTime = 200;
     public static int handgonneAimingTime = 80;
-    public static int handgonneDamage = 320;
+    public static int handgonneDamage = 350;
+
+    public static boolean enableEruptor = true;
+    public static int eruptorLoadingTime = 200;
+    public static int eruptorAimingTime = 80;
+    public static int eruptorDamage = 80;
+    public static int eruptorPellets = 10;
 
     public static boolean enableArquebus = true;
     public static int arquebusLoadingTime = 200;
     public static int arquebusAimingTime = 20;
     public static int arquebusDamage = 450;
 
+    public static boolean enableMPistol = true;
+    public static int mPistolLoadingTime = 160;
+    public static int mPistolAimingTime = 10;
+    public static int mPistolDamage = 300;
+
     public static boolean enableMBlunderbuss = true;
     public static int mBlunderbussLoadingTime = 200;
     public static int mBlunderbussAimingTime = 20;
-    public static int mBlunderbussDamage = 44;
+    public static int mBlunderbussDamage = 100;
     public static int mBlunderbussPellets = 10;
+
+    public static boolean enableMDragon = true;
+    public static int mDragonLoadingTime = 160;
+    public static int mDragonAimingTime = 10;
+    public static int mDragonDamage = 750;
+    public static int mDragonPellets = 10;
 
     public static boolean enableMHandMortar = true;
     public static int mHandMortarLoadingTime = 400;

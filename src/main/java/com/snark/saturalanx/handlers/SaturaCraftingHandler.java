@@ -63,7 +63,7 @@ public class SaturaCraftingHandler {
 
     private boolean makeShot(ItemStack result, IInventory grid){
         if(Config.enableMBlunderbuss)
-            return (result.getItem().equals(ItemSetup.shot) && (gridHasItem(grid, TFCItems.looseRock)||gridHasItem(grid, TFCBlocks.gravel2)||gridHasItem(grid, TFCItems.leadBullet)));
+            return (result.getItem().equals(ItemSetup.shotSL) && gridHasItem(grid, ItemSetup.bulletSL));
         return false;
     }
 

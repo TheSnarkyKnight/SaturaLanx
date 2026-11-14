@@ -6,6 +6,8 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
@@ -20,7 +22,13 @@ public class RenderBullet extends Render {
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         GL11.glScalef(1.0F, 1.0F, 1.0F);
         this.bindEntityTexture(entity);
-        this.renderItem(Tessellator.instance, ItemSetup.dummyBullet.getIconFromDamage(entity.getType()));
+        ItemStack is = entity.getSampleStack();
+        IIcon icon;
+        if(is.getItem() == ItemSetup.shotSL || is.getItem() == ItemSetup.paperShotCartridge)
+            icon = ItemSetup.shotPelletSL.getIconFromDamage(is.getItemDamage());
+        else
+            icon = ItemSetup.bulletSL.getIconFromDamage(is.getItemDamage());
+        this.renderItem(Tessellator.instance, icon);
         GL11.glDisable(GL12.GL_RESCALE_NORMAL);
         GL11.glPopMatrix();
     }

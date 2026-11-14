@@ -5,16 +5,15 @@ import com.dunk.tfc.api.TFCItems;
 import com.snark.saturalanx.SaturaLanx;
 import com.snark.saturalanx.core.Config;
 import com.snark.saturalanx.core.ItemSetup;
+import com.snark.saturalanx.items.ItemSL;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static com.snark.saturalanx.core.BlockSetup.*;
@@ -37,6 +36,44 @@ public class CraftingRecipes {
         string.add(TFCItems.cottonYarn);
         string.add(TFCItems.sinew);
         string.add(TFCItems.grassCordage);
+
+        GameRegistry.addShapelessRecipe(new ItemStack(saturaBulletMold,1,1),new ItemStack(com.dunk.tfc.ItemSetup.clayMoldBullet,1,1));
+        GameRegistry.addShapelessRecipe(new ItemStack(com.dunk.tfc.ItemSetup.clayMoldBullet,1,1), new ItemStack(saturaBulletMold,1,1));
+
+        GameRegistry.addShapelessRecipe(new ItemStack(bulletSL,1,2),new ItemStack(TFCItems.leadBullet,1,0));
+        GameRegistry.addShapelessRecipe(new ItemStack(TFCItems.leadBullet,1,0),new ItemStack(bulletSL,1,2));
+
+        GameRegistry.addShapelessRecipe(new ItemStack(bulletSL,8,1), new ItemStack(saturaBulletMoldExtra,1,0));
+        GameRegistry.addShapelessRecipe(new ItemStack(bulletSL,8,2), new ItemStack(saturaBulletMold,1,2));
+        GameRegistry.addShapelessRecipe(new ItemStack(bulletSL,8,3), new ItemStack(saturaBulletMold,1,3));
+        GameRegistry.addShapelessRecipe(new ItemStack(bulletSL,8,4), new ItemStack(saturaBulletMold,1,4));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(gunComponent,1,2)," M "," WW","  W",'M',new ItemStack(gunComponent,1,1),'W',"woodLumber"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(gunComponent,1,3)," M ","WWW","  W",'M',new ItemStack(gunComponent,1,1),'W',"woodLumber"));
+
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ballPuller,1),new ItemStack(gunComponent,1),"stickWood"));
+
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(shotSL,1,0),new ItemStack(bulletSL,1,0),"itemHammer"));
+        GameRegistry.addShapelessRecipe(new ItemStack(shotSL,4,1),new ItemStack(TFCItems.powder,1,9));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(shotSL,1,2),new ItemStack(bulletSL,1,2),"itemHammer"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(shotSL,1,3),new ItemStack(bulletSL,1,3),"itemHammer"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(shotSL,1,4),new ItemStack(bulletSL,1,4),"itemHammer"));
+
+        GameRegistry.addShapelessRecipe(new ItemStack(match, 1, 3), new ItemStack(match, 1, 1), new ItemStack(match, 1, 1));
+        GameRegistry.addShapelessRecipe(new ItemStack(match, 1, 2), new ItemStack(match, 1, 1), new ItemStack(Items.paper, 1), new ItemStack(Items.paper, 1));
+
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(powderFlask,1,0),new ItemStack(TFCItems.leatherStrap,1),new ItemStack(TFCItems.blowingHorn,1),"woodLumber"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(powderFlask,1,0),new ItemStack(TFCItems.rope,1),new ItemStack(TFCItems.blowingHorn,1),"woodLumber"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(powderFlask,1,1),new ItemStack(TFCItems.leatherStrap,1),new ItemStack(TFCItems.blowingHorn,1,1),"woodLumber"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(powderFlask,1,1),new ItemStack(TFCItems.rope,1),new ItemStack(TFCItems.blowingHorn,1,1),"woodLumber"));
+
+        for(int i = 0;i<((ItemSL)bulletSL).getNumSubtypes();i++){
+            GameRegistry.addShapelessRecipe(new ItemStack(paperCartridge,1,i),new ItemStack(bulletSL,1,i),new ItemStack(Items.paper,1),new ItemStack(Items.gunpowder,1));
+        }
+
+        for(int i = 0; i<((ItemSL)shotSL).getNumSubtypes(); i++){
+            GameRegistry.addShapelessRecipe(new ItemStack(paperShotCartridge,1,i),new ItemStack(shotSL,1,i),new ItemStack(Items.paper,1),new ItemStack(Items.gunpowder,1));
+        }
 
         if (Config.enableColouredBricks) {
             GameRegistry.addRecipe(new ItemStack(lapisBrick, 8, 0), "XXX", "XYX", "XXX", 'X', new ItemStack(TFCItems.brick, 1, 0), 'Y', new ItemStack(TFCItems.powder, 1, 6));
@@ -132,14 +169,6 @@ public class CraftingRecipes {
             GameRegistry.addShapelessRecipe(new ItemStack(stockadeBlock,1,0),new ItemStack(TFCItems.woodenSpear,1,0),new ItemStack(TFCItems.woodenSpear,1,0),new ItemStack(TFCItems.woodenSpear,1,0),new ItemStack(TFCItems.woodenSpear,1,0));
         }
 
-        if (Config.enableHandgonne) {
-            GameRegistry.addRecipe(new ItemStack(brassHandgonne,1,0),"TXX", "XRX", "XXS", 'T', new ItemStack(TFCItems.brassTube, 1, 0), 'R', new ItemStack(TFCItems.resin, 1, 0), 'S', new ItemStack(TFCItems.stick, 1, 0));
-            GameRegistry.addRecipe(new ItemStack(bronzeHandgonne, 1, 0), "TXX", "XRX", "XXS", 'T', new ItemStack(TFCItems.tuyereBronze, 1, 0), 'R', new ItemStack(TFCItems.resin, 1, 0), 'S', new ItemStack(TFCItems.stick, 1, 0));
-            GameRegistry.addRecipe(new ItemStack(blackBronzeHandgonne, 1, 0), "TXX", "XRX", "XXS", 'T', new ItemStack(TFCItems.tuyereBlackBronze, 1, 0), 'R', new ItemStack(TFCItems.resin, 1, 0), 'S', new ItemStack(TFCItems.stick, 1, 0));
-            GameRegistry.addRecipe(new ItemStack(bismuthBronzeHandgonne, 1, 0), "TXX", "XRX", "XXS", 'T', new ItemStack(TFCItems.tuyereBismuthBronze, 1, 0), 'R', new ItemStack(TFCItems.resin, 1, 0), 'S', new ItemStack(TFCItems.stick, 1, 0));
-            GameRegistry.addRecipe(new ItemStack(ironHandgonne, 1, 0), "TXX", "XRX", "XXS", 'T', new ItemStack(TFCItems.tuyereWroughtIron, 1, 0), 'R', new ItemStack(TFCItems.resin, 1, 0), 'S', new ItemStack(TFCItems.stick, 1, 0));
-        }
-
         if (Config.enableExtraMaces) {
 
             for (Item i : string) {
@@ -214,25 +243,46 @@ public class CraftingRecipes {
         if (Config.enableSmokeBombs){
 
         }
-        if(Config.enablePotGrenades||Config.enableFirecrackers||Config.enableSmokeBombs) {
-            GameRegistry.addShapelessRecipe(new ItemStack(match, 1, 3), new ItemStack(match, 1, 1), new ItemStack(match, 1, 1));
-            GameRegistry.addShapelessRecipe(new ItemStack(match, 1, 2), new ItemStack(match, 1, 1), new ItemStack(Items.paper, 1), new ItemStack(Items.paper, 1));
-        }
         if(Config.enableCastanets)
             for(Item s : string) {
                 GameRegistry.addShapelessRecipe(new ItemStack(castanets, 1), new ItemStack(s,1),new ItemStack(TFCItems.potteryBowl,1,1),new ItemStack(TFCItems.potteryBowl,1,1));
             }
-        if(Config.enableArquebus){
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(brassArquebus, 1), new Object[]{"LMT", "LL ", 'L', "woodLumber", 'M', new ItemStack(mechanism, 1, 0), 'T', new ItemStack(TFCItems.brassTube, 1)}));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ironArquebus, 1), new Object[]{"LMT", "LL ", 'L', "woodLumber", 'M', new ItemStack(mechanism, 1, 0), 'T', new ItemStack(TFCItems.tuyereWroughtIron, 1)}));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(steelArquebus, 1), new Object[]{"LMT", "LL ", 'L', "woodLumber", 'M', new ItemStack(mechanism, 1, 0), 'T', new ItemStack(TFCItems.tuyereSteel, 1)}));
+
+        if (Config.enableHandgonne) {
+            GameRegistry.addRecipe(new ItemStack(brassHandgonne,1,0),"TXX", "XRX", "XXS", 'T', new ItemStack(brassBarrel, 1), 'R', new ItemStack(TFCItems.resin, 1, 0), 'S', new ItemStack(TFCItems.stick, 1, 0));
+            GameRegistry.addRecipe(new ItemStack(bronzeHandgonne, 1, 0), "TXX", "XRX", "XXS", 'T', new ItemStack(bronzeBarrel, 1, 0), 'R', new ItemStack(TFCItems.resin, 1, 0), 'S', new ItemStack(TFCItems.stick, 1, 0));
+            GameRegistry.addRecipe(new ItemStack(blackBronzeHandgonne, 1, 0), "TXX", "XRX", "XXS", 'T', new ItemStack(blackBronzeBarrel, 1, 0), 'R', new ItemStack(TFCItems.resin, 1, 0), 'S', new ItemStack(TFCItems.stick, 1, 0));
+            GameRegistry.addRecipe(new ItemStack(bismuthBronzeHandgonne, 1, 0), "TXX", "XRX", "XXS", 'T', new ItemStack(bismuthBronzeBarrel, 1, 0), 'R', new ItemStack(TFCItems.resin, 1, 0), 'S', new ItemStack(TFCItems.stick, 1, 0));
+            GameRegistry.addRecipe(new ItemStack(ironHandgonne, 1, 0), "TXX", "XRX", "XXS", 'T', new ItemStack(ironBarrel, 1, 0), 'R', new ItemStack(TFCItems.resin, 1, 0), 'S', new ItemStack(TFCItems.stick, 1, 0));
         }
-        if(Config.enableMBlunderbuss) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(brassMBlunderbuss, 1), new Object[]{"LMT", "LL ", 'L', "woodLumber", 'M', new ItemStack(mechanism, 1, 0), 'T', new ItemStack(flaredBarrel, 1, 0)}));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ironMBlunderbuss, 1), new Object[]{"LMT", "LL ", 'L', "woodLumber", 'M', new ItemStack(mechanism, 1, 0), 'T', new ItemStack(flaredBarrel, 1, 1)}));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(steelMBlunderbuss, 1), new Object[]{"LMT", "LL ", 'L', "woodLumber", 'M', new ItemStack(mechanism, 1, 0), 'T', new ItemStack(flaredBarrel, 1, 2)}));
-            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(shot,4,0),"itemRock","itemHammer"));
-            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(shot,1,1),new ItemStack(TFCItems.leadBullet,1),"itemHammer"));
+
+        if (Config.enableEruptor) {
+            GameRegistry.addRecipe(new ItemStack(brassEruptor,1,0),"TXX", "XRX", "XXS", 'T', new ItemStack(brassFlaredBarrel, 1), 'R', new ItemStack(TFCItems.resin, 1, 0), 'S', new ItemStack(TFCItems.stick, 1, 0));
+            GameRegistry.addRecipe(new ItemStack(bronzeEruptor, 1, 0), "TXX", "XRX", "XXS", 'T', new ItemStack(bronzeFlaredBarrel, 1, 0), 'R', new ItemStack(TFCItems.resin, 1, 0), 'S', new ItemStack(TFCItems.stick, 1, 0));
+            GameRegistry.addRecipe(new ItemStack(blackBronzeEruptor, 1, 0), "TXX", "XRX", "XXS", 'T', new ItemStack(blackBronzeFlaredBarrel, 1, 0), 'R', new ItemStack(TFCItems.resin, 1, 0), 'S', new ItemStack(TFCItems.stick, 1, 0));
+            GameRegistry.addRecipe(new ItemStack(bismuthBronzeEruptor, 1, 0), "TXX", "XRX", "XXS", 'T', new ItemStack(bismuthBronzeFlaredBarrel, 1, 0), 'R', new ItemStack(TFCItems.resin, 1, 0), 'S', new ItemStack(TFCItems.stick, 1, 0));
+            GameRegistry.addRecipe(new ItemStack(ironEruptor, 1, 0), "TXX", "XRX", "XXS", 'T', new ItemStack(ironFlaredBarrel, 1, 0), 'R', new ItemStack(TFCItems.resin, 1, 0), 'S', new ItemStack(TFCItems.stick, 1, 0));
+        }
+
+        if(Config.enableArquebus){
+            GameRegistry.addShapelessRecipe(new ItemStack(brassMArquebus,1),new ItemStack(gunComponent,1,3),new ItemStack(brassLongBarrel,1));
+            GameRegistry.addShapelessRecipe(new ItemStack(ironMArquebus,1),new ItemStack(gunComponent,1,3),new ItemStack(ironLongBarrel,1));
+            GameRegistry.addShapelessRecipe(new ItemStack(steelMArquebus,1),new ItemStack(gunComponent,1,3),new ItemStack(steelLongBarrel,1));
+        }
+        if(Config.enableMPistol){
+            GameRegistry.addShapelessRecipe(new ItemStack(brassMPistol,1),new ItemStack(gunComponent,1,2),new ItemStack(brassBarrel,1));
+            GameRegistry.addShapelessRecipe(new ItemStack(ironMPistol,1),new ItemStack(gunComponent,1,2),new ItemStack(ironBarrel,1));
+            GameRegistry.addShapelessRecipe(new ItemStack(steelMPistol,1),new ItemStack(gunComponent,1,2),new ItemStack(steelBarrel,1));
+        }
+        if(Config.enableMBlunderbuss){
+            GameRegistry.addShapelessRecipe(new ItemStack(brassMBlunderbuss,1),new ItemStack(gunComponent,1,3),new ItemStack(brassLongFlaredBarrel,1));
+            GameRegistry.addShapelessRecipe(new ItemStack(ironMBlunderbuss,1),new ItemStack(gunComponent,1,3),new ItemStack(ironLongFlaredBarrel,1));
+            GameRegistry.addShapelessRecipe(new ItemStack(steelMBlunderbuss,1),new ItemStack(gunComponent,1,3),new ItemStack(steelLongFlaredBarrel,1));
+        }
+        if(Config.enableMDragon){
+            GameRegistry.addShapelessRecipe(new ItemStack(brassMDragon,1),new ItemStack(gunComponent,1,2),new ItemStack(brassFlaredBarrel,1));
+            GameRegistry.addShapelessRecipe(new ItemStack(ironMDragon,1),new ItemStack(gunComponent,1,2),new ItemStack(ironFlaredBarrel,1));
+            GameRegistry.addShapelessRecipe(new ItemStack(steelMDragon,1),new ItemStack(gunComponent,1,2),new ItemStack(steelFlaredBarrel,1));
         }
     }
 }

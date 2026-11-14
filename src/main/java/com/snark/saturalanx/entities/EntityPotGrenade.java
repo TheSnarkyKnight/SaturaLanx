@@ -1,6 +1,7 @@
 package com.snark.saturalanx.entities;
 
 import com.snark.saturalanx.core.Config;
+import com.snark.saturalanx.core.ItemSetup;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -275,7 +276,8 @@ public class EntityPotGrenade extends Entity implements IProjectile{
                     z *= -1;
 
                 EntityBullet b = new EntityBullet(worldObj, posX, posY, posZ);
-                b.setType(0);
+                b.setPickupItem(ItemSetup.shotSL);
+                b.setDamageTaken((short)0);
                 b.setDamage(10+power);
                 b.motionX = x;
                 b.motionY = y;
