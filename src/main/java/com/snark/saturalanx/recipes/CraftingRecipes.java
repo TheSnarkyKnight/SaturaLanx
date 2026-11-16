@@ -284,5 +284,8 @@ public class CraftingRecipes {
             GameRegistry.addShapelessRecipe(new ItemStack(ironMDragon,1),new ItemStack(gunComponent,1,2),new ItemStack(ironFlaredBarrel,1));
             GameRegistry.addShapelessRecipe(new ItemStack(steelMDragon,1),new ItemStack(gunComponent,1,2),new ItemStack(steelFlaredBarrel,1));
         }
+        if(Config.enableStockade){
+            GameRegistry.addShapelessRecipe(new ItemStack(chevalDeFriseBlock,1),new ItemStack(spikeItem,1),new ItemStack(spikeItem,1),new ItemStack(spikeItem,1),new ItemStack(spikeItem,1));
+        }
     }
 }

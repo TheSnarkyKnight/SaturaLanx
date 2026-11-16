@@ -35,6 +35,7 @@ public class Config {
     public static boolean enableMortaredCobbleTextures = true;
     public static boolean enableStockade = true;
     public static boolean doesStockadeBlockSpiders = true;
+    public static boolean enableChevalDeFrise = true;
     public static boolean enableGabion = true;
     public static boolean enableGabionMultistage = true;
     public static boolean enableGabionOpenBottom = true;
@@ -241,6 +242,8 @@ public class Config {
 
         enableStockade = config.getBoolean("Enable Stockade",BUILDINGBLOCKS,true,"Enables stockade blocks.");
         doesStockadeBlockSpiders = config.getBoolean("Does Blockade Block Spiders",BUILDINGBLOCKS,true,"If true, spiders will be prevented from climbing over stockade walls.");
+
+        enableChevalDeFrise = config.getBoolean("Enable Cheval De Frise",BUILDINGBLOCKS,true,"Enables cheval de frise blocks.");
 
         //Traps
         enableSpikes = config.getBoolean("Enable Spikes",TRAPS,true,"Enable spike blocks");

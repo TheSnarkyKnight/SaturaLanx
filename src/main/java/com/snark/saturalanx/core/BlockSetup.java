@@ -21,13 +21,13 @@ import java.util.ArrayList;
 
 public class BlockSetup {
 
-    public static int tileRenderId,tallCandlestickRenderId, stockadeRenderId, chaliceRenderId, hypocaustRenderId, arrowRopeRenderId, bearTrapRenderId, trophyRenderId;
+    public static int tileRenderId,tallCandlestickRenderId, stockadeRenderId, chaliceRenderId, hypocaustRenderId, arrowRopeRenderId, chevalDeFriseRenderId;
     public static ArrayList<Block> blockList;
     public static Block colouredBricks, floorTiles, mortaredCobble1, mortaredCobble2;
     public static Block brassTallCandlestickOff,brassTallCandlestick,pewterTallCandlestick,pewterTallCandlestickOff,silverTallCandlestick,silverTallCandlestickOff,sterlingSilverTallCandlestick,sterlingSilverTallCandlestickOff,goldTallCandlestick,goldTallCandlestickOff,roseGoldTallCandlestick,roseGoldTallCandlestickOff;
     public static Block flamingBlock, arrowRopeBlock;
     public static Block spikeBlock, leafCover;
-    public static Block gabion1, gabion2, stockadeBlock;
+    public static Block gabion1, gabion2, stockadeBlock, chevalDeFriseBlock;
     public static Block chaliceBlock,chaliceBlock2;
     public static Block hypocaustBlock, hypocaustControlBlock, bathWater, bathWaterStatic;
 
@@ -140,6 +140,12 @@ public class BlockSetup {
             blockList.add(stockadeBlock);
         }
 
+        if(Config.enableChevalDeFrise){
+            chevalDeFriseBlock = new ChevalDeFrise();
+
+            blockList.add(chevalDeFriseBlock);
+        }
+
         if(Config.enableIncendiaryPot)
         {
             flamingBlock = new FlamingBlock().setBlockName("FlamingBlock");
@@ -189,6 +195,7 @@ public class BlockSetup {
         RenderingRegistry.registerBlockHandler(chaliceRenderId = RenderingRegistry.getNextAvailableRenderId(), new ChaliceRender());
         RenderingRegistry.registerBlockHandler(hypocaustRenderId = RenderingRegistry.getNextAvailableRenderId(), new HypocaustRender());
         RenderingRegistry.registerBlockHandler(arrowRopeRenderId = RenderingRegistry.getNextAvailableRenderId(), new ArrowRopeRender());
+        RenderingRegistry.registerBlockHandler(chevalDeFriseRenderId = RenderingRegistry.getNextAvailableRenderId(), new ChevalDeFriseRender());
         
     }
 

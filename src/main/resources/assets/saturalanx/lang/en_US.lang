@@ -29,6 +29,8 @@ tile.LeafCover_0.name=Leaf Cover
 tile.LeafCover_1.name=Leaf Cover
 tile.SpikeBlock_0.name=Wooden Spikes
 tile.SpikeBlock_1.name=Iron Spikes
+tile.ChevalDeFrise_0.name=Cheval De Frise
+tile.ChevalDeFrise_1.name=Cheval De Frise
 tile.HypocaustBlock_0.name=Hypocaust Block
 tile.HypocaustControlBlock_0.name=Hypocaust Control Block
 //Decoration Blocks
