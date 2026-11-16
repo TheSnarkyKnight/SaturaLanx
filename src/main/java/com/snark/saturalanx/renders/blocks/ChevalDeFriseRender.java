@@ -5,6 +5,7 @@ import com.snark.saturalanx.core.BlockSetup;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
@@ -16,12 +17,16 @@ public class ChevalDeFriseRender implements ObjBlockRendererHandler {
     public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer) {
         Tessellator tes = Tessellator.instance;
 
+        RenderHelper.disableStandardItemLighting();
+
         tes.startDrawingQuads();
         tes.setColorOpaque_F(1, 1, 1);
         tes.addTranslation(0,-0.3F,0);
         ObjBlockRendererHandler.renderWithOBJ(((ChevalDeFrise) block).getModel(), block.getIcon(0,0), tes, 1, 0.0f);
         tes.addTranslation(0,0.3F,0);
         tes.draw();
+
+        RenderHelper.enableStandardItemLighting();
 
     }
 

@@ -15,7 +15,6 @@ public interface ObjBlockRendererHandler extends ISimpleBlockRenderingHandler {
 
         for(GroupObject go : model.groupObjects){
             for (Face f : go.faces){
-                System.out.println(f.toString());
                 Vertex n = f.faceNormal;
 
                 tes.setNormal(n.x,n.y,n.z);
