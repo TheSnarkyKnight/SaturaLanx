@@ -1,4 +1,4 @@
-package com.snark.saturalanx.recipes;
+package com.snark.saturalanx.recipes.customRecipes;
 
 import com.dunk.tfc.Items.Pottery.ItemPotterySmallVessel;
 import com.dunk.tfc.api.TFCBlocks;
@@ -113,5 +113,17 @@ public class BombRecipe implements IRecipe {
         }
 
         return f;
+    }
+
+    public ItemStack getOutput() {
+        return output;
+    }
+
+    public ItemStack getFuse() {
+        return fuse;
+    }
+
+    public List<Item> getSheets() {
+        return sheets;
     }
 }

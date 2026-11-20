@@ -4,8 +4,8 @@ import com.dunk.tfc.api.TFCBlocks;
 import com.dunk.tfc.api.TFCItems;
 import com.snark.saturalanx.SaturaLanx;
 import com.snark.saturalanx.core.Config;
-import com.snark.saturalanx.core.ItemSetup;
 import com.snark.saturalanx.items.ItemSL;
+import com.snark.saturalanx.recipes.customRecipes.BombRecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -19,7 +19,13 @@ import java.util.List;
 import static com.snark.saturalanx.core.BlockSetup.*;
 import static com.snark.saturalanx.core.ItemSetup.*;
 
+
+
 public class CraftingRecipes {
+
+    public static BombRecipe potGrenadeRecipe;
+    public static BombRecipe potGrenadeQuickRecipe;
+    public static BombRecipe potGrenadeLongRecipe;
 
     public CraftingRecipes(){
 
@@ -233,9 +239,13 @@ public class CraftingRecipes {
         }
         if (Config.enablePotGrenades) {
 
-            GameRegistry.addRecipe(new BombRecipe(new ItemStack(potGrenade,1,0),new ItemStack(match,1,1)));
-            GameRegistry.addRecipe(new BombRecipe(new ItemStack(potGrenadeQuick,1,0),new ItemStack(match,1,2)));
-            GameRegistry.addRecipe(new BombRecipe(new ItemStack(potGrenadeLong,1,0),new ItemStack(match,1,3)));
+            potGrenadeRecipe = new BombRecipe(new ItemStack(potGrenade,1,0),new ItemStack(match,1,1));
+            potGrenadeQuickRecipe = new BombRecipe(new ItemStack(potGrenadeQuick,1,0),new ItemStack(match,1,2));
+            potGrenadeLongRecipe = new BombRecipe(new ItemStack(potGrenadeLong,1,0),new ItemStack(match,1,3));
+
+            GameRegistry.addRecipe(potGrenadeRecipe);
+            GameRegistry.addRecipe(potGrenadeQuickRecipe);
+            GameRegistry.addRecipe(potGrenadeLongRecipe);
             
         }
         if (Config.enableFirecrackers)

@@ -4,6 +4,9 @@ import codechicken.nei.api.API;
 import codechicken.nei.api.IConfigureNEI;
 import com.snark.saturalanx.SaturaLanx;
 import com.snark.saturalanx.blocks.building.TilesBlock;
+import com.snark.saturalanx.compat.nei.recipeHandlers.BombRecipeNEIHandler;
+import com.snark.saturalanx.compat.nei.recipeHandlers.LongBombRecipeNEIHandler;
+import com.snark.saturalanx.compat.nei.recipeHandlers.QuickBombRecipeNEIHandler;
 import com.snark.saturalanx.core.BlockSetup;
 import com.snark.saturalanx.core.Config;
 import com.snark.saturalanx.core.ItemSetup;
@@ -14,6 +17,9 @@ import net.minecraft.item.ItemStack;
 
 @Optional.Interface(iface = "codechicken.nei.api.API", modid = "NotEnoughItems")
 public class NEISaturaLanxConfig implements IConfigureNEI {
+    public static BombRecipeNEIHandler normalBombHandler;
+    public static BombRecipeNEIHandler quickBombHandler;
+    public static BombRecipeNEIHandler longBombHandler;
 
     @Optional.Method(modid="NotEnoughItems")
     @Override
@@ -65,7 +71,16 @@ public class NEISaturaLanxConfig implements IConfigureNEI {
         }
         if(Config.enablePotGrenades){
 
+            normalBombHandler = new BombRecipeNEIHandler();
+            API.registerRecipeHandler(normalBombHandler);
+
+            quickBombHandler = new QuickBombRecipeNEIHandler();
+            API.registerRecipeHandler(quickBombHandler);
+
+            longBombHandler = new LongBombRecipeNEIHandler();
+            API.registerRecipeHandler(longBombHandler);
         }
+
     }
 }
 

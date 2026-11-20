@@ -1,5 +1,6 @@
 package com.snark.saturalanx;
 
+import com.snark.saturalanx.compat.nei.NEISaturaLanxConfig;
 import com.snark.saturalanx.core.*;
 import com.snark.saturalanx.recipes.*;
 import cpw.mods.fml.common.Loader;
